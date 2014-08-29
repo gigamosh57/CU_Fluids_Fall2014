@@ -1,0 +1,52 @@
+Homework #1 (MCEN5041 { Advanced Fluid Mechanics I)
+Due September 5, 2014 by 12:00pm in class.
+Problem 1
+Using intuition, academic references, the internet, or any other resource to nd appropriate 
+uid
+(i.e., density, , and viscosity, ) and 
+ow (i.e., characteristic length and velocity L and U) prop-
+erties, calculate approximate Reynolds numbers Re = UL= for the following systems:
+(a) Blood 
+ow through a capillary.
+(b) Blood 
+ow through the aorta.
+(c) Water 
+owing from a kitchen faucet.
+(d) Water 
+owing around a small pebble in a gentle creek.
+(e) Water 
+owing around a large boulder in a gentle creek.
+(f) Air 
+owing over the wing of an airplane.
+(e) A hurricane.
+Comment on whether each of the above systems are examples of laminar or turbulent 
+ows, and
+be sure to clearly cite any references used to nd your answers.
+Problem 2
+Consider a tornado of radius R which may be simulated as a two-part circulating 
+ow in cylindrical
+coordinates with vr = vz = 0, v = !r if r  R, and v = !R2=r if r  R. Using appropriate
+cylindrical coordinate relations, calculate and plot (a) the vorticity and (b) the strain rates in each
+part of the 
+ow.
+Problem 3
+A plane unsteady viscous 
+ow is given in polar coordinates by
+vr = 0 ; v =
+C
+r
+
+1 􀀀 exp
+
+􀀀
+r2
+4t
+
+;
+where C is a constant and  is the kinematic viscosity. Compute the vorticity !z(r; t) and plot
+a series of representative velocity and vorticity proles at dierent times. By comparing the re-
+sults with those for the steady viscous 
+ow v = C=r, comment on the eect of the viscosity in the
+unsteady 
+ow. Does this make sense given what you know about viscosity? Explain why or why not.
+1
