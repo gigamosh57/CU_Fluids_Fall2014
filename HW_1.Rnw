@@ -1,17 +1,13 @@
-Homework #1 (MCEN5041 { Advanced Fluid Mechanics I)
-Due September 5, 2014 by 12:00pm in class.
-Problem 1
-Using intuition, academic references, the internet, or any other resource to nd appropriate 
-uid
-(i.e., density, , and viscosity, ) and 
-ow (i.e., characteristic length and velocity L and U) prop-
-erties, calculate approximate Reynolds numbers Re = UL= for the following systems:
-(a) Blood 
-ow through a capillary.
-(b) Blood 
-ow through the aorta.
-(c) Water 
-owing from a kitchen faucet.
+# Homework #1 (MCEN5041 { Advanced Fluid Mechanics I)
+# Due September 5, 2014 by 12:00pm in class.
+\section{Problem 1}
+
+Using intuition, academic references, the internet, or any other resource to find appropriate fluid (i.e., density, , and viscosity, ) and 
+ow (i.e., characteristic length and velocity L and U) properties, calculate approximate Reynolds numbers Re = UL= for the following systems:
+
+\subsection{Blood flow through a capillary.}
+\subsection{Blood flow through the aorta.}
+\subsection{Water flowing from a kitchen faucet.}
 (d) Water 
 owing around a small pebble in a gentle creek.
 (e) Water 
