@@ -1,48 +1,42 @@
-# Homework #1 (MCEN5041 { Advanced Fluid Mechanics I)
-# Due September 5, 2014 by 12:00pm in class.
-\section{Problem 1}
+\title{Homework #1 (MCEN5041 { Advanced Fluid Mechanics I)}
 
-Using intuition, academic references, the internet, or any other resource to find appropriate fluid (i.e., density, , and viscosity, ) and 
-ow (i.e., characteristic length and velocity L and U) properties, calculate approximate Reynolds numbers Re = UL= for the following systems:
+Due September 5, 2014 by 12:00pm in class.
+
+\section*{Problem 1}
+
+Using intuition, academic references, the internet, or any other resource to find appropriate fluid (i.e., density, \rho, and viscosity, \mu) and flow (i.e., characteristic length and velocity $L$ and $U$) properties, calculate approximate Reynolds numbers $Re = \frac{\rho UL}{\nu}$ for the following systems:
 
 \subsection{Blood flow through a capillary.}
+
 \subsection{Blood flow through the aorta.}
+
 \subsection{Water flowing from a kitchen faucet.}
-(d) Water 
-owing around a small pebble in a gentle creek.
-(e) Water 
-owing around a large boulder in a gentle creek.
-(f) Air 
-owing over the wing of an airplane.
-(e) A hurricane.
-Comment on whether each of the above systems are examples of laminar or turbulent 
-ows, and
-be sure to clearly cite any references used to nd your answers.
-Problem 2
-Consider a tornado of radius R which may be simulated as a two-part circulating 
-ow in cylindrical
-coordinates with vr = vz = 0, v = !r if r  R, and v = !R2=r if r  R. Using appropriate
-cylindrical coordinate relations, calculate and plot (a) the vorticity and (b) the strain rates in each
-part of the 
-ow.
-Problem 3
-A plane unsteady viscous 
-ow is given in polar coordinates by
-vr = 0 ; v =
-C
-r
-
-1 􀀀 exp
-
-􀀀
-r2
-4t
-
-;
-where C is a constant and  is the kinematic viscosity. Compute the vorticity !z(r; t) and plot
-a series of representative velocity and vorticity proles at dierent times. By comparing the re-
-sults with those for the steady viscous 
-ow v = C=r, comment on the eect of the viscosity in the
-unsteady 
-ow. Does this make sense given what you know about viscosity? Explain why or why not.
-1
+
+\subsection{Water flowing around a small pebble in a gentle creek.}
+
+\subsection{Water flowing around a large boulder in a gentle creek.}
+
+\subsection{Air flowing over the wing of an airplane.}
+
+\subsection{A hurricane.}
+
+Comment on whether each of the above systems are examples of laminar or turbulent flows, and be sure to clearly cite any references used to nd your answers.
+
+\section*{Problem 2}
+
+Consider a tornado of radius R which may be simulated as a two-part circulating flow in cylindrical coordinates with $v_{r} = v_{z} = 0, v_{\theta} = \omega r$ if $r \leq R$, and $v_{\theta} = \omega R^{2}/r$ if $r \geq R$. Using appropriate cylindrical coordinate relations, calculate and plot (a) the vorticity and (b) the strain rates in each part of the flow.
+
+<<prob2>>=
+@
+
+\section*{Problem 3}
+A plane unsteady viscous flow is given in polar coordinates by
+
+v_{r} = 0, v_{\theta } = \frac{C}{r} \begin{bmatrix}
+1 - exp(-\frac{r^{2}}{4vt})
+\end{bmatrix},
+
+where C is a constant and \nu is the kinematic viscosity. Compute the vorticity $\omega _{z}(r,t))$ and plot a series of representative velocity and vorticity profiles at different times. By comparing the results with those for the steady viscous flow $v_{\theta } = C/r$, comment on the effect of the viscosity in the unsteady flow. Does this make sense given what you know about viscosity? Explain why or why not.
+
+<<prob3>>=
+@
