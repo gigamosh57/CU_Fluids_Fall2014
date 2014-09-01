@@ -1,26 +1,148 @@
-\title{Homework #1 (MCEN5041 { Advanced Fluid Mechanics I)}
+\documentclass{article}
 
-Due September 5, 2014 by 12:00pm in class.
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{float}
+\usepackage[bookmarks]{hyperref}
+\usepackage{Sweave}
+
+
+\begin{document}
+\title{MCEN 5041 - Advanced Fluid Mechanics - Homework #1}
+
+\author{Page Weil}
+\maketitle
+\title{}
+
+Due September 5, 2014 by 12:00 pm in class.
 
 \section*{Problem 1}
 
-Using intuition, academic references, the internet, or any other resource to find appropriate fluid (i.e., density, \rho, and viscosity, \mu) and flow (i.e., characteristic length and velocity $L$ and $U$) properties, calculate approximate Reynolds numbers $Re = \frac{\rho UL}{\nu}$ for the following systems:
+Using intuition, academic references, the internet, or any other resource to
+find appropriate fluid (i.e., density, $\rho$, and viscosity, $\mu$) and flow (i.e.,
+characteristic length and velocity $L$ and $U$) properties, calculate
+approximate Reynolds numbers $Re = \frac{\rho UL}{\nu}$ for the following systems:
 
 \subsection{Blood flow through a capillary.}
 
+<<prob1a,echo=FALSE>>=
+r1 = 1.05
+mu1 = 4/10^2
+nu1 = round(4*10^2/1.05,2)
+L1 = 6 * 10^-6 *100
+U1 = 500 * 10^-6 * 100
+Re1 = r1*U1*L1/nu1
+		
+@
+
+$\rho = 1.05 \frac{g}{cm^{3}}$ From: ~\cite{Kutz2003}, pg 3.4
+
+
+$\mu = 4 * 10^{2} \frac{g}{cm*s}$  From: ~\cite{Kutz2003}, pg 3.4
+
+
+$\nu = \frac{\mu}{\rho} = 4*10^{2} \frac{g}{cm*s} * \frac{1}{1.05} \frac{cm^{3}}{g} = \Sexpr{nu1} \frac{cm^{2}}{s}$
+
+
+$L = 6 to 10 \mu m = 0.0006 to 0.001 cm$ From: ~\cite{Kutz2003}, pg 3.16
+
+
+$U = 500 \frac{\mu m}{s} = 0.05 \frac{cm}{s}$ From: ~\cite{Kutz2003}, pg 3.17
+
+
+$Re = \frac{\rho UL}{\nu} = \frac{1.05 \frac{g}{cm^{3}}*0.0006 cm * 0.05
+\frac{cm}{s}}{\Sexpr{nu1} \frac{cm^{2}}{s}} = \Sexpr{Re}$
+
 \subsection{Blood flow through the aorta.}
+
+$\rho = $
+
+$\mu = $
+
+$L = 6 to 10 \mu m$ ~\cite{Kutz2003}, pg 3.16 
+
+$U = $
+
+$Re = $
 
 \subsection{Water flowing from a kitchen faucet.}
 
+$\rho = $
+
+$\mu = $
+
+$L = $ 
+
+$U = $
+
+$Re = $
+
 \subsection{Water flowing around a small pebble in a gentle creek.}
+
+$\rho = $
+
+$\mu = $
+
+$L = $ 
+
+$U = $
+
+$Re = $
 
 \subsection{Water flowing around a large boulder in a gentle creek.}
 
+$\rho = $
+
+$\mu = $
+
+$L = $ 
+
+$U = $
+
+$Re = $
+
 \subsection{Air flowing over the wing of an airplane.}
+
+$\rho = $
+
+$\mu = $
+
+$L = $ 
+
+$U = $
+
+$Re = $
 
 \subsection{A hurricane.}
 
-Comment on whether each of the above systems are examples of laminar or turbulent flows, and be sure to clearly cite any references used to nd your answers.
+$\rho = $
+
+$\mu = $
+
+$L = $ 
+
+$U = $
+
+$Re = $
+
+Comment on whether each of the above systems are examples of laminar or
+turbulent flows, and be sure to clearly cite any references used to find your
+answer.
+
+\subsection*{Problem 1 References}
+
+\bibliographystyle{plain}
+
+\bibliography{MCEN5041_HW1}
+
+\pagebreak
+
 
 \section*{Problem 2}
 
@@ -40,3 +162,8 @@ where C is a constant and \nu is the kinematic viscosity. Compute the vorticity 
 
 <<prob3>>=
 @
+
+
+
+
+\end{document}
