@@ -27,7 +27,9 @@ Due September 5, 2014 by 12:00 pm in class.
 Using intuition, academic references, the internet, or any other resource to
 find appropriate fluid (i.e., density, $\rho$, and viscosity, $\mu$) and flow (i.e.,
 characteristic length and velocity $L$ and $U$) properties, calculate
-approximate Reynolds numbers $Re = \frac{\rho UL}{\nu}$ for the following systems:
+approximate Reynolds numbers $Re = \frac{\rho UL}{\nu}$ for the systems below.
+ Comment on whether each of the above systems are examples of laminar or
+turbulent flows, and be sure to clearly cite any references used to find your answer.
 
 As a definition,  $Re < 2300$ indicates laminar flow and $Re > 4000$
 indicates turbulent flow. ~\cite{Holman2002} p. 207
@@ -37,7 +39,7 @@ indicates turbulent flow. ~\cite{Holman2002} p. 207
 <<prob1a,echo=FALSE>>=
 r1 = 1.05
 mu1 = 4*10^2
-nu1 = round(mu1/r1,2)
+nu1 = round(mu1/r1,5)
 L1 = 6 * 10^-6 *100
 U1 = 500 * 10^-6 * 100
 Re1 = r1*U1*L1/mu1
@@ -59,14 +61,14 @@ $U = 500 \frac{\mu m}{s} = 0.05 \frac{cm}{s}$ From: ~\cite{Kutz2003}, pg 3.17
 $Re = \frac{\rho UL}{\mu} = \frac{1.05 \frac{g}{cm^{3}}*0.0006 cm * 0.05
 \frac{cm}{s}}{\Sexpr{mu1} \frac{g}{cm*s}} = \Sexpr{Re1}$
 
-Since $Re \leq\leq 2300$ we can assume the flow is laminar.
+Since $Re << 2300$ we can assume the flow is laminar.
 
 \subsection{Blood flow through the aorta.}
 
 <<prob1b,echo=FALSE>>=
 r2 = 1.05
 mu2 = 4*10^2
-nu2 = round(mu2/r2,2)
+nu2 = round(mu2/r2,5)
 L2 = 2*sqrt(2.5/pi)
 U2 = 33
 Re2 = r2*U2*L2/mu2
@@ -74,7 +76,7 @@ Re2 = r2*U2*L2/mu2
 
 $\rho = 1.05 \frac{g}{cm^{3}}$ From: ~\cite{Kutz2003}, pg 3.4
 
-$\mu = 4 * 10^{2} \frac{g}{cm*s}$  From: ~\cite{Kutz2003}, pg 3.4
+$\mu = 4*10^{2} \frac{g}{cm*s}$  From: ~\cite{Kutz2003}, pg 3.4
 
 $\nu = \frac{\mu}{\rho} = 4*10^{2} \frac{g}{cm*s} * \frac{1}{\Sexpr{r2}}$
 
@@ -82,93 +84,151 @@ Aorta Area = $2.5cm^{2}$ ~\cite{Kutz2003}, pg 3.2
 
 $A = \pi * r^{2}$ 
 
-$L = 2*r = 2*\sqrt{\frac{A}}{\pi} = \Sexpr{L2} cm$ 
+$L = 2*r = 2*\sqrt{\frac{A}{\pi}} = \Sexpr{L2} cm$ 
 
 $U = \Sexpr{U2} \frac{cm}{s}$ From: ~\cite{Kutz2003}, pg 3.2
 
 $Re = \frac{\rho UL}{\mu} = \frac{1.05 \frac{g}{cm^{3}}*\Sexpr{L2} cm * \Sexpr{U2}
 \frac{cm}{s}}{\Sexpr{mu2} \frac{g}{cm*s}} = \Sexpr{Re2}$
 
-Since $Re \leq\leq 2300$ we can assume the flow is laminar.
+Since $Re << 2300$ we can assume the flow is laminar.
 
 \subsection{Water flowing from a kitchen faucet.}
 
 <<prob1c,echo=FALSE>>=
 r3 = 0.99997
-mu3 = 1
-nu3 = round(mu2/r2,2)
-L3 = 99999999
-U3 = 33
+mu3 = 8.9*10^-3
+nu3 = round(mu3/r3,5)
+L3 = 1.25
+U3 = 126.18
 Re3 = r3*U3*L3/mu3
 @
 
-$\rho = 1.05 \frac{g}{cm^{3}}$ From: 
+$\rho = 0.99997 \frac{g}{cm^{3}}$ From: ~\cite{WatProp}
 
-$\mu = 4 * 10^{2} \frac{g}{cm*s}$  From: 
+$\mu = 8.90*10^{-3} \frac{g}{cm*s}$  From: ~\cite{WatProp} 
 
-$\nu = \frac{\mu}{\rho} = 4*10^{2} \frac{g}{cm*s} * \frac{1}{1.05}$
+$\nu = \frac{\mu}{\rho} = 8.9*10^-3 \frac{g}{cm*s} * \frac{1}{0.99997}
+= \frac{cm^{3}}{g} = \Sexpr{nu3} \frac{cm^{2}}{s}$
 
-$\frac{cm^{3}}{g} = \Sexpr{nu1} \frac{cm^{2}}{s}$
+$L = 1.25 cm$ From: Measured home faucet
 
-$L = 6$ to $10 \mu m = 0.0006$ to $0.001 cm$ From: 
+$Q_{faucet} = 2 \frac{gal}{min} = 126.18 \frac{cm^{3}}{sec}$  Standard Low Flow Faucet From: ~\cite{WatEff2011}
 
-$U = 500 \frac{\mu m}{s} = 0.05 \frac{cm}{s}$ From: 
+$U = 500 \frac{\mu m}{s} = 0.05 \frac{cm}{s}$
 
 $Re = \frac{\rho UL}{\mu} = \frac{1.05 \frac{g}{cm^{3}}*0.0006 cm * 0.05
 \frac{cm}{s}}{\Sexpr{mu3} \frac{g}{cm*s}} = \Sexpr{Re3}$
 
+Since $Re >> 4000$ we can assume the flow is turbulent.
 
 \subsection{Water flowing around a small pebble in a gentle creek.}
 
-$\rho = $
+<<prob1d,echo=FALSE>>=
+r4 = 0.99997
+mu4 = 8.9*10^-3
+nu4 = round(mu4/r4,5)
+L4 = 1.25
+U4 = 44.704
+Re4 = r4*U4*L4/mu4
+@
 
-$\mu = $
+$\rho = 0.99997 \frac{g}{cm^{3}}$ From: ~\cite{WatProp}
 
-$L = $ 
+$\mu = 8.90*10^{-3} \frac{g}{cm*s}$  From: ~\cite{WatProp} 
 
-$U = $
+$\nu = \frac{\mu}{\rho} = 8.9*10^-3 \frac{g}{cm*s} * \frac{1}{0.99997}
+= \frac{cm^{3}}{g} = \Sexpr{nu4} \frac{cm^{2}}{s}$
 
-$Re = $
+$L = 2.5 cm$ Assume 0.5" pebble. 
+
+$U = 1mph = 44.70400 \frac{cm}{sec}$
+
+$Re = \frac{\rho UL}{\mu} = \frac{\Sexpr{r4} \frac{g}{cm^{3}}*\Sexpr{L4} cm *
+\Sexpr{U4} \frac{cm}{s}}{\Sexpr{mu4} \frac{g}{cm*s}} = \Sexpr{Re4}$
+
+Since $Re > 4000$ we can assume that at least portions of the flow are turbulent
+though there may be portions that are laminar as well.
+
 
 \subsection{Water flowing around a large boulder in a gentle creek.}
 
-$\rho = $
+<<prob1e,echo=FALSE>>=
+r5 = 0.99997
+mu5 = 8.9*10^-3
+nu5 = round(mu5/r5,5)
+L5 = 100
+U5 = 44.704
+Re5 = r5*U5*L5/mu5
+@
 
-$\mu = $
+$\rho = 0.99997 \frac{g}{cm^{3}}$ From: ~\cite{WatProp}
 
-$L = $ 
+$\mu = 8.90*10^{-3} \frac{g}{cm*s}$  From: ~\cite{WatProp} 
 
-$U = $
+$\nu = \frac{\mu}{\rho} = 8.9*10^-3 \frac{g}{cm*s} * \frac{1}{0.99997}
+= \frac{cm^{3}}{g} = \Sexpr{nu5} \frac{cm^{2}}{s}$
 
-$Re = $
+$L = 100 cm$ Assume 39" Boulder. 
+
+$U = 1mph = 44.70400 \frac{cm}{sec}$
+
+$Re = \frac{\rho UL}{\mu} = \frac{\Sexpr{r5} \frac{g}{cm^{3}}*\Sexpr{L5} cm *
+\Sexpr{U5} \frac{cm}{s}}{\Sexpr{mu5} \frac{g}{cm*s}} = \Sexpr{Re5}$
+
+Since $Re >> 4000$ we can assume that the flow is mostly turbulent.
 
 \subsection{Air flowing over the wing of an airplane.}
 
-$\rho = $
+<<prob1f,echo=FALSE>>=
+r6 = 4.12707*10^-1*1000/(100*100*100)
+mu6 = 1.46884*10^-5*1000/(100*100)
+nu6 = round(mu6/r6,5)
+L6 = 18*2.54
+U6 = 567*44.70400
+Re6 = r6*U6*L6/mu6
+@
 
-$\mu = $
+$\rho = 4.127*10^{-4} \frac{g}{cm^{3}}$ at 10,000m altitude, from: ~\cite{USATM}
 
-$L = $ 
+$\mu = 1.469*10^{-6} \frac{g}{cm*s}$  From: at 10,000m altitude, from:
+~\cite{USATM}
 
-$U = $
+$\nu = \frac{\mu}{\rho} = 1.469*10^{-6}\frac{g}{cm*s} * \frac{1}{4.127*10^{-1}}
+= \frac{cm^{3}}{g} = \Sexpr{nu6} \frac{cm^{2}}{s}$
 
-$Re = $
+$L = \Sexpr{L6}$ Assume 18" wing thickness, actual wing dimensions for 747 very hard to come by. 
+
+$U = 567 mph = \Sexpr{U6}\frac{cm}{sec}$
+
+$Re = \frac{\rho UL}{\mu} = \frac{\Sexpr{r6} \frac{g}{cm^{3}}*\Sexpr{U6}
+\frac{cm}{s}*\Sexpr{L6}cm}{\Sexpr{mu6} \frac{g}{cm*s}} = \Sexpr{Re6}$
+
 
 \subsection{A hurricane.}
 
-$\rho = $
+<<prob1g,echo=FALSE>>=
+r7 = 1.225*1000/(100*100*100)
+mu7 = 1.81206*10^-5*1000/(100*100)
+nu7 = round(mu2/r2,5)
+L7 = 25*2.54*12
+U7 = 150*44.70400
+Re7 = r7*U7*L7/mu7
+@
 
-$\mu = $
+$\rho = 0.001225 \frac{g}{cm^{3}}$ at 0m altitude, from: ~\cite{USATM}
 
-$L = $ 
+$\mu = 1.812*10^{-6} \frac{g}{cm*s}$  From: at 0m altitude, from: ~\cite{USATM}
 
-$U = $
+$\nu = \frac{\mu}{\rho} = 1.812^{-6} \frac{g}{cm*s} * \frac{1}{0.001225}
+= \frac{cm^{3}}{g} = $\Sexpr{nu7} $\frac{cm^{2}}{s}$
 
-$Re = $
+$L = \Sexpr{L7} cm$ height of 25' buildings
 
-Comment on whether each of the above systems are examples of laminar or
-turbulent flows, and be sure to clearly cite any references used to find your
-answer.
+$U = 150 mph = \Sexpr{U7} \frac{cm}{sec}$ powerful hurricane winds.
+
+$Re = \frac{\rho UL}{\mu} = \frac{\Sexpr{r7} \frac{g}{cm^{3}}*\Sexpr{L7} cm *
+\Sexpr{U7} \frac{cm}{s}}{\Sexpr{mu7} \frac{g}{cm*s}} = \Sexpr{Re7}$
 
 \subsection*{Problem 1 References}
 
@@ -181,7 +241,10 @@ answer.
 
 \section*{Problem 2}
 
-Consider a tornado of radius R which may be simulated as a two-part circulating flow in cylindrical coordinates with $v_{r} = v_{z} = 0, v_{\theta} = \omega r$ if $r \leq R$, and $v_{\theta} = \omega R^{2}/r$ if $r \geq R$. Using appropriate cylindrical coordinate relations, calculate and plot (a) the vorticity and (b) the strain rates in each part of the flow.
+Consider a tornado of radius R which may be simulated as a two-part circulating flow in cylindrical 
+coordinates with $v_{r} = v_{z} = 0, v_{\theta} = \omega r$ if $r \leq R$, and $v_{\theta} = \omega R^{2}/r$ if $r \geq R$. 
+Using appropriate cylindrical coordinate relations, calculate and plot (a) the vorticity and (b) the 
+strain rates in each part of the flow.
 
 <<prob2>>=
 @
