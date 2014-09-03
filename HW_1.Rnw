@@ -337,30 +337,43 @@ $\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(r*\frac{C}{r}) - \frac{1}{r
 
 $ = \frac{1}{r}\frac{\partial}{\partial r}(C)$
 
-<<prob3,echo=FALSE>>=
+\begin{figure}[H]
+\begin{center}
+\begin{minipage}[t]{.48\linewidth}
+<<prob3,fig=TRUE,echo=FALSE>>=
 C = 1
 R = 20
 nu = 1
 
-t = 1:10
+t = c(1,2,4,8)
+p = 1:length(t)
 
 r = c(0.01,seq(1,R,0.1))
 
 v1 = v2 = matrix(NA,nrow = length(r),ncol=length(t))
 
-for(a in t){
+for(a in p){
 v1[,a] = C/r*(1-exp(-r^2/(4*nu*t[a])))
 v2[,a] = C/r
 }
 
-plot(r,v1[,1],col="blue",typ="l",ylim=c(0,max(v1*2)),lty=1)
+plot(r,v1[,1],
+		col="blue",
+		typ="l",
+		ylim=c(0,max(v1*2)),
+		lty=1,
+		xlab = "Radius (r)",
+		ylab = "Velocity (v)")
 lines(r,v2[,1],col="blue",typ="l",lty=2)
-for(a in t[t!=1]){
+for(a in p[p!=1]){
 lines(r,v1[,a],col=a,typ="l",lty=1)
 lines(r,v2[,a],col=a,typ="l",lty=2)
 }
+legend(max(r)*.5,max(v1*1.8),c("Steady",paste(sep="","Unsteady at t=",t)),lty=c(2,rep(1,4)),col=c(1,1:4))
+
 @
+\end{minipage}
+\end{center}
+\end{figure}
 
-
-
-\end{document} 
+\end{document}
