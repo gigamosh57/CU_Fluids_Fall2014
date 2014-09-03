@@ -11,6 +11,7 @@
 \usepackage{float}
 \usepackage[bookmarks]{hyperref}
 \usepackage{Sweave}
+\linespread{1.05}
 
 
 \begin{document}
@@ -246,21 +247,119 @@ coordinates with $v_{r} = v_{z} = 0, v_{\theta} = \omega r$ if $r \leq R$, and $
 Using appropriate cylindrical coordinate relations, calculate and plot (a) the vorticity and (b) the 
 strain rates in each part of the flow.
 
-<<prob2>>=
+<<prob2,echo=FALSE>>=
+r = 1
+R = 5
+
 @
+
+Vorticity is represented in polar coordinates as:
+
+$\omega_{r} = \frac{1}{r}\frac{\partial v_{z}}{\partial \theta}-\frac{\partial
+v_{\theta}}{\partial z}$
+
+$\omega_{\theta} = \frac{\partial v_{r}}{\partial z}-\frac{\partial
+v_{z}}{\partial r}$
+
+$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(rv_{\theta}) - \frac{1}{r}\frac{\partial v_{r}}{\partial \theta}$
+
+
+\hline
+
+Substituting $v_{r} = v_{z} = 0, v_{\theta} = \omega r$ if $r \leq R$, and $v_{\theta} = \omega R^{2}/r$ if $r \geq R$
+
+
+For $r \leq R$
+
+$\omega_{r} = \frac{1}{r}\frac{\partial v_{z}}{\partial \theta}-\frac{\partial
+v_{\theta}}{\partial z} = \frac{1}{r}\frac{\partial }{\partial \theta}(0)-\frac{\partial
+}{\partial z}(\omega r) = -\frac{\partial
+}{\partial z}(\omega r)
+$
+
+$\omega_{\theta} = \frac{\partial v_{r}}{\partial z}-\frac{\partial
+v_{z}}{\partial r} = \frac{\partial}{\partial z}(0)-\frac{\partial}{\partial r}(0) = 0$
+
+$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(rv_{\theta}) -
+\frac{1}{r}\frac{\partial v_{r}}{\partial \theta} = \frac{1}{r}\frac{\partial}{\partial r}(r*\omega r) -
+\frac{1}{r}\frac{\partial}{\partial \theta}(0) = \frac{1}{r}\frac{\partial}{\partial r}(r^{2}\omega)$
+
+For $r \geq R$
+
+$\omega_{r} = \frac{1}{r}\frac{\partial v_{z}}{\partial \theta}-\frac{\partial
+v_{\theta}}{\partial z} = \frac{1}{r}\frac{\partial }{\partial \theta}(0)-\frac{\partial
+}{\partial z}(\omega R^{2}/r) = -\frac{\partial
+}{\partial z}(\omega R^{2}/r)
+$
+
+$\omega_{\theta} = \frac{\partial v_{r}}{\partial z}-\frac{\partial
+v_{z}}{\partial r} = \frac{\partial}{\partial z}(0)-\frac{\partial}{\partial r}(0) = 0$
+
+$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(rv_{\theta}) -
+\frac{1}{r}\frac{\partial v_{r}}{\partial \theta} = \frac{1}{r}\frac{\partial}{\partial r}(r*\omega R^{2}/r) -
+\frac{1}{r}\frac{\partial}{\partial \theta}(0) = \frac{1}{r}\frac{\partial}{\partial r}(\omega R^{2})$
 
 \section*{Problem 3}
 A plane unsteady viscous flow is given in polar coordinates by
 
 $v_{r} = 0, v_{\theta } = \frac{C}{r} \begin{bmatrix}
-1 - exp(-\frac{r^{2}}{4vt})
+1 - exp(-\frac{r^{2}}{4\nu t})
 \end{bmatrix}$
 
-where C is a constant and \nu is the kinematic viscosity. Compute the vorticity $\omega _{z}(r,t))$ and plot a series of representative velocity and vorticity profiles at different times. By comparing the results with those for the steady viscous flow $v_{\theta } = C/r$, comment on the effect of the viscosity in the unsteady flow. Does this make sense given what you know about viscosity? Explain why or why not.
+where C is a constant and $\nu$ is the kinematic viscosity. Compute the
+vorticity $\omega_{z}(r,t))$ and plot a series of representative velocity and
+vorticity profiles at different times. By comparing the results with those for
+the steady viscous flow $v_{\theta } = C/r$, comment on the effect of the
+viscosity in the unsteady flow. Does this make sense given what you know about
+viscosity? Explain why or why not.
 
-<<prob3>>=
+
+
+Vorticity is represented in 2-D polar coordinates as:
+
+$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(rv_{\theta}) - \frac{1}{r}\frac{\partial v_{r}}{\partial \theta}$
+
+Substituting for $v_{\theta } = \frac{C}{r} \begin{bmatrix}1 - exp(-\frac{r^{2}}{4\nu t})\end{bmatrix}$ (Unsteady Flow)
+
+$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(r*\frac{C}{r} \begin{bmatrix}1 - exp(-\frac{r^{2}}{4\nu t})\end{bmatrix}) - \frac{1}{r}\frac{\partial}{\partial \theta}(0) $
+
+$ = \frac{1}{r}\frac{\partial}{\partial r}(C - C*exp(-\frac{r^{2}}{4\nu t}))$
+
+$ = \frac{1}{r}(0 - \frac{2rC}{4\nu t}*exp(-\frac{r^{2}}{4\nu t}))$
+
+$ = \frac{1}{r}\frac{-2rC}{4\nu t}*exp(-\frac{r^{2}}{4\nu t})$
+
+$\omega_{z} = \frac{2C}{4\nu t}*exp(-\frac{r^{2}}{4\nu t})$
+
+Substituting for $v_{\theta } = \frac{C}{r}$ (Steady Flow)
+
+$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(r*\frac{C}{r}) - \frac{1}{r}\frac{\partial}{\partial \theta}(0)$
+
+$ = \frac{1}{r}\frac{\partial}{\partial r}(C)$
+
+<<prob3,echo=FALSE>>=
+C = 1
+R = 20
+nu = 1
+
+t = 1:10
+
+r = c(0.01,seq(1,R,0.1))
+
+v1 = v2 = matrix(NA,nrow = length(r),ncol=length(t))
+
+for(a in t){
+v1[,a] = C/r*(1-exp(-r^2/(4*nu*t[a])))
+v2[,a] = C/r
+}
+
+plot(r,v1[,1],col="blue",typ="l",ylim=c(0,max(v1*2)),lty=1)
+lines(r,v2[,1],col="blue",typ="l",lty=2)
+for(a in t[t!=1]){
+lines(r,v1[,a],col=a,typ="l",lty=1)
+lines(r,v2[,a],col=a,typ="l",lty=2)
+}
 @
-
 
 
 
