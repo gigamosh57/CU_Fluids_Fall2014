@@ -335,6 +335,63 @@ $= \frac{1}{r}(0)$
 $\omega_{z} = 0$
 
 
+
+\begin{figure}[H]
+\begin{center}
+\begin{minipage}[t]{.48\linewidth}
+<<prob2a,fig=TRUE,echo=FALSE>>=
+w = 1
+R = 5
+
+r1 = c(0.01,seq(1,R,0.1))
+r2 = c(seq(R,3*R,0.1))
+p1 = 1:length(r1)
+p2 = 1:length(r2)
+
+w1 = w2 = v1 = v2 = p
+
+for(a in p1){
+w1[a] = 2*w
+v1[a] = w*r1
+}
+
+for(a in p2){
+w2[a] = 0
+v2[a] = w*R^2/r2
+}
+
+plot(r1,w1,
+		col="blue",
+		typ="l",
+		ylim=c(0,max(w1,w2)),
+		xlim=c(0,max(r1,r2)),
+		lty=1,
+		xlab = "Radius (r)",
+		ylab = "Vorticity (w)")
+lines(r2,w2,col="blue",typ="l",lty=2)
+
+@
+\end{minipage}
+\begin{minipage}[t]{.48\linewidth}
+<<prob2b,fig=TRUE,echo=FALSE>>=
+
+plot(r1,v1,
+		col="blue",
+		typ="l",
+		ylim=c(0,max(v1,v2)),
+		xlim=c(0,max(r1,r2)),
+		lty=1,
+		xlab = "Radius (r)",
+		ylab = "Vorticity (w)")
+lines(r2,v2,col="blue",typ="l",lty=2)
+
+
+@
+\end{minipage}
+\end{center}
+\end{figure}
+
+
 \section*{Problem 3}
 A plane unsteady viscous flow is given in polar coordinates by
 
