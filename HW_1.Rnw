@@ -337,24 +337,28 @@ $\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(r*\frac{C}{r}) - \frac{1}{r
 
 $ = \frac{1}{r}\frac{\partial}{\partial r}(C)$
 
+$ = 0$
+
 \begin{figure}[H]
 \begin{center}
 \begin{minipage}[t]{.48\linewidth}
-<<prob3,fig=TRUE,echo=FALSE>>=
+<<prob3a,fig=TRUE,echo=FALSE>>=
 C = 1
 R = 20
 nu = 1
 
-t = c(1,2,4,8)
+t = c(1,2,4,8,16)
 p = 1:length(t)
 
 r = c(0.01,seq(1,R,0.1))
 
-v1 = v2 = matrix(NA,nrow = length(r),ncol=length(t))
+w1 = w2 = v1 = v2 = matrix(NA,nrow = length(r),ncol=length(t))
 
 for(a in p){
 v1[,a] = C/r*(1-exp(-r^2/(4*nu*t[a])))
 v2[,a] = C/r
+w1[,a] = (2*C)/(4*nu*t[a])*exp(-r^2/(4*nu*t[a]))
+w2[,a]=0
 }
 
 plot(r,v1[,1],
@@ -370,6 +374,23 @@ lines(r,v1[,a],col=a,typ="l",lty=1)
 lines(r,v2[,a],col=a,typ="l",lty=2)
 }
 legend(max(r)*.5,max(v1*1.8),c("Steady",paste(sep="","Unsteady at t=",t)),lty=c(2,rep(1,4)),col=c(1,1:4))
+@
+\end{minipage}
+\begin{minipage}[t]{.48\linewidth}
+<<prob3b,fig=TRUE,echo=FALSE>>=
+
+plot(r,w1[,1],
+		col="blue",
+		typ="l",
+		lty=1,
+		xlab = "Radius (r)",
+		ylab = "Vorticity (w)")
+lines(r,w2[,1],col="blue",typ="l",lty=2)
+for(a in p[p!=1]){
+	lines(r,w1[,a],col=a,typ="l",lty=1)
+}
+legend(max(r)*.5,max(w1),c("Steady",paste(sep="","Unsteady at t=",t)),lty=c(2,rep(1,5)),col=c(1,1:5))
+
 
 @
 \end{minipage}
