@@ -363,4 +363,4 @@ lines(r,v2[,a],col=a,typ="l",lty=2)
 
 
 
-\end{document}
+\end{document} 
