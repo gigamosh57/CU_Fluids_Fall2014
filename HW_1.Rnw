@@ -272,32 +272,68 @@ Substituting $v_{r} = v_{z} = 0, v_{\theta} = \omega r$ if $r \leq R$, and $v_{\
 For $r \leq R$
 
 $\omega_{r} = \frac{1}{r}\frac{\partial v_{z}}{\partial \theta}-\frac{\partial
-v_{\theta}}{\partial z} = \frac{1}{r}\frac{\partial }{\partial \theta}(0)-\frac{\partial
-}{\partial z}(\omega r) = -\frac{\partial
-}{\partial z}(\omega r)
-$
+v_{\theta}}{\partial z}$
+
+$= \frac{1}{r}\frac{\partial }{\partial \theta}(0)-\frac{\partial
+}{\partial z}(\omega r)$
+
+$= -\frac{\partial}{\partial z}(\omega r)$
+
+$\omega_{r} = 0$
+
 
 $\omega_{\theta} = \frac{\partial v_{r}}{\partial z}-\frac{\partial
-v_{z}}{\partial r} = \frac{\partial}{\partial z}(0)-\frac{\partial}{\partial r}(0) = 0$
+v_{z}}{\partial r}$
+
+$ = \frac{\partial}{\partial z}(0)-\frac{\partial}{\partial r}(0)$
+
+$ \omega_{\theta} = 0$
+
 
 $\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(rv_{\theta}) -
-\frac{1}{r}\frac{\partial v_{r}}{\partial \theta} = \frac{1}{r}\frac{\partial}{\partial r}(r*\omega r) -
-\frac{1}{r}\frac{\partial}{\partial \theta}(0) = \frac{1}{r}\frac{\partial}{\partial r}(r^{2}\omega)$
+\frac{1}{r}\frac{\partial v_{r}}{\partial \theta}$
+
+$= \frac{1}{r}\frac{\partial}{\partial r}(r*\omega r) -
+\frac{1}{r}\frac{\partial}{\partial \theta}(0)$
+
+$= \frac{1}{r}\frac{\partial}{\partial r}(r^{2}\omega)$
+
+$\omega_{z} = 2\omega$
 
 For $r \geq R$
 
+
 $\omega_{r} = \frac{1}{r}\frac{\partial v_{z}}{\partial \theta}-\frac{\partial
-v_{\theta}}{\partial z} = \frac{1}{r}\frac{\partial }{\partial \theta}(0)-\frac{\partial
-}{\partial z}(\omega R^{2}/r) = -\frac{\partial
-}{\partial z}(\omega R^{2}/r)
-$
+v_{\theta}}{\partial z}$
+
+$= \frac{1}{r}\frac{\partial }{\partial \theta}(0)-\frac{\partial
+}{\partial z}(\omega r)$
+
+$= -\frac{\partial}{\partial z}(\omega r)$
+
+$\omega_{r} = 0$
+
 
 $\omega_{\theta} = \frac{\partial v_{r}}{\partial z}-\frac{\partial
-v_{z}}{\partial r} = \frac{\partial}{\partial z}(0)-\frac{\partial}{\partial r}(0) = 0$
+v_{z}}{\partial r}$
+
+$ = \frac{\partial}{\partial z}(0)-\frac{\partial}{\partial r}(0)$
+
+$ \omega_{\theta} = 0$
+
 
 $\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(rv_{\theta}) -
-\frac{1}{r}\frac{\partial v_{r}}{\partial \theta} = \frac{1}{r}\frac{\partial}{\partial r}(r*\omega R^{2}/r) -
-\frac{1}{r}\frac{\partial}{\partial \theta}(0) = \frac{1}{r}\frac{\partial}{\partial r}(\omega R^{2})$
+\frac{1}{r}\frac{\partial v_{r}}{\partial \theta}$
+
+$= \frac{1}{r}\frac{\partial}{\partial r}(r*\omega R^{2}/r) -
+\frac{1}{r}\frac{\partial}{\partial \theta}(0)$
+
+$= \frac{1}{r}\frac{\partial}{\partial r}(\omega R^2)$
+
+$= \frac{1}{r}(0)$
+
+$\omega_{z} = 0$
+
 
 \section*{Problem 3}
 A plane unsteady viscous flow is given in polar coordinates by
