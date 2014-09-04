@@ -11,7 +11,7 @@
 \usepackage{float}
 \usepackage[bookmarks]{hyperref}
 \usepackage{Sweave}
-\linespread{1.05}
+\linespread{1.25}
 
 
 \begin{document}
@@ -20,8 +20,6 @@
 \author{Page Weil}
 \maketitle
 \title{}
-
-Due September 5, 2014 by 12:00 pm in class.
 
 \section*{Problem 1}
 
@@ -182,8 +180,8 @@ Since $Re >> 4000$ we can assume that the flow is mostly turbulent.
 \subsection{Air flowing over the wing of an airplane.}
 
 <<prob1f,echo=FALSE>>=
-r6 = 4.12707*10^-1*1000/(100*100*100)
-mu6 = 1.46884*10^-5*1000/(100*100)
+r6 = .412707*1000/(100*100*100)
+mu6 = 14.6884*1000/(100)
 nu6 = round(mu6/r6,5)
 L6 = 18*2.54
 U6 = 567*44.70400
@@ -195,22 +193,24 @@ $\rho = 4.127*10^{-4} \frac{g}{cm^{3}}$ at 10,000m altitude, from: ~\cite{USATM}
 $\mu = 1.469*10^{-6} \frac{g}{cm*s}$  From: at 10,000m altitude, from:
 ~\cite{USATM}
 
-$\nu = \frac{\mu}{\rho} = 1.469*10^{-6}\frac{g}{cm*s} * \frac{1}{4.127*10^{-1}}
-= \frac{cm^{3}}{g} = \Sexpr{nu6} \frac{cm^{2}}{s}$
+$\nu = \frac{\mu}{\rho} = 1.469*10^{-6}\frac{g}{cm*s} * \frac{1}{4.127*10^{-1}} \frac{cm^{3}}{g} = \Sexpr{as.numeric(nu6)} \frac{cm^{2}}{s}$
 
 $L = \Sexpr{L6}$ Assume 18" wing thickness, actual wing dimensions for 747 very hard to come by. 
 
-$U = 567 mph = \Sexpr{U6}\frac{cm}{sec}$
+$U = 567 mph = \Sexpr{as.numeric(U6)}\frac{cm}{sec}$
 
-$Re = \frac{\rho UL}{\mu} = \frac{\Sexpr{r6} \frac{g}{cm^{3}}*\Sexpr{U6}
-\frac{cm}{s}*\Sexpr{L6}cm}{\Sexpr{mu6} \frac{g}{cm*s}} = \Sexpr{Re6}$
+$Re = \frac{\rho UL}{\mu} = \frac{\Sexpr{as.numeric(r6)}
+\frac{g}{cm^{3}}*\Sexpr{as.numeric(U6)}
+\frac{cm}{s}*\Sexpr{as.numeric(L6)}cm}{\Sexpr{as.numeric(mu6)} \frac{g}{cm*s}} =
+\Sexpr{Re6}$
 
+Since $Re << 2300$ we can assume the flow is laminar.
 
 \subsection{A hurricane.}
 
 <<prob1g,echo=FALSE>>=
 r7 = 1.225*1000/(100*100*100)
-mu7 = 1.81206*10^-5*1000/(100*100)
+mu7 = 17.89*1000/(100)
 nu7 = round(mu2/r2,5)
 L7 = 25*2.54*12
 U7 = 150*44.70400
@@ -233,7 +233,7 @@ $Re = \frac{\rho UL}{\mu} = \frac{\Sexpr{r7} \frac{g}{cm^{3}}*\Sexpr{L7} cm *
 
 \subsection*{Problem 1 References}
 
-\bibliographystyle{plain}
+\bibliographystyle{alphadin}
 
 \bibliography{MCEN5041_HW1}
 
@@ -271,65 +271,30 @@ Substituting $v_{r} = v_{z} = 0, v_{\theta} = \omega r$ if $r \leq R$, and $v_{\
 For $r \leq R$
 
 $\omega_{r} = \frac{1}{r}\frac{\partial v_{z}}{\partial \theta}-\frac{\partial
-v_{\theta}}{\partial z}$
-
-$= \frac{1}{r}\frac{\partial }{\partial \theta}(0)-\frac{\partial
-}{\partial z}(\omega r)$
-
-$= -\frac{\partial}{\partial z}(\omega r)$
-
-$\omega_{r} = 0$
-
+v_{\theta}}{\partial z} = \frac{1}{r}\frac{\partial }{\partial \theta}(0)-\frac{\partial
+}{\partial z}(\omega r) = -\frac{\partial}{\partial z}(\omega r) = 0$
 
 $\omega_{\theta} = \frac{\partial v_{r}}{\partial z}-\frac{\partial
-v_{z}}{\partial r}$
-
-$ = \frac{\partial}{\partial z}(0)-\frac{\partial}{\partial r}(0)$
-
-$ \omega_{\theta} = 0$
+v_{z}}{\partial r} = \frac{\partial}{\partial z}(0)-\frac{\partial}{\partial r}(0) = 0$
 
 
 $\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(rv_{\theta}) -
-\frac{1}{r}\frac{\partial v_{r}}{\partial \theta}$
-
-$= \frac{1}{r}\frac{\partial}{\partial r}(r*\omega r) -
-\frac{1}{r}\frac{\partial}{\partial \theta}(0)$
-
-$= \frac{1}{r}\frac{\partial}{\partial r}(r^{2}\omega)$
-
-$\omega_{z} = 2\omega$
+\frac{1}{r}\frac{\partial v_{r}}{\partial \theta} = \frac{1}{r}\frac{\partial}{\partial r}(r*\omega r) -
+\frac{1}{r}\frac{\partial}{\partial \theta}(0) = \frac{1}{r}\frac{\partial}{\partial r}(r^{2}\omega) = 2\omega$
 
 For $r \geq R$
 
-
 $\omega_{r} = \frac{1}{r}\frac{\partial v_{z}}{\partial \theta}-\frac{\partial
-v_{\theta}}{\partial z}$
-
-$= \frac{1}{r}\frac{\partial }{\partial \theta}(0)-\frac{\partial
-}{\partial z}(\omega r)$
-
-$= -\frac{\partial}{\partial z}(\omega r)$
-
-$\omega_{r} = 0$
+v_{\theta}}{\partial z} = \frac{1}{r}\frac{\partial }{\partial \theta}(0)-\frac{\partial
+}{\partial z}(\omega r) = -\frac{\partial}{\partial z}(\omega r) = 0$
 
 
 $\omega_{\theta} = \frac{\partial v_{r}}{\partial z}-\frac{\partial
-v_{z}}{\partial r}$
-
-$ = \frac{\partial}{\partial z}(0)-\frac{\partial}{\partial r}(0)$
-
-$ \omega_{\theta} = 0$
-
+v_{z}}{\partial r} = \frac{\partial}{\partial z}(0)-\frac{\partial}{\partial r}(0) = 0$
 
 $\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(rv_{\theta}) -
-\frac{1}{r}\frac{\partial v_{r}}{\partial \theta}$
-
-$= \frac{1}{r}\frac{\partial}{\partial r}(r*\omega R^{2}/r) -
-\frac{1}{r}\frac{\partial}{\partial \theta}(0)$
-
-$= \frac{1}{r}\frac{\partial}{\partial r}(\omega R^2)$
-
-$= \frac{1}{r}(0)$
+\frac{1}{r}\frac{\partial v_{r}}{\partial \theta} = \frac{1}{r}\frac{\partial}{\partial r}(r*\omega R^{2}/r) -
+\frac{1}{r}\frac{\partial}{\partial \theta}(0) = \frac{1}{r}\frac{\partial}{\partial r}(\omega R^2) = \frac{1}{r}(0)$
 
 $\omega_{z} = 0$
 
@@ -400,7 +365,7 @@ w1[] = 2*w
 s1[] = 0
 
 w2[] = 0
-s2 = w*R^2/r2^3 - w*R^2/r2^2
+s2 = -w*R^2/r2^3 - w*R^2/r2^2
 
 plot(r1,w1,
 		col="blue",
@@ -409,8 +374,15 @@ plot(r1,w1,
 		xlim=c(0,max(r1,r2)),
 		lty=1,
 		xlab = "Radius (r)",
-		ylab = "Vorticity (w)")
-lines(r2,w2,col="blue",typ="l",lty=2)
+		ylab = "Vorticity (w)",
+		axes=FALSE,lwd=3)
+lines(r2,w2,col="blue",typ="l",lty=1,lwd=3)
+lines(c(0,max(r1,r2)),c(0,0),col="black",typ="l",lty=2)
+lines(c(0,0),10000*c(-1,1),col="black",typ="l",lty=2)
+lines(c(R,R),10000*c(-1,1),col="black",typ="l",lty=2)
+axis(2,at=0,labels="0")
+axis(1,at=c(0,R),labels=c(0,"R"))
+box()
 
 @
 \end{minipage}
@@ -424,15 +396,23 @@ plot(r1,s1,
 		xlim=c(0,max(r1,r2)),
 		lty=1,
 		xlab = "Radius (r)",
-		ylab = "Vorticity (w)")
-lines(r2,s2,col="blue",typ="l",lty=2)
-
+		ylab = "Strain Rate (s)",
+		axes=FALSE,
+		lwd=3)
+lines(r2,s2,col="blue",typ="l",lty=1,lwd=3)
+lines(c(0,max(r1,r2)),c(0,0),col="black",typ="l",lty=2)
+lines(c(0,0),10000*c(-1,1),col="black",typ="l",lty=2)
+lines(c(R,R),10000*c(-1,1),col="black",typ="l",lty=2)
+axis(2,at=0,labels="0")
+axis(1,at=c(0,R),labels=c(0,"R"))
+box()
 
 @
 \end{minipage}
 \end{center}
 \end{figure}
 
+\pagebreak
 
 \section*{Problem 3}
 A plane unsteady viscous flow is given in polar coordinates by
@@ -456,28 +436,21 @@ $\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(rv_{\theta}) - \frac{1}{r}\
 
 Substituting for $v_{\theta } = \frac{C}{r} \begin{bmatrix}1 - exp(-\frac{r^{2}}{4\nu t})\end{bmatrix}$ (Unsteady Flow)
 
-$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(r*\frac{C}{r} \begin{bmatrix}1 - exp(-\frac{r^{2}}{4\nu t})\end{bmatrix}) - \frac{1}{r}\frac{\partial}{\partial \theta}(0) $
+$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(r*\frac{C}{r} \begin{bmatrix}1 - exp(-\frac{r^{2}}{4\nu t})\end{bmatrix}) - \frac{1}{r}\frac{\partial}{\partial \theta}(0)$
 
-$ = \frac{1}{r}\frac{\partial}{\partial r}(C - C*exp(-\frac{r^{2}}{4\nu t}))$
+$ = \frac{1}{r}\frac{\partial}{\partial r}(C - C*exp(-\frac{r^{2}}{4\nu t})) = \frac{1}{r}(0 + \frac{2rC}{4\nu t}*exp(-\frac{r^{2}}{4\nu t}))$
 
-$ = \frac{1}{r}(0 - \frac{2rC}{4\nu t}*exp(-\frac{r^{2}}{4\nu t}))$
-
-$ = \frac{1}{r}\frac{-2rC}{4\nu t}*exp(-\frac{r^{2}}{4\nu t})$
-
-$\omega_{z} = \frac{2C}{4\nu t}*exp(-\frac{r^{2}}{4\nu t})$
-
+$ = \frac{1}{r}\frac{2rC}{4\nu t}*exp(-\frac{r^{2}}{4\nu t}) = \frac{C}{2\nu t}*exp(-\frac{r^{2}}{4\nu t})$
+ 
 Substituting for $v_{\theta } = \frac{C}{r}$ (Steady Flow)
 
-$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(r*\frac{C}{r}) - \frac{1}{r}\frac{\partial}{\partial \theta}(0)$
-
-$ = \frac{1}{r}\frac{\partial}{\partial r}(C)$
-
-$ = 0$
+$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(r*\frac{C}{r}) - \frac{1}{r}\frac{\partial}{\partial \theta}(0) = \frac{1}{r}\frac{\partial}{\partial r}(C) = 0$
 
 \begin{figure}[H]
 \begin{center}
 \begin{minipage}[t]{.48\linewidth}
 <<prob3a,fig=TRUE,echo=FALSE>>=
+
 C = 1
 R = 20
 nu = 1
@@ -490,46 +463,55 @@ r = c(0.01,seq(1,R,0.1))
 w1 = w2 = v1 = v2 = matrix(NA,nrow = length(r),ncol=length(t))
 
 for(a in p){
-v1[,a] = C/r*(1-exp(-r^2/(4*nu*t[a])))
+v1[,a] = C/r*(1-exp((-r^2)/(4*nu*t[a])))
 v2[,a] = C/r
-w1[,a] = (2*C)/(4*nu*t[a])*exp(-r^2/(4*nu*t[a]))
-w2[,a]=0
+w1[,a] = (C)/(2*nu*t[a])*exp((-r^2)/(4*nu*t[a]))
+w2[,a] = 0
 }
 
 plot(r,v1[,1],
-		col="blue",
+		col=1,
 		typ="l",
 		ylim=c(0,max(v1*2)),
 		lty=1,
 		xlab = "Radius (r)",
 		ylab = "Velocity (v)")
-lines(r,v2[,1],col="blue",typ="l",lty=2)
+lines(r,v2[,1],col=1,typ="l",lty=2)
 for(a in p[p!=1]){
 lines(r,v1[,a],col=a,typ="l",lty=1)
-lines(r,v2[,a],col=a,typ="l",lty=2)
 }
-legend(max(r)*.5,max(v1*1.8),c("Steady",paste(sep="","Unsteady at t=",t)),lty=c(2,rep(1,4)),col=c(1,1:4))
+legend(max(r)*.5,max(v1*1.8),
+		c("Steady",paste(sep="","Unsteady at t=",t)),
+		lty=c(2,rep(1,length(t))),
+		col=c(1,1:length(t)))
+
 @
 \end{minipage}
 \begin{minipage}[t]{.48\linewidth}
 <<prob3b,fig=TRUE,echo=FALSE>>=
 
 plot(r,w1[,1],
-		col="blue",
+		col=1,
 		typ="l",
 		lty=1,
 		xlab = "Radius (r)",
 		ylab = "Vorticity (w)")
-lines(r,w2[,1],col="blue",typ="l",lty=2)
+lines(r,w2[,1],col=1,typ="l",lty=2)
 for(a in p[p!=1]){
 	lines(r,w1[,a],col=a,typ="l",lty=1)
 }
-legend(max(r)*.5,max(w1),c("Steady",paste(sep="","Unsteady at t=",t)),lty=c(2,rep(1,5)),col=c(1,1:5))
-
-
+legend(max(r)*.5,max(w1),c("Steady",paste(sep="","Unsteady at t=",t)),lty=c(2,rep(1,length(t))),col=c(1,1:length(t)))
 @
 \end{minipage}
 \end{center}
 \end{figure}
+
+For steady flow, vorticity is constant by definition.
+
+For unsteady flow, vorticity decreases as the velocity gradient approaches 
+a constant since there is less incremental difference in velocity as time goes
+on.
+
+
 
 \end{document}
