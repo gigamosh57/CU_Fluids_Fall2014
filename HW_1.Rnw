@@ -28,7 +28,7 @@ Due September 5, 2014 by 12:00 pm in class.
 Using intuition, academic references, the internet, or any other resource to
 find appropriate fluid (i.e., density, $\rho$, and viscosity, $\mu$) and flow (i.e.,
 characteristic length and velocity $L$ and $U$) properties, calculate
-approximate Reynolds numbers $Re = \frac{\rho UL}{\nu}$ for the systems below.
+approximate Reynolds numbers $Re = \frac{\rho UL}{\mu}$ for the systems below.
  Comment on whether each of the above systems are examples of laminar or
 turbulent flows, and be sure to clearly cite any references used to find your answer.
 
@@ -268,7 +268,6 @@ $\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(rv_{\theta}) - \frac{1}{r}\
 
 Substituting $v_{r} = v_{z} = 0, v_{\theta} = \omega r$ if $r \leq R$, and $v_{\theta} = \omega R^{2}/r$ if $r \geq R$
 
-
 For $r \leq R$
 
 $\omega_{r} = \frac{1}{r}\frac{\partial v_{z}}{\partial \theta}-\frac{\partial
@@ -334,7 +333,53 @@ $= \frac{1}{r}(0)$
 
 $\omega_{z} = 0$
 
+\hline
 
+Strain Rate is represented in polar coordinates as:
+
+$S_{rr} = \frac{\partial v_{r}}{\partial r}$
+
+$S_{\theta\theta} = \frac{1}{r}\frac{\partial v_{\theta}}{\partial \theta}$
+
+$S_{zz} = \frac{\partial v_{z}}{\partial z}$
+
+$S_{\theta z} = \frac{1}{r}\frac{\partial v_{z}}{\partial \theta}+\frac{\partial v_{\theta}}{\partial z}$
+
+$S_{rz} = \frac{1}{r}\frac{\partial v_{r}}{\partial z}+\frac{\partial v_{z}}{\partial r}$
+
+$S_{r\theta} = \frac{1}{r}\frac{\partial v_{r}}{\partial \theta}+\frac{\partial
+v_{\theta}}{\partial r} - \frac{v_{\theta}}{r}$
+
+\hline
+
+Substituting $v_{r} = v_{z} = 0, v_{\theta} = \omega r$ if $r \leq R$, and $v_{\theta} = \omega R^{2}/r$ if $r \geq R$
+
+$S_{rr} = 0$
+
+$S_{zz} = 0$
+
+$S_{\theta\theta} = \frac{1}{r}\frac{\partial v_{\theta}}{\partial \theta} =
+\frac{1}{r}\frac{\partial (\omega r)}{\partial \theta} = 0$
+
+$S_{\theta z} = \frac{1}{r}\frac{\partial v_{z}}{\partial \theta}+\frac{\partial
+v_{\theta}}{\partial z} = \frac{1}{r}\frac{\partial (0)}{\partial \theta}+\frac{\partial
+(\omega r)}{\partial z} = 0$
+
+$S_{rz} = \frac{1}{r}\frac{\partial v_{r}}{\partial z}+\frac{\partial
+v_{z}}{\partial r} = \frac{1}{r}\frac{\partial (0)}{\partial z}+\frac{\partial
+(0)}{\partial r} = 0$
+
+For $r \leq R$; $v_{\theta} = \omega r$:
+
+$S_{r\theta} = \frac{1}{r}\frac{\partial v_{r}}{\partial \theta}+\frac{\partial
+v_{\theta}}{\partial r} - \frac{v_{\theta}}{r} = \frac{1}{r}\frac{\partial (0)}{\partial \theta}+\frac{\partial
+(\omega r)}{\partial r} - \frac{(\omega r)}{r} = \omega - \omega = 0$
+
+For $r \geq R$; $v_{\theta} = \omega R^{2}/r$:
+
+$S_{r\theta} = \frac{1}{r}\frac{\partial v_{r}}{\partial \theta}+\frac{\partial
+v_{\theta}}{\partial r} - \frac{v_{\theta}}{r} = \frac{1}{r}\frac{\partial (0)}{\partial \theta}+\frac{\partial
+(\omega R^{2}/r)}{\partial r} - \frac{(\omega R^{2}/r)}{r} = \frac{-\omega R^{2}}{r^{3}} - \frac{\omega R^{2}}{r^{2}}$
 
 \begin{figure}[H]
 \begin{center}
@@ -348,17 +393,14 @@ r2 = c(seq(R,3*R,0.1))
 p1 = 1:length(r1)
 p2 = 1:length(r2)
 
-w1 = w2 = v1 = v2 = p
+w1 = s1 = p1
+w2 = s2 = p2
 
-for(a in p1){
-w1[a] = 2*w
-v1[a] = w*r1
-}
+w1[] = 2*w
+s1[] = 0
 
-for(a in p2){
-w2[a] = 0
-v2[a] = w*R^2/r2
-}
+w2[] = 0
+s2 = w*R^2/r2^3 - w*R^2/r2^2
 
 plot(r1,w1,
 		col="blue",
@@ -375,15 +417,15 @@ lines(r2,w2,col="blue",typ="l",lty=2)
 \begin{minipage}[t]{.48\linewidth}
 <<prob2b,fig=TRUE,echo=FALSE>>=
 
-plot(r1,v1,
+plot(r1,s1,
 		col="blue",
 		typ="l",
-		ylim=c(0,max(v1,v2)),
+		ylim=c(0,max(s1,s2)),
 		xlim=c(0,max(r1,r2)),
 		lty=1,
 		xlab = "Radius (r)",
 		ylab = "Vorticity (w)")
-lines(r2,v2,col="blue",typ="l",lty=2)
+lines(r2,s2,col="blue",typ="l",lty=2)
 
 
 @
