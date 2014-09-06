@@ -1,0 +1,111 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{float}
+\usepackage[bookmarks]{hyperref}
+\usepackage{Sweave}
+\linespread{1.25}
+
+
+\begin{document}
+\title{MCEN 5041 - Advanced Fluid Mechanics - Homework 1}
+
+\author{Page Weil}
+\maketitle
+\title{}
+
+\section*{Problem 1}
+
+A block of weight $W$ slides down an inclined plane while lubricated by a thin
+film of oil, as shown in the figure below.  The film contact area is $A$ and its
+thickness is $h$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in]{HW2_Pic1.jpg}
+\caption{Prob 1}
+\label{p1fig}
+\end{figure}
+
+\subsection*{(a)}
+
+Assuming a linear velocity distribution in the film, derive an expression for
+the "terminal" (zero-acceleration) velocity $V$ of the block.
+
+$\tau = -\mu\frac{S_{xy}}{h}$
+
+Drag force by fluid:
+
+$F = \tau*A$
+
+Downward force caused by block mass
+
+$F = m*a*cos(\theta)$
+
+$F = m*a$
+
+$\tau = \frac{F}{A} = \frac{m*a*cos(\theta)}{A} = -\mu\frac{S_{xy}}{h}$
+
+$a = $
+
+@
+
+
+
+\subsection*{(a)}
+
+What is the time taken for the block to accelerate from rest to 99\pct of its
+terminal velocity?
+
+\hline
+
+\section*{Problem 2}
+
+Using the equations for inviscid flow past a circular cylinder, namely:
+
+\begin{center}
+$u_{r} = U_{infty}(1-\frac{R^{2}}{r^2})cos\theta, v_{\theta} = -U_{infty}(1+\frac{R^{2}}{r^2})sin\theta$
+\end{center}
+
+where $U_{infty}$ is the constant free-stream velocity, $R$ is the radius of the
+cylinder and $r$ and $\theta$ are measured with respect to the center of the
+cylinder, consider the flow approaching the forward stagnation point of the
+cylinder at $(r,\theta) = (R,\pi)$
+
+\subsection*{(a)} Compute the strain rates $S_{rr},
+S_{\theta\theta},S_{r\theta}$ as functions of $r$ along the $\theta = \pi$
+streamline.  What do these strain rates tell us about the shape of a fluid
+element as it approaches the stagnation point?
+
+
+\subsection*{(b)} Find the time required for a particl to move from the point
+$(2R,\pi)$ to the forward stagnation point.
+
+\hline
+
+\section*{Problem 3}
+
+Analyze the flow between two parallel plates separated by distance $h$, where
+the top plate moves horizontally with velocity $V$ and the bottom plate is
+fixed, by assuming that the fluid is nonnewtonian such that the stress-strain
+relationship is given by the de Waele power law, namely 
+
+\begin{center}
+$\tau_{xy} \approx 2KS_{xy}^{n}$
+\end{center}
+
+\subsection*{(a)} Compute the velocity profile $u(y)$ with the power law $n$ as
+a parameter.
+
+\subsection*{(b)} Find the velocity at the midpoint $h/2$ for $n$ = 0.5, 1, and
+2.
+
+\end{document}
+
