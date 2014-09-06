@@ -39,7 +39,7 @@ thickness is $h$.
 Assuming a linear velocity distribution in the film, derive an expression for
 the "terminal" (zero-acceleration) velocity $V$ of the block.
 
-$\tau = -\mu\frac{S_{xy}}{h}$
+$\tau = \mu\frac{V}{h}$
 
 Drag force by fluid:
 
@@ -47,11 +47,16 @@ $F = \tau*A$
 
 Downward force caused by block mass
 
-$F = m*a*cos(\theta)$
+$F = m*g*cos(\theta)$
 
-$F = m*a$
+$\tau = \frac{F}{A} = \frac{m*g*cos(\theta)}{A} = \mu\frac{V}{h}$
 
-$\tau = \frac{F}{A} = \frac{m*a*cos(\theta)}{A} = -\mu\frac{S_{xy}}{h}$
+$a = \mu\frac{V*A}{h*m*cos(\theta)}$
+
+$V = \int(a)dt$
+
+
+
 
 $a = $
 
@@ -63,6 +68,11 @@ $a = $
 
 What is the time taken for the block to accelerate from rest to 99\pct of its
 terminal velocity?
+
+$V = a*t$
+
+$a = $
+
 
 \hline
 
