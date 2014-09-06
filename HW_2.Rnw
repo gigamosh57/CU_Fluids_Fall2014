@@ -11,11 +11,11 @@
 \usepackage{float}
 \usepackage[bookmarks]{hyperref}
 \usepackage{Sweave}
-\linespread{1.25}
+\linespread{1.5}
 
 
 \begin{document}
-\title{MCEN 5041 - Advanced Fluid Mechanics - Homework 1}
+\title{MCEN 5041 - Advanced Fluid Mechanics - Homework 2}
 
 \author{Page Weil}
 \maketitle
@@ -67,11 +67,11 @@ $\frac{\mu VA}{h} = m*g*sin(\theta)$
 
 The terminal velocity is given by this expression
 
-$V = \frac{m*g*sin(\theta)*h}{\mu A}$
+$\boxed{V = \frac{m*g*sin(\theta)*h}{\mu A}}$
 
 \vspace{10 mm}
 
-\subsection*{(a)}
+\subsection*{(b)}
 
 What is the time taken for the block to accelerate from rest to 99\% of its
 terminal velocity?
@@ -86,7 +86,7 @@ $\partial t = \frac{m\partial v}{\frac{\mu VA}{h} - m*g*sin(\theta)}$
 
 $\int_{0}^{t}\partial t = \int_{0}^{v}\frac{m\partial v}{\frac{\mu VA}{h} - m*g*sin(\theta)}$
 
-$t = \frac{m*h*ln(\frac{\mu*A*V}{h} - m*g*sin(\theta))}{\mu * A}$
+$t = \frac{m*h}{\mu*A}*ln(\frac{\mu*A*V}{h} - m*g*sin(\theta))$
 
 \vspace{5 mm}
 
@@ -96,7 +96,7 @@ $t = \frac{m*h}{\mu * A}*ln(\frac{\mu*A*(\frac{0.99*m*g*sin(\theta)*h}{\mu A})}{
 
 $t = \frac{m*h}{\mu * A}*ln((0.99*m*g*sin(\theta)) - m*g*sin(\theta)) = \frac{m*h}{\mu * A}*ln((0.99-1)*m*g*sin(\theta)) = \frac{m*h}{\mu * A}*ln(-0.01*m*g*sin(\theta))$
 
-$t_{v = 99\% v_{t}} = \frac{m*h}{\mu * A}*ln(-0.01*m*g*sin(\theta))$
+$\boxed{t_{v = 99\% v_{t}} = \frac{m*h}{\mu * A}*ln(-0.01*m*g*sin(\theta))}$
 
 
 \pagebreak
@@ -137,7 +137,7 @@ $ = \frac{\partial}{\partial r}(U_{\infty}(1-\frac{R^{2}}{r^2}cos(\theta))$
 
 $S_{rr} = (U_{\infty}\frac{2*R^{2}}{r^3}cos(\theta))$
 
-$S_{rr}(\theta = \pi) = -U_{\infty}\frac{2*R^{2}}{r^3}$
+$\boxed{S_{rr}(\theta = \pi) = -U_{\infty}\frac{2*R^{2}}{r^3}}$
 
 The term is negative, so in the radial direction, the element is compressing.
 
@@ -155,9 +155,9 @@ $ = \frac{U_{\infty}cos\theta}{r}(-1-\frac{R^{2}}{r^2}+1-\frac{R^{2}}{r^2}))$
 
 $ = \frac{U_{\infty}cos\theta}{r}(-\frac{2R^{2}}{r^2}))$
 
-$ = -\frac{U_{\infty}2R^{2}cos\theta}{r^3}$
+$S_{\theta\theta} = -\frac{U_{\infty}2R^{2}cos\theta}{r^3}$
 
-$S_{\theta\theta}(\theta = \pi) = \frac{U_{\infty}2R^{2}}{r^3}$
+$\boxed{S_{\theta\theta}(\theta = \pi) = \frac{U_{\infty}2R^{2}}{r^3}}$
 
 \vspace{10 mm}
 
@@ -190,7 +190,7 @@ $ = \frac{2U_{\infty}R^{2}}{r^3}sin\theta +
 
 $S_{r\theta} = \frac{3U_{\infty}R^{2}}{r^3}sin\theta$
 
-$S_{r\theta}(\theta=\pi) = \frac{3U_{\infty}R^{2}}{r^3}*(0) = 0$
+$\boxed{S_{r\theta}(\theta=\pi) = \frac{3U_{\infty}R^{2}}{r^3}*(0) = 0}$
 
 Since the element is moving exactly towards the stagnation point, it is only
 deforming axially and not in shear.
@@ -212,6 +212,8 @@ $ = \int_{(R,\pi)}^{(2R,\pi)}\frac{1}{v}\partial r$
 
 $ = \int_{(R,\pi)}^{(2R,\pi)}\frac{1}{U_{\infty}(1-\frac{R^{2}}{r^2})cos\theta}\partial r$
 
+\vspace{5mm}
+
 VERY Hard integral, looked up identity.
 
 $ = \frac{R}{2*U_{\infty}cos\theta}*(ln(r-R) - ln(r+R) + \frac{2*r}{R})(from (R,\pi) to (2R,\pi))$
@@ -227,7 +229,7 @@ $t_{(R,\pi)} = \frac{R}{2*U_{\infty}cos(\pi)}*(ln((R)-R) - ln((R)+R) + \frac{2*(
 
 $t_{(2R,\pi)} = \frac{R}{2*U_{\infty}cos(\pi)}*(ln((2R)-R) - ln((2R)+R) + \frac{2*(2R)}{R}) = \frac{R}{2*U_{\infty}cos(\pi)}*(ln(R) - ln(3R) + 4) = \frac{R}{2*U_{\infty}cos(\pi)}*(ln(\frac{1}{3}) + 4)$
 
-$t = t_{(2R,\pi)} - t_{(R,\pi)} = \frac{R}{2*U_{\infty}cos(\pi)}*(ln(\frac{1}{3}) + 4) - -\infty = \infty$
+$\boxed{t = t_{(2R,\pi)} - t_{(R,\pi)} = \frac{R}{2*U_{\infty}cos(\pi)}*(ln(\frac{1}{3}) + 4) - -\infty = \infty}$
 
 This makes sense.  Since the fluid slows down as it approaches the forward
 stagnation point no flowing particles in an idealized continuum will ever
@@ -249,11 +251,43 @@ $\tau_{xy} \approx 2KS_{xy}^{n}$
 \subsection*{(a)} Compute the velocity profile $u(y)$ with the power law $n$ as
 a parameter.
 
+Rearranging the de Waele power law:
 
+$S_{xy} = (\frac{\tau_{xy}}{2K})^{1/n}$
+
+\vspace{5mm}
+
+Definition of 2-D shear strain in cartesian coordinates:
+
+$S_{xy} = \frac{1}{2}\frac{\partial u}{partial y}$
+
+$\tau_{xy} = \mu\frac{V}{y}$
+
+$(\frac{\tau_{xy}}{2K})^{1/n} = \frac{1}{2}\frac{\partial u}{\partial y}$
+
+$(\frac{\mu\frac{V}{y}}{2K})^{1/n} = \frac{1}{2}\frac{\partial u}{\partial y}$
+
+$\partial u = 2*(\frac{\mu V}{2Ky})^{1/n}\partial y$
+
+$\int\partial u = \int 2*(\frac{\mu V}{2Ky})^{1/n}\partial y$
+
+$u(y) = \int 2*(\frac{\mu V}{2Ky})^{1/n}\partial y$
+
+$\boxed{u(y) = 2*\frac{(\frac{\mu V}{2K})^{1/n}}{y^{1/n}}}$
 
 \subsection*{(b)} Find the velocity at the midpoint $h/2$ for $n$ = 0.5, 1, and 2.
 
+$u(h/2,n=0.5) = 2*\frac{(\frac{\mu V}{2K})^{1/n}}{(h)^{1/2}*(1/2)^{1/2}} = \frac{2}{(1/2)^{1/2}}*\frac{(\frac{\mu V}{2K})^{1/n}}{(h)^{1/2}} = \frac{2.828}{(h)^{1/2}}(\frac{\mu V}{2K})^{1/n}$
 
+$u(h/2,n=0.5) = \frac{2.828}{(h)^{1/2}}(\frac{\mu V}{2K})^{1/n}$
+
+$u(h/2,n=1) = 2*\frac{(\frac{\mu V}{2K})^{1/n}}{(h/2)} = 4*\frc{(\frac{\mu V}{2K})^{1/n}}{h} = \frac{4}{(h)}(\frac{\mu V}{2K})^{1/n}$
+
+$u(h/2,n=1) = \frac{4}{(h)}(\frac{\mu V}{2K})^{1/n}$
+
+$u(h/2,n=0.5) = 2*\frac{(\frac{\mu V}{2K})^{1/n}}{(h/2)^{2}} = 8*\frac{(\frac{\mu V}{2K})^{1/n}}{(h)^{2}} = \frac{4}{h^{2}}(\frac{\mu V}{2K})^{1/n}$
+
+$\boxed{u(h/2,n=0.5) = \frac{4}{h^{2}}(\frac{\mu V}{2K})^{1/n}}$
 
 \end{document}
 
