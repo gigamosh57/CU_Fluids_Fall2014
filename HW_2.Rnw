@@ -34,6 +34,8 @@ thickness is $h$.
 \label{p1fig}
 \end{figure}
 
+\vspace{10 mm}
+
 \subsection*{(a)}
 
 Assuming a linear velocity distribution in the film, derive an expression for
@@ -41,64 +43,197 @@ the "terminal" (zero-acceleration) velocity $V$ of the block.
 
 $\tau = \mu\frac{V}{h}$
 
+\vspace{5 mm}
+
 Drag force by fluid:
 
-$F = \tau*A$
+$F = \tau*A = \frac{\mu VA}{h}$
+
+\vspace{5 mm}
 
 Downward force caused by block mass
 
-$F = m*g*cos(\theta)$
+$F = m*g*sin(\theta)$
 
-$\tau = \frac{F}{A} = \frac{m*g*cos(\theta)}{A} = \mu\frac{V}{h}$
+\vspace{5 mm}
 
-$a = \mu\frac{V*A}{h*m*cos(\theta)}$
+When the forces balance, the block is no longer accelerating:
 
-$V = \int(a)dt$
+$F_{net} = 0 = \frac{\mu VA}{h} - m*g*sin(\theta)$
 
+$\frac{\mu VA}{h} = m*g*sin(\theta)$
 
+\vspace{5 mm}
 
+The terminal velocity is given by this expression
 
-$a = $
+$V = \frac{m*g*sin(\theta)*h}{\mu A}$
 
-@
-
-
+\vspace{10 mm}
 
 \subsection*{(a)}
 
-What is the time taken for the block to accelerate from rest to 99\pct of its
+What is the time taken for the block to accelerate from rest to 99\% of its
 terminal velocity?
 
-$V = a*t$
+$F_{net} = m*a = \frac{\mu VA}{h} - m*g*sin(\theta)$
 
-$a = $
+$m*a = m*\frac{\partial v}{\partial t} = \frac{\mu VA}{h} - m*g*sin(\theta)$
+
+$m*\frac{\partial v}{\partial t} = \frac{\mu VA}{h} - m*g*sin(\theta)$
+
+$\partial t = \frac{m\partial v}{\frac{\mu VA}{h} - m*g*sin(\theta)}$
+
+$\int_{0}^{t}\partial t = \int_{0}^{v}\frac{m\partial v}{\frac{\mu VA}{h} - m*g*sin(\theta)}$
+
+$t = \frac{m*h*ln(\frac{\mu*A*V}{h} - m*g*sin(\theta))}{\mu * A}$
+
+\vspace{5 mm}
+
+Plugging in the expression for terminal velocity from above $0.99*V = \frac{0.99*m*g*sin(\theta)*h}{\mu A}$
+
+$t = \frac{m*h}{\mu * A}*ln(\frac{\mu*A*(\frac{0.99*m*g*sin(\theta)*h}{\mu A})}{h} - m*g*sin(\theta))$
+
+$t = \frac{m*h}{\mu * A}*ln((0.99*m*g*sin(\theta)) - m*g*sin(\theta)) = \frac{m*h}{\mu * A}*ln((0.99-1)*m*g*sin(\theta)) = \frac{m*h}{\mu * A}*ln(-0.01*m*g*sin(\theta))$
+
+$t_{v = 99\% v_{t}} = \frac{m*h}{\mu * A}*ln(-0.01*m*g*sin(\theta))$
 
 
-\hline
+\pagebreak
 
 \section*{Problem 2}
 
 Using the equations for inviscid flow past a circular cylinder, namely:
 
 \begin{center}
-$u_{r} = U_{infty}(1-\frac{R^{2}}{r^2})cos\theta, v_{\theta} = -U_{infty}(1+\frac{R^{2}}{r^2})sin\theta$
+$v_{r} = U_{\infty}(1-\frac{R^{2}}{r^2})cos\theta, v_{\theta} = -U_{\infty}(1+\frac{R^{2}}{r^2})sin\theta$
 \end{center}
 
-where $U_{infty}$ is the constant free-stream velocity, $R$ is the radius of the
+where $U_{\infty}$ is the constant free-stream velocity, $R$ is the radius of the
 cylinder and $r$ and $\theta$ are measured with respect to the center of the
 cylinder, consider the flow approaching the forward stagnation point of the
 cylinder at $(r,\theta) = (R,\pi)$
+
+\vspace{10 mm}
+
+Strain Rates in cylindrical coordinates are as follows:
+
+$S_{rr} = \frac{\partial v_{r}}{\partial r}$
+
+$S_{\theta\theta} = \frac{1}{r}\frac{\partial v_{\theta}}{\partial \theta}+\frac{v_{r}}{r}$
+
+$S_{r\theta} = \frac{1}{r}\frac{\partial v_{r}}{\partial \theta} + \frac{\partial v_{\theta}}{\partial r} - \frac{v_{\theta}}{r}$
+
+\vspace{10 mm}
 
 \subsection*{(a)} Compute the strain rates $S_{rr},
 S_{\theta\theta},S_{r\theta}$ as functions of $r$ along the $\theta = \pi$
 streamline.  What do these strain rates tell us about the shape of a fluid
 element as it approaches the stagnation point?
 
+$S_{rr} = \frac{\partial v_{r}}{\partial r} = \frac{\partial}{\partial r}(U_{\infty}(1-\frac{R^{2}}{r^2}cos(\theta))$
 
-\subsection*{(b)} Find the time required for a particl to move from the point
+$ = \frac{\partial}{\partial r}(U_{\infty}(1-\frac{R^{2}}{r^2}cos(\theta))$
+
+$S_{rr} = (U_{\infty}\frac{2*R^{2}}{r^3}cos(\theta))$
+
+$S_{rr}(\theta = \pi) = -U_{\infty}\frac{2*R^{2}}{r^3}$
+
+The term is negative, so in the radial direction, the element is compressing.
+
+\vspace{10 mm}
+
+$S_{\theta\theta} = \frac{1}{r}\frac{\partial v_{\theta}}{\partial
+\theta}+\frac{v_{r}}{r} = \frac{1}{r}\frac{\partial}{\partial
+\theta}(-U_{\infty}(1+\frac{R^{2}}{r^2})sin\theta)+\frac{1}{r}*(U_{\infty}(1-\frac{R^{2}}{r^2})cos\theta)$
+
+$ = \frac{1}{r}(-U_{\infty}(1+\frac{R^{2}}{r^2})cos\theta)+\frac{1}{r}*(U_{\infty}(1-\frac{R^{2}}{r^2})cos\theta)$
+
+$ = \frac{U_{\infty}cos\theta}{r}(-1-\frac{R^{2}}{r^2})+1-\frac{R^{2}}{r^2}))$
+
+$ = \frac{U_{\infty}cos\theta}{r}(-1-\frac{R^{2}}{r^2}+1-\frac{R^{2}}{r^2}))$
+
+$ = \frac{U_{\infty}cos\theta}{r}(-\frac{2R^{2}}{r^2}))$
+
+$ = -\frac{U_{\infty}2R^{2}cos\theta}{r^3}$
+
+$S_{\theta\theta}(\theta = \pi) = \frac{U_{\infty}2R^{2}}{r^3}$
+
+\vspace{10 mm}
+
+The term is positive, so in the $\theta$ direction, the element is
+elongating.
+
+$S_{r\theta} = \frac{1}{r}\frac{\partial v_{r}}{\partial \theta} +
+\frac{\partial v_{\theta}}{\partial r} - \frac{v_{\theta}}{r}$
+
+$ = \frac{1}{r}\frac{\partial}{\partial \theta}(U_{\infty}(1-\frac{R^{2}}{r^2})cos\theta) +
+\frac{\partial}{\partial r}(-U_{\infty}(1+\frac{R^{2}}{r^2})sin\theta) - \frac{1}{r}(-U_{\infty}(1+\frac{R^{2}}{r^2})sin\theta)$
+
+$ = \frac{1}{r}(-1*U_{\infty}(1-\frac{R^{2}}{r^2})sin\theta) +
+(U_{\infty}(\frac{R^{2}}{r^3})sin\theta) + \frac{U_{\infty}}{r}((1+\frac{R^{2}}{r^2})sin\theta)$
+
+$ = -\frac{U_{\infty}}{r}((1-\frac{R^{2}}{r^2})sin\theta) +
+(U_{\infty}(\frac{R^{2}}{r^3})sin\theta) + \frac{U_{\infty}}{r}((1+\frac{R^{2}}{r^2})sin\theta)$
+
+$ = \frac{U_{\infty}}{r}((-1+\frac{R^{2}}{r^2})sin\theta) +
+(U_{\infty}(\frac{R^{2}}{r^3})sin\theta) + \frac{U_{\infty}}{r}((1+\frac{R^{2}}{r^2})sin\theta)$
+
+$ = \frac{2U_{\infty}}{r}\frac{R^{2}}{r^2}sin\theta +
+(U_{\infty}(\frac{R^{2}}{r^3})sin\theta)$
+
+$ = \frac{2U_{\infty}}{r}\frac{R^{2}}{r^2}sin\theta +
+(U_{\infty}(\frac{R^{2}}{r^3})sin\theta)$
+
+$ = \frac{2U_{\infty}R^{2}}{r^3}sin\theta +
+(U_{\infty}(\frac{R^{2}}{r^3})sin\theta)$
+
+$S_{r\theta} = \frac{3U_{\infty}R^{2}}{r^3}sin\theta$
+
+$S_{r\theta}(\theta=\pi) = \frac{3U_{\infty}R^{2}}{r^3}*(0) = 0$
+
+Since the element is moving exactly towards the stagnation point, it is only
+deforming axially and not in shear.
+
+\vspace{10 mm}
+
+\subsection*{(b)} Find the time required for a particle to move from the point
 $(2R,\pi)$ to the forward stagnation point.
 
-\hline
+$v_{r} = U_{\infty}(1-\frac{R^{2}}{r^2})cos\theta$
+
+$v = \frac{\partial r}{\partial t}$
+
+$\partial t = \frac{\partial r}{v}$
+
+$t = \int_{r_{0}}^{r_{t}}\frac{1}{v}\partial r$ 
+
+$ = \int_{(R,\pi)}^{(2R,\pi)}\frac{1}{v}\partial r$
+
+$ = \int_{(R,\pi)}^{(2R,\pi)}\frac{1}{U_{\infty}(1-\frac{R^{2}}{r^2})cos\theta}\partial r$
+
+VERY Hard integral, looked up identity.
+
+$ = \frac{R}{2*U_{\infty}cos\theta}*(ln(r-R) - ln(r+R) + \frac{2*r}{R})(from (R,\pi) to (2R,\pi))$
+
+$t_{(R,\pi)} = \frac{R}{2*U_{\infty}cos(\pi)}*(ln((R)-R) - ln((R)+R) + \frac{2*(R)}{R}) = \frac{-R}{2*U_{\infty}}*2 =  \frac{-R}{U_{\infty}}$
+
+$t_{(2R,\pi)} = \frac{R}{2*U_{\infty}cos(\pi)}*(ln((2R)-R) - ln((2R)+R) + \frac{2*(2R)}{R}) = \frac{-R}{2*U_{\infty}}*4 =  \frac{-2R}{U_{\infty}}$
+
+$t = t_{(2R,\pi)} - t_{(R,\pi)} = \frac{-2R}{U_{\infty}} - \frac{-R}{U_{\infty}} = \frac{-R}{U_{\infty}}$
+
+
+$t_{(R,\pi)} = \frac{R}{2*U_{\infty}cos(\pi)}*(ln((R)-R) - ln((R)+R) + \frac{2*(R)}{R}) = \frac{R}{2*U_{\infty}cos(\pi)}*(ln(0) - ln(2R) + 2) \approx ln(0)  = -\infty$
+
+$t_{(2R,\pi)} = \frac{R}{2*U_{\infty}cos(\pi)}*(ln((2R)-R) - ln((2R)+R) + \frac{2*(2R)}{R}) = \frac{R}{2*U_{\infty}cos(\pi)}*(ln(R) - ln(3R) + 4) = \frac{R}{2*U_{\infty}cos(\pi)}*(ln(\frac{1}{3}) + 4)$
+
+$t = t_{(2R,\pi)} - t_{(R,\pi)} = \frac{R}{2*U_{\infty}cos(\pi)}*(ln(\frac{1}{3}) + 4) - -\infty = \infty$
+
+This makes sense.  Since the fluid slows down as it approaches the forward
+stagnation point no flowing particles in an idealized continuum will ever
+actually reach the stagnation point.  
+
+\pagebreak
 
 \section*{Problem 3}
 
@@ -114,8 +249,11 @@ $\tau_{xy} \approx 2KS_{xy}^{n}$
 \subsection*{(a)} Compute the velocity profile $u(y)$ with the power law $n$ as
 a parameter.
 
-\subsection*{(b)} Find the velocity at the midpoint $h/2$ for $n$ = 0.5, 1, and
-2.
+
+
+\subsection*{(b)} Find the velocity at the midpoint $h/2$ for $n$ = 0.5, 1, and 2.
+
+
 
 \end{document}
 
