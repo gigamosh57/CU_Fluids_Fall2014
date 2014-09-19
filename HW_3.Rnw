@@ -1,0 +1,277 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{float}
+\usepackage[bookmarks]{hyperref}
+\usepackage{Sweave}
+\linespread{1.5}
+
+
+\begin{document}
+\title{MCEN 5041 - Advanced Fluid Mechanics - Homework 3}
+
+\author{Page Weil}
+\maketitle
+\title{}
+
+\section*{Problem 1}
+
+A solid cylinder of mass $m$, radius $R$, and length $L$ falls concentrically
+through a tube of radius $R+\Delta R$, where $\Delta R << R$.  The tube is
+filled with gas of viscosity $\mu$ and mean free path $l$.  Neglect fluid forces
+on the top and bottom faces of the cylinder and consider only shear stress in
+the annular region, assuming a linear velocity profile.  Find an analytical
+expression for the terminal velocity of fall, $V$ of the cylinder for (a)
+no-slip, and (b) slip boundary conditions.
+
+\vspace{5mm}
+
+\subsection*{(a) No-slip condition applies}
+
+Perform a force balance between gravity and the shear force exerted on the
+cylinder by the gas.
+
+$mg = 2*\pi*R*L*\tau$
+
+$\tau = \frac{\mu V}{\Delta R}$
+
+$mg = 2*\pi*R*L*\frac{\mu V}{\Delta R}$
+
+$\boxed{V = \frac{mg\Delta R}{2\pi RL\mu}}$
+
+\subsection*{(b) Slip condition applies}
+
+For this case, the same shear stresses apply but the velocity is increased by
+$2*V_{slip}$ since the fluid slips against both the inner and outer cylinders. 
+It is assumed that the fluid slips at the same rate at the surface of both
+cylinders.
+
+Terminal velocity is the sum of the two slip velocities and the bulk fluid
+velocity:
+
+$V_{term} = 2V_{slip} + V_{bulk}$
+
+Slip velocity is a function of the velocity gradient and mean free path.  Since
+it has a linear velocity profile we can assume:
+
+$V_{slip} = l\frac{\partial u}{\partial r} = l\frac{\partial V_{bulk}}{\partial
+r} = l\frac{V_{bulk}}{\Delta R}$
+
+Substituting:
+
+$V_{term} = 2V_{slip} + V_{bulk} = 2l\frac{V_{bulk}}{\Delta R} + V_{bulk} = V_{bulk}*(1+\frac{2l}{\Delta R})$
+
+Stress resisting the fall is a function of the viscosity of the bulk velocity
+only:
+
+$\tau_{r} = \mu\frac{V}{h} = \mu\frac{V_{bulk}}{\Delta R}$
+
+The stress resists the force of gravity acting on the inner cylinder:
+
+$mg = 2*\pi*R*L*\tau$
+
+$\tau = \frac{mg}{2\pi RL}$
+
+Substituting:
+
+$\tau = \frac{mg}{2\pi RL} = \mu\frac{V_{bulk}}{\Delta R}$
+
+$V_{bulk} = \frac{mg\Delta R}{2\pi RL\mu}$
+
+$V_{term} = V_{bulk}*(1+\frac{2l}{\Delta R}) = \frac{mg\Delta R}{2\pi RL\mu}*(1+\frac{2l}{\Delta R})$
+
+$\boxed{V_{term} = \frac{mg\Delta R}{2\pi RL\mu}*(1+\frac{2l}{\Delta R})}$
+
+The terminal velocity under the slip condition is larger than the terminal
+velocity under no slip by:
+
+$V_{term slip} - V_{term noslip} = \frac{mg\Delta R}{2\pi RL\mu}*(1+\frac{2l}{\Delta R}) - \frac{mg\Delta R}{2\pi RL\mu} = \frac{lmg}{\pi RL\mu}$
+
+\vspace{10mm}
+
+\pagebreak
+
+\section*{Problem 2}
+
+Compute and compare the streamline, path line, and streak line that pass through
+$(x,y,z) = (1,1,0)$ at $t = 0$ for the Cartesian velocity field $u = (x,yt,0)$.
+
+\subsection*{(a) Streamline}
+
+At $t = 0$ both the $y$ and $z$ terms are zero.
+
+$\frac{\partial x}{x} = \frac{\partial y}{y*0}$
+
+$0 = \frac{\partial y}{y}$
+
+$ln(y) = 0 + C$
+
+$y = e^{0+C} = 1$
+
+$C = 0$
+
+$\boxed{y = 1}$
+
+The streamline does not vary with $y$, the streamline is
+parallel to the x-axis.
+
+\subsection*{(b) Pathline}
+
+The slope of the pathline is equal to $u$ at the point and time of interest.
+
+$\frac{\partial x}{\partial t} = x$
+
+$\frac{\partial y}{\partial t} = y*t$
+
+$\frac{\partial z}{\partial t} = 0$
+
+\vspace{5mm}
+
+$\frac{\partial x}{\partial t} = x$
+
+$\frac{\partial x}{x} = \partial t$
+
+$ln(x) = t + C$
+
+$ln(1) = 0 + C$
+
+$C = ln(1)$
+
+$t = ln(x) - ln(1) = ln(x)$
+
+\vspace{5mm}
+
+$\frac{\partial y}{\partial t} = y*t$
+
+$\frac{\partial y}{y} = t\partial t$
+
+$ln(y) = \frac{t^{2}}{2} + C$
+
+$ln(1) = \frac{(0)^{2}}{2} + C$
+
+$C = ln(1)$
+
+$ln(y) = \frac{t^{2}}{2} + ln(1)$
+
+$ln(y) = \frac{t^{2}}{2}$
+
+$y = e^{\frac{t^{2}}{2}}$
+
+$t = (2ln(y))^{1/2}$
+
+\vspace{5mm}
+
+$ln(x) = (2ln(y))^{1/2}$
+
+$\frac{ln(x)^{2}}{2} = ln(y)$
+
+$\boxed{y = e^{\frac{ln(x)^{2}}{2}}}$
+
+\subsection*{(c) Streakline}
+
+Starting from pathline solution:
+
+$t = ln(x)$
+
+$x = e^{t}$
+
+$y = e^{\frac{t^{2}}{2}}$
+
+\vspace{5mm}
+
+$\frac{x(t)}{x_{0}} = \frac{e^{t}}{e^{t_{i}}}$
+
+$e^{t_{i}} = \frac{x_{0}e^{t}}{x(t)}$
+
+$t_{i} = ln(\frac{x_{0}e^{t}}{x(t)})$
+
+\vspace{5mm}
+
+$\frac{y(t)}{y_{0}} = \frac{e^{\frac{t^{2}}{2}}}{e^{\frac{t_{i}^{2}}{2}}}$
+
+$e^{\frac{t_{i}^{2}}{2}}= \frac{y_{0}e^{\frac{t^{2}}{2}}}{y(t)}$
+
+$\frac{t_{i}^{2}}{2}= ln(\frac{y_{0}e^{\frac{t^{2}}{2}}}{y(t)})$
+
+$t_{i} = (2ln(\frac{y_{0}e^{\frac{t^{2}}{2}}}{y(t)}))^{1/2}$
+
+\vspace{5mm}
+
+$ln(\frac{x_{0}e^{t}}{x(t)}) = (2ln(\frac{y_{0}e^{\frac{t^{2}}{2}}}{y(t)}))^{1/2}$
+
+$ln(\frac{(1)e^{0}}{x(t)}) = (2ln(\frac{(1)e^{\frac{(0)^{2}}{2}}}{y(t)}))^{1/2}$
+
+$ln(\frac{1}{x(t)}) = (2ln(\frac{1}{y(t)}))^{1/2}$
+
+$\frac{(ln(\frac{1}{x(t)}))^{2}}{2} = ln(\frac{1}{y(t)})$
+
+$e^{\frac{(ln(\frac{1}{x(t)}))^{2}}{2}} = \frac{1}{y(t)}$
+
+$\boxed{y = \frac{1}{e^{\frac{(ln(\frac{1}{x}))^{2}}{2}}}}$
+
+
+
+\begin{figure}[H]
+\begin{center}
+\begin{minipage}[t]{.65\linewidth}
+
+<<prob2plot,fig=TRUE,echo=FALSE>>=
+
+x = (1:100)*0.1
+ya = x*0+1
+yb = exp(log(x)^2/2)
+yc = 1/(exp((log(1/x))^2/2))
+
+plot(0,0,col="white",xlim = c(0,10),ylim = c(0,10),xlab = "x",ylab = "y")
+
+xd = x[x>=1]
+for(t in 0:20*.2){
+	yd = exp(t^2/2)/(exp((log(exp(t)/xd))^2/2))
+	lines(xd,yd,typ="l",col="grey")
+}
+lines(x,ya,typ="l",col="blue",lwd = 2)
+lines(x,yb,typ="l",col="red",lwd = 2)
+lines(x,yc,typ="l",col="green",lwd = 2)
+legend(6,6,c("Streamline","Pathline","Streakline","Future Streaklines"),col = c("blue","red","green","grey"),lty = c(1,1,1,1),lwd = c(2,2,2,1))
+
+@
+\end{minipage}
+\caption{Comparison of various line types at t = 0}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+\section*{Problem 3}
+
+Find a spatially uniform, time-dependent density field $\rho = \rho (t)$ that
+renders the one-dimensional flow field with Cartesian velocity $u = (\alpha
+x/t,0,0)$ mass conserving, where $\alpha$ is a constant and $\rho = \rho_{0}$
+and $t = t_{0}$.
+
+\section*{Problem 4}
+
+Consider the proposed incompressible axisymmetric flow field $v_{x} =
+C(R^{2}-r^{2})$, $v_{r} = 0$ in the region $0 \leq z \leq L$, $0 \leq r \leq R$
+where $C$ is a constant.  Neglect gravity.
+
+\subsection*{(a)} Determine if this is an exact solution to the Navier-Stokes
+equation.
+
+\subsection*{(b)} What might it represent?
+
+\subsection*{(c)}
+
+If an axisymetric stream function $\phi (r,z)$ exists fro this flow, find its
+forms.
+
+\end{document}
+
+
