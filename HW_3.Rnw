@@ -158,9 +158,7 @@ $ln(1) = \frac{(0)^{2}}{2} + C$
 
 $C = ln(1)$
 
-$ln(y) = \frac{t^{2}}{2} + ln(1)$
-
-$ln(y) = \frac{t^{2}}{2}$
+$ln(y) = \frac{t^{2}}{2} + ln(1) = \frac{t^{2}}{2}$
 
 $y = e^{\frac{t^{2}}{2}}$
 
@@ -220,7 +218,7 @@ $\boxed{y = \frac{1}{e^{\frac{(ln(\frac{1}{x}))^{2}}{2}}}}$
 
 \begin{figure}[H]
 \begin{center}
-\begin{minipage}[t]{.65\linewidth}
+\begin{minipage}[t]{.85\linewidth}
 
 <<prob2plot,fig=TRUE,echo=FALSE>>=
 
@@ -255,6 +253,32 @@ Find a spatially uniform, time-dependent density field $\rho = \rho (t)$ that
 renders the one-dimensional flow field with Cartesian velocity $u = (\alpha
 x/t,0,0)$ mass conserving, where $\alpha$ is a constant and $\rho = \rho_{0}$
 and $t = t_{0}$.
+
+Using the definition of continuity in the Eulerian frame, we find:
+
+$\frac{\partial \rho}{\partial t} + \bigtriangledown \rho \V = 0$
+
+$\frac{\partial \rho}{\partial t} = - \bigtriangledown \rho \V$
+
+$\frac{\partial \rho}{\partial t} = - \rho \frac{\partial}{\partial x}(\frac{\alpha x}{t})$
+
+$\frac{\partial \rho}{\partial t} = - \rho \frac{\alpha}{t}$
+
+$\frac{\partial \rho}{\rho} = -\alpha\frac{\partial t}{t}$
+
+$ln(\rho) = -\alpha ln(t)+C$
+
+$\rho = e^{-\alpha ln(t)+C}$
+
+$C = ln(\rho) + \alpha ln(t) = ln(\rho_{0}) + \alpha ln(t_{0})$
+
+$\rho = e^{-\alpha ln(t)+ln(\rho_{0}) + \alpha ln(t_{0})} = e^{\alpha(ln(t_{0})-ln(t))+ln(\rho_{0})}$
+
+$\rho = e^{\alpha(ln(\frac{t_{0}}{t}))+ln(\rho_{0})} = e^{\alpha(ln(\frac{t_{0}}{t}))}e^{ln(\rho_{0})}$
+
+$\rho = \rho_{0}e^{\alpha(ln(\frac{t_{0}}{t}))}$
+
+$\boxed{\rho = \rho_{0}(\frac{t_{0}}{t})^{\alpha}}$
 
 \section*{Problem 4}
 
