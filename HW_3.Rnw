@@ -11,7 +11,10 @@
 \usepackage{float}
 \usepackage[bookmarks]{hyperref}
 \usepackage{Sweave}
+\usepackage{multicol} % Used for the two-column layout of the document
 \linespread{1.5}
+
+
 
 
 \begin{document}
@@ -20,6 +23,11 @@
 \author{Page Weil}
 \maketitle
 \title{}
+
+\hline
+
+\begin{multicols}{2} % Two-column layout throughout the main article text
+\raggedcolumns
 
 \section*{Problem 1}
 
@@ -68,10 +76,12 @@ Substituting:
 
 $V_{term} = 2V_{slip} + V_{bulk} = 2l\frac{V_{bulk}}{\Delta R} + V_{bulk} = V_{bulk}*(1+\frac{2l}{\Delta R})$
 
-Stress resisting the fall is a function of the viscosity of the bulk velocity
-only:
+$V_{term} = V_{bulk}*(1+\frac{2l}{\Delta R})$
 
-$\tau_{r} = \mu\frac{V}{h} = \mu\frac{V_{bulk}}{\Delta R}$
+Stress resisting the fall is a function of the viscosity and the
+terminal velocity:
+
+$\tau_{r} = \mu\frac{V}{h} = \mu\frac{V_{term}}{\Delta R}$
 
 The stress resists the force of gravity acting on the inner cylinder:
 
@@ -81,22 +91,28 @@ $\tau = \frac{mg}{2\pi RL}$
 
 Substituting:
 
-$\tau = \frac{mg}{2\pi RL} = \mu\frac{V_{bulk}}{\Delta R}$
+$\tau_{r} = \mu\frac{V}{h} = \mu\frac{V_{term}}{\Delta R}$
 
-$V_{bulk} = \frac{mg\Delta R}{2\pi RL\mu}$
+$V_{term} = \frac{mg\Delta R}{2\pi RL\mu}$
 
-$V_{term} = V_{bulk}*(1+\frac{2l}{\Delta R}) = \frac{mg\Delta R}{2\pi RL\mu}*(1+\frac{2l}{\Delta R})$
+$V_{term} = V_{bulk}*(1+\frac{2l}{\Delta R})$
 
-$\boxed{V_{term} = \frac{mg\Delta R}{2\pi RL\mu}*(1+\frac{2l}{\Delta R})}$
+$\frac{mg\Delta R}{2\pi RL\mu} = V_{bulk}*(1+\frac{2l}{\Delta R})$
 
-The terminal velocity under the slip condition is larger than the terminal
-velocity under no slip by:
+$V_{bulk} = \frac{mg\Delta R}{2\pi RL\mu}\frac{1}{(1+\frac{2l}{\Delta R})}$
 
-$V_{term slip} - V_{term noslip} = \frac{mg\Delta R}{2\pi RL\mu}*(1+\frac{2l}{\Delta R}) - \frac{mg\Delta R}{2\pi RL\mu} = \frac{lmg}{\pi RL\mu}$
+$V_{term} = V_{bulk}*(1+\frac{2l}{\Delta R}) = (\frac{mg\Delta R}{2\pi RL\mu}\frac{1}{(1+\frac{2l}{\Delta R})})*(1+\frac{2l}{\Delta R})$
 
-\vspace{10mm}
+$\boxed{V_{term} = \frac{mg\Delta R}{2\pi RL\mu}}$
 
-\pagebreak
+The terminal velocity under the slip condition is the same as the terminal
+velocity under no slip.
+
+\vspace{5mm}
+
+\hline
+
+\vspace{5mm}
 
 \section*{Problem 2}
 
@@ -218,7 +234,7 @@ $\boxed{y = \frac{1}{e^{\frac{(ln(\frac{1}{x}))^{2}}{2}}}}$
 
 \begin{figure}[H]
 \begin{center}
-\begin{minipage}[t]{.85\linewidth}
+\begin{minipage}[t]{.95\linewidth}
 
 <<prob2plot,fig=TRUE,echo=FALSE>>=
 
@@ -245,7 +261,11 @@ legend(6,6,c("Streamline","Pathline","Streakline","Future Streaklines"),col = c(
 \end{center}
 \end{figure}
 
-\pagebreak
+\vspace{5mm}
+
+\hline
+
+\vspace{5mm}
 
 \section*{Problem 3}
 
@@ -280,22 +300,119 @@ $\rho = \rho_{0}e^{\alpha(ln(\frac{t_{0}}{t}))}$
 
 $\boxed{\rho = \rho_{0}(\frac{t_{0}}{t})^{\alpha}}$
 
+\vspace{5mm}
+
+\hline
+
+\vspace{5mm}
+
 \section*{Problem 4}
 
-Consider the proposed incompressible axisymmetric flow field $v_{x} =
+Consider the proposed incompressible axisymmetric flow field $v_{z} =
 C(R^{2}-r^{2})$, $v_{r} = 0$ in the region $0 \leq z \leq L$, $0 \leq r \leq R$
 where $C$ is a constant.  Neglect gravity.
 
-\subsection*{(a)} Determine if this is an exact solution to the Navier-Stokes
-equation.
+\subsection*{(a) EXTRA CREDIT} Determine if this is an exact solution to the
+Navier-Stokes equation.
+
+To be an exact solution to the Navier-Stokes equation, the velocity equations
+must satisfy continuity of momentum in cylindrical coordinates.
+
+Since the fluid is incompressible and only moving in the $z$ direction, we must
+show the conservation of momentum equation to be true:
+
+$\frac{\partial v_{z}}{\partial t} + (V \cdot \bigtriangledown)v_{z} = -\frac{1}{\rho}\frac{\partial p}{\partial z} + g_{z} + \nu \bigtriangledown^{2}v_{z}$
+
+Neglecting gravity, we know that $g = 0$
+
+Since the flow is incompressible and 1-dimensional $(V \cdot \bigtriangledown)v_{z} = 0$
+
+The flow is steady so $\frac{\partial v_{z}}{\partial t} = 0$
+
+Also, neglecting the effects of gravity, and since the flow is steady and
+without friction effects we know $\frac{\partial p}{\partial z} = 0$
+
+The momentum equation then reduces to:
+
+$0 = \nu \bigtriangledown^{2}v_{z}$ or $\bigtriangledown^{2}v_{z} = 0$
+
+In polar coordinates this is represented as:
+
+$\bigtriangledown^{2} = \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial}{\partial r}) + \frac{1}{r^{2}}\frac{\partial^{2}}{\partial \theta^{2}} + \frac{\partial^{2}}{\partial z^{2}}$
+
+Substituting $v_{z} = C(R^{2}-r^{2})$ into $\bigtriangledown^{2}v_{z} = 0$
+
+$0 = (C(R^{2}-r^{2}))\frac{1}{r}\frac{\partial}{\partial
+r}((C(R^{2}-r^{2}))r\frac{\partial}{\partial r}) + (C(R^{2}-r^{2}))\frac{\partial^{2}}{\partial z^{2}}$
+
+$0 = (C(R^{2}-r^{2}))\frac{\partial^{2}}{\partial r^{2}}$
+
+$0 = (C(R^{2}-r^{2}))\frac{\partial^{2}}{\partial r^{2}}$
+
+$0 = (-C2r)\frac{\partial}{\partial r}$
+
+$0 = -C2$
+
+$C = 0$
+
+I am sure I am doing something wrong here, but it appears that the equation
+satisfies Navier-Stokes 
 
 \subsection*{(b)} What might it represent?
+
+Since $v_{z}(r = 0) > v_{z}(r = R)$ then it is a flow that is highest at the
+middle of the cylinder and zero at $R$.  Flow only travels longitudinally down the pipe, but is moving faster in the
+middle.  This represents the standard condition of incompressible fluid flow
+through a pipe.
 
 \subsection*{(c)}
 
 If an axisymetric stream function $\phi (r,z)$ exists fro this flow, find its
 forms.
 
+To check for continuity evaluate if $\bigtriangledown \vec{u} = 0$ also
+represented as the following in cylindrical coordinates:
+
+$\frac{\partial}{\partial r}((\rho r v_{r})) + \frac{\partial}{\partial z}((\rho
+r v_{z})) = 0$
+
+$\frac{\partial}{\partial r}((\rho r (0))) + \frac{\partial}{\partial z}((\rho
+r C(R^{2}-r^{2}))) = 0$
+
+$0 + 0 = 0$
+
+Continuity is satisfied, so now we must solve for the stream function $\phi
+(r,z)$ where
+
+$v_{r} = -\frac{1}{\rho r}\frac{\partial \phi}{\partial z}$
+
+$0 = \frac{\partial \phi}{\partial z}$
+
+$\phi(z) = C1$
+
+\vspace{5mm}
+
+$v_{z} = -\frac{1}{\rho r}\frac{\partial \phi}{\partial r}$
+
+$C(R^{2}-r^{2}) = -\frac{1}{\rho r}\frac{\partial \phi}{\partial r}$
+
+$Cr(r^{2}-R^{2}) = \frac{\partial \phi}{\partial r}$
+
+$Cr(r^{2}-R^{2})\partial r = \partial \phi$
+
+$C(r^{3}-rR^{2})\partial r = \partial \phi$
+
+$\phi(r) = C(\frac{r^{4}}{4}-\frac{r^{2}R^{2}}{2}) + C2$
+
+$\phi(r,z)= C(\frac{r^{4}}{4}-\frac{r^{2}R^{2}}{2}) + C2$
+
+$\phi(r=R,z=z_{0})= C(\frac{(R)^{4}}{4}-\frac{(R)^{2}R^{2}}{2}) + C2 = 0$
+
+$C2 = 0$
+
+$\boxed{\phi(r,z)= C(\frac{r^{4}}{4}-\frac{r^{2}R^{2}}{2}) = 0}$
+
+\end{multicols}
 \end{document}
 
 
