@@ -1,0 +1,277 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{float}
+\usepackage[bookmarks]{hyperref}
+\usepackage{Sweave}
+\usepackage{multicol} % Used for the two-column layout of the document
+\linespread{1.5}
+
+
+
+
+\begin{document}
+\title{MCEN 5041 - Advanced Fluid Mechanics - Homework 4}
+
+\author{Page Weil}
+\maketitle
+\title{}
+
+\hline
+
+\begin{multicols}{2} % Two-column layout throughout the main article text
+\raggedcolumns
+
+\section*{Problem 1}
+
+Consider the incompressible stream function given by:
+
+\begin{center}
+
+$\psi = C(x^{2}y - \frac{y^{3}}{3})$
+
+\end{center}
+
+where $C > 0$.
+
+\vspace{5mm}
+
+\subsection*{(a) Find u and v and plot streamlines for this flow}
+
+For a 2-D incompressible flow, the stream function defined by:
+
+$\rho u = \frac{\partial\psi}{\partial y}$ and $\rho v =
+-\frac{\partial\psi}{\partial x}$
+
+$\rho u = \frac{\partial\psi}{\partial y}$
+
+$u = \frac{1}{\rho}\frac{\partial}{\partial y}(C(x^{2}y - \frac{y^{3}}{3}))$
+
+$\boxed{u = \frac{C}{\rho}(x^{2} - y^{2})}$
+
+$\rho v = -\frac{\partial\psi}{\partial x}$
+
+$v = -\frac{1}{\rho} \frac{\partial}{\partial x}(C(x^{2}y - \frac{y^{3}}{3}))$
+
+$\boxed{v = -\frac{2C}{\rho}(xy)}$
+
+Since the stream function is constant along a streamline, we can solve the
+original stream function for $x$ assuming $\psi$ is constant and plot the
+results.
+
+$\psi = C(x^{2}y - \frac{y^{3}}{3})$
+
+$Cx^{2}y =  C\frac{y^{3}}{3} + \psi$
+
+$x^{2} = \frac{y^{2}}{3} + \frac{\psi}{yC}$
+
+$x = \sqrt{\frac{y^{2}}{3} + \frac{\psi}{yC}}$
+
+
+\begin{figure}[H]
+\begin{center}
+\begin{minipage}[t]{.95\linewidth}
+
+<<prob1aplot,fig=TRUE,echo=FALSE>>=
+
+arrowLine <- function(x, y, N=10, ...){
+	lengths <- c(0, sqrt(diff(x)^2 + diff(y)^2))
+	l <- cumsum(lengths)
+	tl <- l[length(l)]
+	el <- seq(0, to=tl, length=N+1)[-1]
+	
+	lines(x, y, t="l", ...)
+	
+	for(ii in el){
+		
+		int <- findInterval(ii, l)
+		xx <- x[int:(int+1)]
+		yy <- y[int:(int+1)]
+		
+		## points(xx,yy, col="grey", cex=0.5)
+		
+		dx <- diff(xx)
+		dy <- diff(yy)
+		new.length <- ii - l[int]
+		segment.length <- lengths[int+1]
+		
+		ratio <- new.length / segment.length
+		
+		xend <- x[int] + ratio * dx
+		yend <- y[int] + ratio * dy
+		points(xend,yend, col="white", pch=19)
+		arrows(x[int], y[int], xend, yend, length=0.1)
+		
+	}
+	
+}
+
+psis = seq(-50.2,49.2,2)
+y = seq(0.001,10,0.1)
+C = 1
+narrows = 2
+
+a = psis[1]
+x_pos = sqrt(y^2/3 - a/(y*C))
+x_neg = -sqrt(y^2/3 - a/(y*C))
+id = which(!is.nan(x_pos))
+
+xmax = 5
+ymax = 5
+plot(c(0,0),c(0,0),col="white",type="l",xlim = c(-1,1)*xmax,ylim = c(0,1)*ymax,xlab = "x",ylab = "y")
+for(a in psis){
+   x_pos = sqrt(y^2/3 - a/(y*C))
+   x_neg = -sqrt(y^2/3 - a/(y*C))
+   id = which(!is.nan(x_pos)&x_pos<=xmax&y<=ymax)
+   arrowLine(x_pos[id],y[id],N=5)
+   arrowLine(rev(x_neg[id]),rev(y[id]),N=4)
+   #lines(x_pos[id],y[id])
+   #lines(x_neg[id],y[id])
+   
+}
+
+
+@
+\end{minipage}
+\caption{Streamlines with $C = 1$ and $\psi$ in increments of 2}
+\end{center}
+\end{figure}
+
+\vspace{5mm}
+
+\subsection*{(b) Show that this flow is irrotational}
+
+Flow is irrotational if vorticity, $\omega = 0$.  In 2-D, vorticity is defined as:
+
+\begin{center}
+
+$\omega = (\frac{\partial v}{\partial x} - \frac{\partial u}{\partial y})$
+
+\end{center}
+
+From above:
+
+$u = \frac{C}{\rho}(x^{2} - y^{2})$
+
+$v = -\frac{2C}{\rho}(xy)$
+
+
+$\omega = \frac{1}{\partial x}(-\frac{2C}{\rho}xy) - \frac{1}{\partial y}(\frac{C}{\rho}(x^{2} - y^{2}))$
+
+$\omega = -\frac{2C}{\rho}y - (\frac{C}{\rho}(-2y)) = 0$
+
+$\boxed{\omega = 0}$
+
+Therefore the flow is irrotational
+
+\vspace{5mm}
+
+\subsection*{(c)}
+
+Using the Navier-Stokes equations along with the fact that the flow is
+irrotational, obtain the pressure $p$ as a function of $x$ and $y$.
+
+Since the flow is irrotational, the viscous terms are negligible and the Euler
+equations can be used as a simplification of Navier-Stokes giving us:
+
+
+$\rho\frac{D \vec{u}}{Dt} = \rho \vec{g} - \nabla p$
+
+Applying the material derivative we get:
+
+$\rho\frac{\partial \vec{u}}{\partial t} + \frac{1}{2}\nabla \vec{u}\vec{u} = \rho \vec{g} - \nabla p$
+
+The flow does not vary with time, therefore: $\rho\frac{\partial
+\vec{u}}{\partial t} = 0$
+
+Since the flow is in the $xy$ plane, $\rho \vec{g} = 0$
+
+These reductions give us:
+
+$\nabla p = -\frac{1}{2}\nabla \vec{u}\vec{u}$
+
+$p = -\frac{1}{2}\vec{u}\vec{u}$
+
+$p = -\frac{1}{2}(u^{2} + v^{2})$
+
+From part (a):
+
+$u = \frac{C}{\rho}(x^{2} - y^{2})$
+
+$v = -\frac{2C}{\rho}(xy)$
+
+$p = -\frac{1}{2}((\frac{C}{\rho}(x^{2} - y^{2}))^{2} + (-\frac{2C}{\rho}(xy))^{2})$
+
+$p = \frac{C^{2}}{2\rho^{2}}(-(x^{2} - y^{2})^{2} + 4(x^{2}y^{2}))$
+
+$p = \frac{C^{2}}{2\rho^{2}}( + 4(x^{2}y^{2})-(x^{2} - y^{2})^{2})$
+
+$\boxed{p(x,y) = \frac{C^{2}}{2\rho^{2}}(y^{4} + 2(x^{2}y^{2})-x^{4})}$
+
+\vspace{5mm}
+
+\section*{Problem 2}
+
+Repeat the non-dimensionalization of the Navier-Stokes equations for slow
+viscous flow by assuming that the pressure should scale as $(\mu U/L)$.  What
+happens if $Re \ll 1$?
+
+Navier-Stokes:
+
+$\rho\frac{D\vec{u}}{Dt} = \rho\vec{g} + \nabla \delta_{ij} - \nabla p$
+
+First working out the LHS:
+
+$ = \rho\frac{D\vec{u}}{Dt}$
+
+$ = \rho\frac{\partial\vec{u}}{\partial t} + \rho\vec{u}\nabla\vec{u}$
+
+$ = \frac{\rho_{0}}\rho^{*}\frac{\partial\vec{u}}{\partial t} + \rho\vec{u}\nabla\vec{u}$
+
+$ = \rho_{0}\rho^{*}\frac{u\partial\vec{u}^{*}}{\frac{L}{u}{}\partial t^{*}} + \rho_{0}\rho^{*}u\vec{u}^{*}\frac{\nabla^{*}}{L}u\vec{u}^{*}$
+
+$ = \frac{\rho_{0}u^{2}}{L}\left (\rho^{*}\frac{\partial\vec{u}^{*}}{\partial t^{*}} + \rho^{*}\vec{u}^{*}\nabla^{*}\vec{u}^{*}\right)$
+
+Now working out the RHS:
+
+$ = \rho\vec{g} + \nabla \delta_{ij} - \nabla p$
+
+$ = \rho\vec{g} + \nabla \mu \left(\frac{\partial u_{i}}{\partial x_{j}} + \frac{\partial u_{j}}{\partial x_{i}} \right ) - \nabla p$
+
+$ = \rho_{0}\rho^{*}g\vec{g}^{*} + \frac{\nabla^{*}}{L} \mu_{0}\mu^{*} \left(\frac{u\partial u_{i}^{*}}{L\partial x_{j}^{*}} +\frac{u\partial u_{j}^{*}}{L\partial x_{i}^{*}}\right ) - \frac{\nabla^{*}}{L} p^{*}\frac{\mu_{0}u}{L}$
+
+\section*{Problem 3}
+
+Using the Navier-Stokes momentum equation, the equation for conservation of
+kinetic energy $(\frac{1}{2}|u|^2)$, and the continuity equation, derive the
+following equation for the velocity potential for irrotational inviscid
+compressible flow in the absence of a body force:
+
+\begin{center}
+
+$\frac{\partial^{2}\phi}{\partial t^{2}} + \frac{\partial}{\partial t}(|\nabla\phi|^{2})+\frac{1}{2}\nabla\phi\cdot\nabla(|\nabla\phi|^{2})-c^{2}\nabla^{2}\phi = 0$
+
+\end{center}
+
+Where $u = \nabla\phi$
+
+Starting with Navier-Stokes assuming no viscosity:
+
+$\rho\frac{D \vec{u}}{Dt} = \rho \vec{g} - \nabla p$
+
+Applying the material derivative we get:
+
+$\rho\frac{\partial \vec{u}}{\partial t} + \frac{1}{2}\nabla \vec{u}\vec{u} = \rho \vec{g} - \nabla p$
+
+
+\end{multicols}
+\end{document}
+
+
