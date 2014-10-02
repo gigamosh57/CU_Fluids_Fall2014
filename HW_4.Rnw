@@ -79,8 +79,8 @@ $x = \sqrt{\frac{y^{2}}{3} + \frac{\psi}{yC}}$
 \begin{center}
 \begin{minipage}[t]{.95\linewidth}
 
-<<prob1aplot,fig=TRUE,echo=FALSE>>=
-
+<<prob1aplot,fig=TRUE,echo=FALSE,warning=FALSE>>=
+options(warn=-1)
 arrowLine <- function(x, y, N=10, ...){
 	lengths <- c(0, sqrt(diff(x)^2 + diff(y)^2))
 	l <- cumsum(lengths)
@@ -137,7 +137,7 @@ for(a in psis){
    
 }
 
-
+options(warn=0)
 @
 \end{minipage}
 \caption{Streamlines with $C = 1$ and $\psi$ in increments of 2}
@@ -247,6 +247,19 @@ $ = \rho\vec{g} + \nabla \mu \left(\frac{\partial u_{i}}{\partial x_{j}} + \frac
 
 $ = \rho_{0}\rho^{*}g\vec{g}^{*} + \frac{\nabla^{*}}{L} \mu_{0}\mu^{*} \left(\frac{u\partial u_{i}^{*}}{L\partial x_{j}^{*}} +\frac{u\partial u_{j}^{*}}{L\partial x_{i}^{*}}\right ) - \frac{\nabla^{*}}{L} p^{*}\frac{\mu_{0}u}{L}$
 
+$ = \rho_{0}g\rho^{*}\vec{g}^{*} + \frac{\mu_{0}u}{L^{2}} \left( \nabla^{*}\mu^{*} \left(\frac{\partial u_{i}^{*}}{\partial x_{j}^{*}} +\frac{\partial u_{j}^{*}}{\partial x_{i}^{*}}\right ) - \nabla^{*} p^{*}\right ) $
+
+$ = \rho_{0}g\rho^{*}\vec{g}^{*}*\frac{1}{\mu_{0}/uL}*\frac{\mu_{0}/uL}{1} + \frac{\mu_{0}u}{L^{2}} \left(
+\nabla^{*}\mu^{*} \left(\frac{\partial u_{i}^{*}}{\partial x_{j}^{*}} +\frac{\partial u_{j}^{*}}{\partial x_{i}^{*}}\right ) - \nabla^{*} p^{*}\right ) $
+
+$ = Re*g\rho^{*}\vec{g}^{*}*\frac{\mu_{0}}{uL} + \frac{\mu_{0}u}{L^{2}} \left(
+\nabla^{*}\mu^{*} \left(\frac{\partial u_{i}^{*}}{\partial x_{j}^{*}} +\frac{\partial u_{j}^{*}}{\partial x_{i}^{*}}\right ) - \nabla^{*} p^{*}\right ) $
+
+As $Re \|| 1$ the gravity (body force) term goes to zero.  The effects on the
+fluid become dominated by advective and pressure-driven processes.
+
+\vspace{5mm}
+
 \section*{Problem 3}
 
 Using the Navier-Stokes momentum equation, the equation for conservation of
@@ -262,14 +275,28 @@ $\frac{\partial^{2}\phi}{\partial t^{2}} + \frac{\partial}{\partial t}(|\nabla\p
 
 Where $u = \nabla\phi$
 
-Starting with Navier-Stokes assuming no viscosity:
+Starting with Navier-Stokes assuming no viscosity and no body force ($\rho \vec{g} = 0$)
 
-$\rho\frac{D \vec{u}}{Dt} = \rho \vec{g} - \nabla p$
-
+$\rho\frac{D \vec{u}}{Dt} = - \nabla p$
+  
 Applying the material derivative we get:
 
-$\rho\frac{\partial \vec{u}}{\partial t} + \frac{1}{2}\nabla \vec{u}\vec{u} = \rho \vec{g} - \nabla p$
+$\rho\frac{\partial \vec{u}}{\partial t} + \frac{1}{2}\nabla \vec{u}\vec{u} = - \nabla p$
 
+$\rho\frac{\partial \vec{u}}{\partial t} + \frac{1}{2}\nabla \vec{u}^{2} + \nabla p = 0$
+
+$\rho\frac{\partial}{\partial t}(\nabla\phi) + \frac{1}{2}\nabla (\nabla\phi)^{2} + \nabla p = 0$
+
+$\nabla \left(\rho\frac{\partial}{\partial t}(\phi) + \frac{1}{2}\nabla
+(\nabla\phi)^{2} + \nabla p\right) = 0$
+
+$\nabla \left(\rho\frac{\partial\phi}{\partial t} + \frac{1}{2}
+(\nabla\phi)^{2} + p\right) = 0$
+
+$\rho\frac{\partial\phi}{\partial t} + \frac{1}{2}
+(\nabla\phi)^{2} + p = 0$
+
+Not sure where to go from here
 
 \end{multicols}
 \end{document}
