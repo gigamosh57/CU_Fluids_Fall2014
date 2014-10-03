@@ -255,7 +255,7 @@ $ = \rho_{0}g\rho^{*}\vec{g}^{*}*\frac{1}{\mu_{0}/uL}*\frac{\mu_{0}/uL}{1} + \fr
 $ = Re*g\rho^{*}\vec{g}^{*}*\frac{\mu_{0}}{uL} + \frac{\mu_{0}u}{L^{2}} \left(
 \nabla^{*}\mu^{*} \left(\frac{\partial u_{i}^{*}}{\partial x_{j}^{*}} +\frac{\partial u_{j}^{*}}{\partial x_{i}^{*}}\right ) - \nabla^{*} p^{*}\right ) $
 
-As $Re \|| 1$ the gravity (body force) term goes to zero.  The effects on the
+As $Re << 1$ the gravity (body force) term goes to zero.  The effects on the
 fluid become dominated by advective and pressure-driven processes.
 
 \vspace{5mm}
@@ -287,16 +287,39 @@ $\rho\frac{\partial \vec{u}}{\partial t} + \frac{1}{2}\nabla \vec{u}^{2} + \nabl
 
 $\rho\frac{\partial}{\partial t}(\nabla\phi) + \frac{1}{2}\nabla (\nabla\phi)^{2} + \nabla p = 0$
 
-$\nabla \left(\rho\frac{\partial}{\partial t}(\phi) + \frac{1}{2}\nabla
-(\nabla\phi)^{2} + \nabla p\right) = 0$
-
 $\nabla \left(\rho\frac{\partial\phi}{\partial t} + \frac{1}{2}
 (\nabla\phi)^{2} + p\right) = 0$
 
 $\rho\frac{\partial\phi}{\partial t} + \frac{1}{2}
 (\nabla\phi)^{2} + p = 0$
 
-Not sure where to go from here
+Take the derivative of everything with respect to time:
+
+$\frac{\partial}{\partial t}\rho\frac{\partial\phi}{\partial t} + \frac{\partial}{\partial t}\frac{1}{2}
+(\nabla\phi)^{2} + \frac{\partial}{\partial t}p = 0$
+
+$\frac{\partial \rho}{\partial t}\frac{\partial\phi}{\partial t} + \rho\frac{\partial^{2}\phi}{\partial t^{2}} + \frac{\partial}{\partial t}\frac{1}{2}
+(\nabla\phi)^{2} + \frac{\partial p}{\partial t} = 0$
+
+Substitute the continuity equation: $\frac{\partial \rho}{\partial t} = -\nabla(\rho \vec{u})$
+
+$-\nabla(\rho \vec{u})\frac{\partial\phi}{\partial t} + \rho\frac{\partial^{2}\phi}{\partial t^{2}} + \frac{\partial}{\partial t}\frac{1}{2}
+(\nabla\phi)^{2} + \frac{\partial p}{\partial t} = 0$
+
+...not sure how to do the correct substitutions to get to the desired equation.
+
+Interpreting the equation, as $c \rightarrow \infty$, which means that pressure
+varies dramatically with minor changes in density,
+$\frac{\partial^{2}\phi}{\partial t^{2}} + \frac{\partial}{\partial
+t}(|\nabla\phi|^{2})+\frac{1}{2}\nabla\phi\cdot\nabla(|\nabla\phi|^{2})$ goes to
+infinity as well.  Since this term is dominated by the highest order term, we
+cal also say that $\frac{1}{2}\nabla\phi\cdot\nabla(|\nabla\phi|^{2})
+\rightarrow \infty$.  This means that velocity also increases to infinity.
+
+As $\abs{\nabla\pgi}\rightarrow 0$ (when velocity goes to zero), $\frac{\partial^{2}\phi}{\partial
+t^{2}}\rightarrow 0$ (acceleration of velocity gradient goes to zero)
+
+
 
 \end{multicols}
 \end{document}
