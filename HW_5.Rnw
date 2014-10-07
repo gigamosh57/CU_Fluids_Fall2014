@@ -1,0 +1,302 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{float}
+\usepackage[bookmarks]{hyperref}
+\usepackage{Sweave}
+\usepackage{multicol} % Used for the two-column layout of the document
+\linespread{1.5}
+
+
+
+
+\begin{document}
+\title{MCEN 5041 - Advanced Fluid Mechanics - Homework 5}
+
+\author{Page Weil}
+\maketitle
+\title{}
+
+\hline
+
+\section*{Problem 1}
+
+\textit{The components of a mass flow vector $\rho \mathbf{u}$ are $\rho u =
+4x^{2}y$, $\rho v = xyz$ , $\rho w = yz^{2}$}
+
+\subsection*{(a)} 
+
+\textit{Compute the net mass outflow through the closed surface formed by the
+planes $x = 0$, $x = 1$, $y = 0$, $y = 1$, $z = 0$, $z = 1$.}
+
+Assume mass outflow is positive when $x = 1$, $y = 1$ or $z = 1$.  
+
+Net mass leaving
+through the plane formed by $(x=0, 0\leq y\leq 1, 0\leq z\leq 1)$:
+
+$-1*\int_{y=0}^{1}\int_{z=0}^{1} 4*(0)^{2}y\partial y\partial z = 0$
+
+for $(x=1, 0\leq y\leq 1, 0\leq z\leq 1)$:
+
+$\int_{y=0}^{1}\int_{z=0}^{1} 4*(1)^{2}y\partial y\partial z= 2*y^{2}\Big|_{0}^{1}z\Big|_{0}^{1} = 2$
+
+for $(0\leq x\leq 1, y=0, 0\leq z\leq 1)$:
+
+$-1*\int_{x=0}^{1}\int_{z=0}^{1} x*(0)*z\partial x\partial z = 0$
+
+for $(0\leq x\leq 1, y=1, 0\leq z\leq 1)$:
+
+$\int_{x=0}^{1}\int_{z=0}^{1} x*(1)z\partial x\partial z = \frac{x^{2}}{2}\Big|_{0}^{1}\frac{z^{2}}{2}\Big|_{0}^{1} = \frac{1}{4}$
+
+for $(0\leq x\leq 1, 0\leq y\leq 1, z=0)$:
+
+$-1*\int_{x=0}^{1}\int_{y=0}^{1} y*(0)^{2}\partial x\partial y = 0$
+
+for $(0\leq x\leq 1, 0\leq y\leq 1, z=1)$:
+
+$\int_{x=0}^{1}\int_{y=0}^{1} y*(1)^{2}\partial x\partial y = x\Big|_{0}^{1}\frac{y^{2}}{2}\Big|_{0}^{1} = \frac{1}{2}$
+
+Net mass outflow is the sum of the flow through all the planes:
+
+$\boxed{Q_{net} = 0+2+0+\frac{1}{4}+0+\frac{1}{2} = \frac{11}{4}}$
+
+\subsection*{(b)}
+
+\textit{Compute $\nabla\cdot(\rho u)$ and integrate over the volume bounded by
+the surface in part (a).}
+
+$\nabla\cdot(\rho u) = \frac{\partial}{\partial x}4x^{2}y + \frac{\partial}{\partial y}xyz + \frac{\partial}{\partial z}yz^{2}$ 
+
+$ = 8xy + xz + 2yz$
+
+Integrate over the volume:
+
+$\int_{x=0}^{1}\int_{y=0}^{1}\int_{z=0}^{1}8xy + xz + 2yz \partial x\partial y\partial z = 2x^{2}y^{2} + \frac{x^{2}z^{2} }{4}+ \frac{y^{2}z^{2}}{2}\Big|_{0}^{1}\Big|_{0}^{1}\Big|_{0}^{1}$
+
+$\boxed{ = 2 + \frac{1}{4} + \frac{1}{2} = \frac{11}{4}}$
+
+\subsection*{(c)}
+
+\textit{Explain why the results for parts (a) and (b) should be equal or
+unequal}
+
+The results from the two parts should be equal.  The net flow through the
+control surface should be the same as the net change in volume of the control
+volume. The results are shown to be the same
+
+\vspace{5mm}
+
+\section*{Problem 2}
+
+\textit{Wind strikes the side of a house and is deflected up over the top of the
+structure. Assume the following: two-dimensional steady inviscid
+constant-density flow, uniform upstream velocity profile, linear gradient in the
+downstream velocity profile (velocity $U$ at the upper boundary and zero velocity
+at the lower boundary), no flow through the upper boundary of the control
+volume, and constant pressure on the upper boundary of the control volume (see
+the diagram below).} 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=6in]{HW5_Fig1.png}
+\caption{Prob 1}
+\label{p1fig}
+\end{figure}
+
+
+\vspace{5mm}
+
+\subsection*{(a)}
+
+\textit{Determine $h_{2}$ in terms of $U$ and $h_{1}$.}
+
+Use conservation of mass assuming the control surface is bounded on the left by
+the vertical line $h_{1}$, on the right by the vertical line at $h{2}$, at
+the top by the line $P_{\infty}$ and the bottom by the ground.  Since the flow
+is at a constant density, assume that the integral over the control volume = 0.
+
+$0 = \frac{\partial}{\partial t}\int_{CV}\rho\partial V^{*} + \int_{CS}\rho\vec{u}\partial A^{*}$
+
+$0 = \int_{CA}\rho\vec{u}\partial A^{*}$
+
+$0 = \int_{0}^{h_{1}}U\partial y - \int_{0}^{h_{2}}Uy\partial y$
+
+$0 = Uy\Big|_{0}^{h_{1}} - \frac{Uy^{2}}{2}\Big|_{0}^{h_{2}}$
+
+$0 = Uh_{1} - \frac{Uh_{2}^{2}}{2}$
+
+$\boxed{h_{2} = \sqrt{2h_{1}}}$
+
+\subsection*{(b)} 
+
+\textit{Determine the direction and magnitude of the horizontal force on the
+house per unit depth into the page in terms of the density, $\rho$, the upstream
+velocity $U$, and the house height $h_{1}$.}
+
+Use conservation of momentum through the same control surface from
+above we find:
+
+$F_{house} = \int_{CS}\vec{u}(\rho\vec{u}\partial A^{*})$
+
+$ = [Momentum out] - [Momentum in]$
+
+$ = \int_{0}^{h_{2}}\rho (Uy)^{2}\partial y - \int_{0}^{h_{1}}\rho U^{2}\partial y$
+
+$ = \rho \frac{U^{2}y^{3}}{3}\Big|_{0}^{h_{2}} - \rho U^{2}y\Big|_{0}^{h_{1}}$
+
+$ = \frac{h_{2}^{3}}{3}) - \rho U^{2}(h_{1}$
+
+$ = \frac{(\sqrt{2h_{1}})^{3}}{3}) - \rho U^{2}(h_{1}$
+
+$\boxed{F_{house, unit l} = \rho U^{2}(\frac{(2h_{1})^{3/2}}{3} - h_{1})}$
+
+Since the flow at the downstream and upstream ends are both in the $\hat{i}$
+direction, the force on the house is in the $\hat{i}$ direction as well.
+
+
+\subsection*{(c)} 
+ 
+Evaluate the magnitude of the force for a house that is $10m$ tall and $20m$ long in a wind of $22m/s$.
+
+$\rho_{STP} = 1.225 \frac{kg}{m^{3}}$
+
+$F_{house} = (length)\rho U^{2}(\frac{(2h_{1})^{3/2}}{3} - h_{1})$
+
+$ = 20(m)*1.225(\frac{kg}{m^{3}})*9.81(\frac{m}{s^{2}})*(22(m/s))^{2}(\frac{(2*10(m))^{3/2}}{3} - 10(m))$
+
+$ = 20(m)*1.225(\frac{kg}{m^{3}})*9.81(\frac{m}{s^{2}})*(22(m/s))^{2}(\frac{(2*10(m))^{3/2}}{3} - 10(m))$
+
+<<p2c,echo=FALSE>>=
+f = 20*1.225*22^2*((2*10)^(3/2)/3-10)/1000
+@
+
+$\boxed{F_{house} = \Sexpr{round(f,1)}kgf}$
+
+\vspace{5mm}
+
+\section*{Problem 3}
+
+\textit{In cylindrical coordinates $(r, \phi, z)$, two components of a steady
+incompressible viscous flow field are known: $v_{\phi} = 0$ and $v_{z} = -Az$,
+where $A$ is constant and the body force is zero. Using the continuity and
+Navier-Stokes equations in cylindrical coordinates, complete the following:}
+
+\subsection*{(a)}
+
+\textit{Determine $v_{r}$ so that the flow field is smooth and conserves mass.}
+
+The continuity equation in polar coordinates is:
+
+$0 = \frac{1}{r}\frac{\partial}{\partial
+r}(rv_{r})+\frac{1}{r}\frac{\partial}{\partial
+\phi}(v_{\phi})+\frac{\partial}{\partial z}(v_{z})$
+
+$\frac{1}{r}\frac{\partial}{\partial
+r}(rv_{r}) = -\frac{1}{r}\frac{\partial}{\partial
+\phi}(0)-\frac{\partial}{\partial z}(-Az)$
+
+$\frac{1}{r}\frac{\partial}{\partial
+r}(rv_{r}) = \frac{\partial}{\partial z}(Az)$
+
+$\frac{1}{r}\frac{\partial}{\partial
+r}(rv_{r}) = A$
+
+$\boxed{v_{r} = \frac{Ar}{2}}$
+
+\subsection*{(b)}
+
+\textit{If the pressure, $p$, at the origin of coordinates is $P_{0}$, determine $p(r, \phi, z)$ when the density is
+constant.}
+
+The equation for conservation of momentum in the $r$ direction in polar coordinates is:
+
+$v_{r}\frac{\partial}{\partial r}(v_{r})+\frac{1}{r}v_{\theta}\frac{\partial}{\partial \theta}(v_{r})+v_{z}\frac{\partial}{\partial z}(v_{r})-\frac{1}{r}v_{\theta}^{2} = -\frac{1}{\rho}\frac{\partial p}{\partial r}$
+
+$(\frac{Ar}{2})\frac{\partial}{\partial
+r}(\frac{Ar}{2})+\frac{1}{r}(0)\frac{\partial}{\partial \theta}(\frac{Ar}{2})+(-Az)\frac{\partial}{\partial z}(\frac{Ar}{2})-\frac{1}{r}(0)^{2} = -\frac{1}{\rho}\frac{\partial p}{\partial r}$
+
+$(\frac{A^{2}r}{4}) = -\frac{1}{\rho}\frac{\partial p}{\partial r}$
+
+$\partial p = \frac{-\rho A^{2}r}{4}\partial r$
+
+$p(r) = -\frac{\rho A^{2}r^{2}}{8}$
+
+The equation for conservation of momentum in the $\theta$ direction in polar coordinates is:
+
+$v_{r}\frac{\partial}{\partial r}(v_{\theta})+\frac{1}{r}v_{\theta}\frac{\partial}{\partial \theta}(v_{\theta})+v_{z}\frac{\partial}{\partial z}(v_{\theta})-\frac{v_{r}v_{\theta}}{r} = -\frac{1}{\rho r}\frac{\partial p}{\partial \theta}$
+
+$v_{r}\frac{\partial}{\partial r}(0)+\frac{1}{r}v_{\theta}\frac{\partial}{\partial \theta}(0)+v_{z}\frac{\partial}{\partial z}(0)-\frac{v_{r}(0)}{r} = -\frac{1}{\rho r}\frac{\partial p}{\partial \theta}$
+
+$\frac{\partial p}{\partial \theta} = 0$
+
+$p(\theta) = C$
+
+The equation for conservation of momentum in the $z$ direction in polar coordinates is:
+
+$v_{r}\frac{\partial}{\partial r}(v_{z})+\frac{1}{r}v_{\theta}\frac{\partial}{\partial \theta}(v_{z})+v_{z}\frac{\partial}{\partial z}(v_{z})-\frac{v_{r}v_{\theta}}{r} = -\frac{1}{\rho}\frac{\partial p}{\partial z}$
+
+$(\frac{Ar}{2})\frac{\partial}{\partial r}(-Az)+\frac{1}{r}(0)\frac{\partial}{\partial \theta}(-Az)+(-Az)\frac{\partial}{\partial z}(-Az)-\frac{v_{r}(0)}{r} = -\frac{1}{\rho}\frac{\partial p}{\partial z}$
+
+$Az\frac{\partial}{\partial z}(Az) = -\frac{1}{\rho}\frac{\partial p}{\partial z}$
+
+$-\rho A^{2}z = \frac{\partial p}{\partial z}$
+
+$-\rho A^{2}z\partial z = \partial p$
+
+$p(z) = \frac{-\rho A^{2}z}{2}$
+
+Combining the equations above we get:
+
+$p(r,\theta,z) = -\frac{\rho A^{2}r^{2}}{8} -\frac{\rho A^{2}z}{2} + C$
+
+Initial conditions:
+
+$p(r=0,\theta=0,z=0) = P_{0} = -\frac{\rho A^{2}r^{2}}{8} -\frac{\rho A^{2}z}{2} + C$
+
+$P_{0} = -\frac{\rho A^{2}(0)^{2}}{8} -\frac{\rho A^{2}(0)}{2} + C$
+
+$P_{0} = C$
+
+Final equation for pressure is:
+
+$\boxed{p(r,\theta,z) = -\frac{\rho A^{2}r^{2}}{8} -\frac{\rho A^{2}z}{2} + P_{0}}$
+
+\vspace{5mm}
+
+\section*{Problem 4}
+
+\textit{Letting $\mu$ and $\rho$ be constant, take the curl of the Navier-Stokes
+equation in order to derive the transport equation for the vorticity, $\omega = \nabla \times u$}
+
+Navier-Stokes equation at constant $\rho$ and $\mu$ is:
+
+$\rho\frac{\partial\vec{u}}{\partial t} + \rho\vec{u}\cdot\nabla\vec{u} = -\nabla p - \rho g \hat{k} + \mu\nabla^{2}\vec{u}$
+
+Note that $\nabla \times \vec{u} = \vec{\omega}$, we take the curl:
+
+$\nabla\times\rho\frac{\partial\vec{u}}{\partial t} + \nabla\times\rho\vec{u}\cdot\nabla\vec{u} =
+-\nabla\times\nabla p - \nabla\times\rho g \hat{k} + \nabla\times\mu\nabla^{2}\vec{u}$
+
+$\rho\frac{\partial}{\partial t}(\nabla\times\vec{u}) + \nabla\times\rho\vec{u}\cdot\nabla\vec{u} =
+-(0) - (0) + \mu\nabla^{2}(\vec{\nabla\times\vec{u}})$
+
+$\rho\frac{\partial}{\partial t}(\omega) + \nabla\times\rho\vec{u}\cdot\nabla\vec{u} =
+\mu\nabla^{2}(\vec{\omega})$
+
+Substituting $\vec{u}\nabla\vec{u} = \nabla(\frac{1}{2}\left | \vec{u} \right |^{2})-\vec{u}\times\vec{\omega}$:
+
+$\rho\frac{\partial}{\partial t}(\omega) + \nabla\times(\rho\nabla(\frac{1}{2}\left | \vec{u} \right |^{2})-\vec{u}\times\vec{\omega})=
+\mu\nabla^{2}(\vec{\omega})$
+
+Not sure where to go from here
+
+\end{document}
+
+
