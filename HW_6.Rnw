@@ -1,0 +1,83 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{float}
+\usepackage[bookmarks]{hyperref}
+\usepackage{Sweave}
+\usepackage{multicol} % Used for the two-column layout of the document
+\linespread{1.5}
+
+
+
+
+\begin{document}
+\title{MCEN 5041 - Advanced Fluid Mechanics - Homework 6}
+
+\author{Page Weil}
+\maketitle
+\title{}
+
+\hline
+
+\section*{Problem 1}
+
+\textit{A long thin rod of radius $R$ is pulled axially at speed $U$ through an inﬁnite expanse of still ﬂuid. Solve the Navier-Stokes equation for the velocity distribution $u(r)$ in the ﬂuid and comment on a possible paradox.}
+
+\section*{Problem 2}
+
+\textit{An incompressible viscous liquid with density ρ ﬁlls the gap between two large, smooth, parallel walls that are both stationary. The upper and lower walls are located at $y = \pm h$, respectively. An additive in the liquid causes its viscosity to vary in the$y$ direction. Here the ﬂow is driven by a constant nonzero pressure gradient $\frac{\partial p}{\partial x} = const$.}
+
+\subsection*{(a)}
+
+\textit{Assume steady flow, ignore the body force, set $u = [u(y),0,0]$, and use the Navier-Stokes equations to determine $u(y)$ when $\mu = \mu_{0}[1+\gamma(y/h)^{2)]$}
+
+\subsection*{(b)}
+
+\textit{What shear stress us felt on the lower wall?}
+
+\subsection*{(c)}
+
+\textit{What is the volume flow rate (per unit depth into the page), $q = \int_{-h}^{h}y(y)dy$, in the gap when $\gamma = 0$?}
+
+\subsection*{(d)}
+
+\textit{If $-1<\gamma <0$, will the volume flow rate be higher or lower than the case when $\gamma = 0$}
+\section*{Problem 3}
+
+\section*{Problem 3}
+
+\textit{Consider steady laminar ﬂow through the annular space formed by two coaxial tubes aligned with the z-axis. The ﬂow is along the axis of the tubes and is maintained by a pressure gradient $\frac{dp}{dz}$.}
+
+\subsection*{(a)}
+
+\textit{Show rthat the axial velocity at any radius $r$ is:}
+
+\begin{center}
+
+$u_{z}(r) = \frac{1}{4\mu}\frac{dp}{dz}\left[ r^{2} - a^{2} - \frac{b^{2}-a^{2}}{ln(b/a)}ln(r/a)\right]$
+
+\end{center}
+
+\textit{where $a$ is the radius of the inner tube and $b$ is the radius of the outer tube.}
+
+\subsection*{(b)}
+\textit{ Find the radius at which the maximum velocity is reached}
+
+\subsection*{(c)}
+\textit{ Find the volume ﬂow rate}
+
+\subsection*{(d)}
+\textit{Find the stress distribution.}
+
+\section*{Problem 4}
+
+\textit{Consider the laminar ﬂow of a ﬂuid layer falling down a plane inclined at an angle θ with respect to the horizontal. If h is the thickness of the layer in the fully developed stage, show that the velocity distribution is $u(y) = (g/2\nu)(h^{2}-y^{2})sin(\theta)$, where the x-axis points in the direction of the ﬂow along the free surface, and the y-axis points toward the plane.}
+
+\end{document}
