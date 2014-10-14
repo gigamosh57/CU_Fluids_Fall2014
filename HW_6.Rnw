@@ -14,9 +14,6 @@
 \usepackage{multicol} % Used for the two-column layout of the document
 \linespread{1.5}
 
-
-
-
 \begin{document}
 \title{MCEN 5041 - Advanced Fluid Mechanics - Homework 6}
 
@@ -28,15 +25,120 @@
 
 \section*{Problem 1}
 
-\textit{A long thin rod of radius $R$ is pulled axially at speed $U$ through an inﬁnite expanse of still ﬂuid. Solve the Navier-Stokes equation for the velocity distribution $u(r)$ in the ﬂuid and comment on a possible paradox.}
+\textit{A long thin rod of radius $R$ is pulled axially at speed $U$ through an
+infinite expanse of still fluid. Solve the Navier-Stokes equation for the
+velocity distribution $u(r)$ in the fluid and comment on a possible paradox.} 
+
+First use continuity in cylindrical coordinates:
+
+$\frac{1}{r}\frac{\partial}{\partial r}(r u_{r}) + \frac{1}{r}\frac{\partial}{\partial \theta}(v_{\theta}) + \frac{\partial u}{\partial x} = 0$
+
+Assuming all streamlines are in the direction of travel of the rod (no
+perpendicular flow) we find:
+
+$u_{r} = 0$, $u_{\theta} = 0$, therefore continuity reduces to:
+
+$\frac{\partial u}{\partial x} = 0$ so $u = u(r)$
+
+Next we use Navier-Stokes equations in polar coordinates:
+
+The equation for conservation of momentum in the $r$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{r}}{\partial t} + u_{r}\frac{\partial u_{r}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{r}}{\partial \theta} + u_{x}\frac{\partial u_{r}}{\partial z} - \frac{u_{\theta}^{2}}{r} \right) = \frac{\partial p}{\partial r} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} + \frac{\partial^{2}u_{r}}{\partial z^{2}} - \frac{u_{r}}{r^{2}} - \frac{2}{r^{2}}\frac{\partial u_{\theta}}{\partial \theta}\right]$
+
+Since $\frac{\partial u_{r}}{\partial t} = 0$, $u_{r} = 0$, $u_{\theta} = 0$ the
+equation reduces to:
+
+$\frac{\partial p}{\partial r} = 0$ 
+
+The equation for conservation of momentum in the $\theta$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{\theta}}{\partial t} + u_{r}\frac{\partial
+u_{\theta}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{\theta}}{\partial \theta} + u_{x}\frac{\partial u_{\theta}}{\partial z} - \frac{u_{\theta}u_{r}}{r} \right) = -\frac{1}{r}\frac{\partial p}{\partial \theta} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{\theta}}{\partial\theta^{2}} + \frac{\partial^{2}u_{\theta}}{\partial z^{2}} + \frac{2}{r^{2}}\frac{\partial u_{r}}{\partial \theta}- \frac{u_{\theta}}{r^{2}} \right]$
+
+Since $\frac{\partial u_{r}}{\partial t} = 0$, $u_{r} = 0$, $u_{\theta} = 0$ the
+equation reduces to:
+
+$\frac{\partial p}{\partial \theta} = 0$
+
+The equation for conservation of momentum in the $z$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{x}}{\partial t} + u_{r}\frac{\partial
+u_{x}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{x}}{\partial \theta} + u_{x}\frac{\partial u_{x}}{\partial x}\right) = -\frac{\partial p}{\partial x} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{x}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{x}}{\partial\theta^{2}} + \frac{\partial^{2}u_{x}}{\partial z^{2}} \right]$
+
+Since $u_{r} = 0$, $\frac{\partial u_{x}}{\partial t} = 0$,$\frac{\partial
+u_{x}}{\partial \theta} = 0$,$\frac{\partial u_{x}}{\partial x}
+= 0$ the equation reduces to:
+
+$\frac{\partial p}{\partial x} = \mu \left[ \frac{1}{r}\frac{\partial}{\partial
+r}\left(r\frac{\partial u_{x}}{\partial r}\right) \right]$
+
+Since the system is at steady state, $\frac{\partial p}{\partial x} = 0$:
+
+$\frac{\partial}{\partial
+r}\left(r\frac{\partial u_{x}}{\partial r}\right) = 0$
+
+$r\frac{\partial u_{x}}{\partial r} = C_{1}$
+
+$\partial u_{x} = \frac{C_{1}}{r}\partial r$
+
+$u_{x} = C_{1}ln(r) + C_{2}$
+
+For boundary conditions, assume that $u_{x}(r = R) = U$, $u_{x}(r = \infty) =
+0$:
+
+$0 = C_{1}ln(\infty) + C_{2}$, $C_{2}$
+
+$U = C_{1}ln(R) + C_{2}$
+
 
 \section*{Problem 2}
 
-\textit{An incompressible viscous liquid with density ρ ﬁlls the gap between two large, smooth, parallel walls that are both stationary. The upper and lower walls are located at $y = \pm h$, respectively. An additive in the liquid causes its viscosity to vary in the$y$ direction. Here the ﬂow is driven by a constant nonzero pressure gradient $\frac{\partial p}{\partial x} = const$.}
+\textit{An incompressible viscous liquid with density $\rho$ fills the gap
+between two large, smooth, parallel walls that are both stationary. The upper
+and lower walls are located at $y = \pm h$, respectively. An additive in the
+liquid causes its viscosity to vary in the$y$ direction. Here the flow is driven
+by a constant nonzero pressure gradient $\frac{\partial p}{\partial x} = const$.}  
 
 \subsection*{(a)}
 
-\textit{Assume steady flow, ignore the body force, set $u = [u(y),0,0]$, and use the Navier-Stokes equations to determine $u(y)$ when $\mu = \mu_{0}[1+\gamma(y/h)^{2)]$}
+\textit{Assume steady flow, ignore the body force, set $u = [u(y),0,0]$, and use
+the Navier-Stokes equations to determine $u(y)$ when $\mu = \mu_{0}[1+\gamma(y/h)^{2}]$} 
+
+the Navier-Stokes equation in the positive $x$ direction:
+
+$\rho\left( \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial w}{\partial z} \right) = -\frac{\partial p}{\partial x} + \mu\left( \frac{\partial^{2}u_{x}}{\partial x^2} + \frac{\partial^{2}u_{x}}{\partial y^2} + \frac{\partial^{2}u_{x}}{\partial z^2}\right ) + f_{x}$
+
+Reducing
+
+$\frac{\partial p}{\partial x} = \mu\left( \frac{\partial^{2}u_}{\partial y^2}\right )$
+
+$\frac{\partial p}{\partial x}z + C_{1} = \mu\left( \frac{\partial u}{\partial
+y}\right )$
+
+$u(y) = \frac{1}{\mu}\left(\frac{\partial p}{\partial x}\frac{y^{2}}{2} + C_{1}y + C_{2}\right)$
+
+At boundary conditions $u(y = \pm h) = 0$
+
+$0 = \frac{1}{\mu}\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2} + C_{1}h
++ C_{2}\right)$
+
+$-\frac{C_{2}}{\mu} = \frac{1}{\mu}\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2} + C_{1}h\right)$
+
+$-C_{2} = \frac{\partial p}{\partial x}\frac{h^{2}}{2} + C_{1}h$
+
+
+
+$C_{1}h - \frac{\partial p}{\partial x}\frac{h^{2}}{2} = 
+C_{2}$
+
+$0 = \frac{1}{\mu}\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2} - C_{1}h + C_{2}\right)$
+
+
+
+$\frac{C_{2}}{\mu} = \frac{1}{\mu}\left(\frac{\partial p}{\partial
+x}\frac{h^{2}}{2} - C_{1}h\right)$
+
 
 \subsection*{(b)}
 
@@ -44,16 +146,19 @@
 
 \subsection*{(c)}
 
-\textit{What is the volume flow rate (per unit depth into the page), $q = \int_{-h}^{h}y(y)dy$, in the gap when $\gamma = 0$?}
+\textit{What is the volume flow rate (per unit depth into the page), $q =
+\int_{-h}^{h}y(y)dy$, in the gap when $\gamma = 0$?} 
 
 \subsection*{(d)}
 
-\textit{If $-1<\gamma <0$, will the volume flow rate be higher or lower than the case when $\gamma = 0$}
-\section*{Problem 3}
+\textit{If $-1<\gamma <0$, will the volume flow rate be higher or lower than the
+case when $\gamma = 0$}  
 
 \section*{Problem 3}
 
-\textit{Consider steady laminar ﬂow through the annular space formed by two coaxial tubes aligned with the z-axis. The ﬂow is along the axis of the tubes and is maintained by a pressure gradient $\frac{dp}{dz}$.}
+\textit{Consider steady laminar flow through the annular space formed by two
+coaxial tubes aligned with the z-axis. The flow is along the axis of the tubes
+and is maintained by a pressure gradient $\frac{dp}{dz}$.}
 
 \subsection*{(a)}
 
@@ -61,7 +166,7 @@
 
 \begin{center}
 
-$u_{z}(r) = \frac{1}{4\mu}\frac{dp}{dz}\left[ r^{2} - a^{2} - \frac{b^{2}-a^{2}}{ln(b/a)}ln(r/a)\right]$
+$u_{z}(r) = \frac{1}{4\mu}\frac{dp}{dz}\left[ r^{2} - a^{2} - \frac{b^{2}-a^{2}}{ln(b/a)}ln(r/a)\right]$ 
 
 \end{center}
 
@@ -71,13 +176,17 @@ $u_{z}(r) = \frac{1}{4\mu}\frac{dp}{dz}\left[ r^{2} - a^{2} - \frac{b^{2}-a^{2}}
 \textit{ Find the radius at which the maximum velocity is reached}
 
 \subsection*{(c)}
-\textit{ Find the volume ﬂow rate}
+\textit{ Find the volume flow rate}
 
 \subsection*{(d)}
 \textit{Find the stress distribution.}
 
 \section*{Problem 4}
 
-\textit{Consider the laminar ﬂow of a ﬂuid layer falling down a plane inclined at an angle θ with respect to the horizontal. If h is the thickness of the layer in the fully developed stage, show that the velocity distribution is $u(y) = (g/2\nu)(h^{2}-y^{2})sin(\theta)$, where the x-axis points in the direction of the ﬂow along the free surface, and the y-axis points toward the plane.}
+\textit{Consider the laminar flow of a fluid layer falling down a plane inclined
+at an angle $\theta$ with respect to the horizontal. If h is the thickness of
+the layer in the fully developed stage, show that the velocity distribution is
+$u(y) = (g/2\nu)(h^{2}-y^{2})sin(\theta)$, where the x-axis points in the
+direction of the flow along the free surface, and the y-axis points toward the plane.}
 
 \end{document}
