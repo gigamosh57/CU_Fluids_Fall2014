@@ -44,7 +44,7 @@ Next we use Navier-Stokes equations in polar coordinates:
 
 The equation for conservation of momentum in the $r$ direction in polar coordinates is:
 
-$\rho\left( \frac{\partial u_{r}}{\partial t} + u_{r}\frac{\partial u_{r}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{r}}{\partial \theta} + u_{x}\frac{\partial u_{r}}{\partial z} - \frac{u_{\theta}^{2}}{r} \right) = \frac{\partial p}{\partial r} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} + \frac{\partial^{2}u_{r}}{\partial z^{2}} - \frac{u_{r}}{r^{2}} - \frac{2}{r^{2}}\frac{\partial u_{\theta}}{\partial \theta}\right]$
+$\rho\left( \frac{\partial u_{r}}{\partial t} + u_{r}\frac{\partial u_{r}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{r}}{\partial \theta} + u_{z}\frac{\partial u_{r}}{\partial z} - \frac{u_{\theta}^{2}}{r} \right) = \frac{\partial p}{\partial r} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} + \frac{\partial^{2}u_{r}}{\partial z^{2}} - \frac{u_{r}}{r^{2}} - \frac{2}{r^{2}}\frac{\partial u_{\theta}}{\partial \theta}\right]$
 
 Since $\frac{\partial u_{r}}{\partial t} = 0$, $u_{r} = 0$, $u_{\theta} = 0$ the
 equation reduces to:
@@ -54,7 +54,7 @@ $\frac{\partial p}{\partial r} = 0$
 The equation for conservation of momentum in the $\theta$ direction in polar coordinates is:
 
 $\rho\left( \frac{\partial u_{\theta}}{\partial t} + u_{r}\frac{\partial
-u_{\theta}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{\theta}}{\partial \theta} + u_{x}\frac{\partial u_{\theta}}{\partial z} - \frac{u_{\theta}u_{r}}{r} \right) = -\frac{1}{r}\frac{\partial p}{\partial \theta} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{\theta}}{\partial\theta^{2}} + \frac{\partial^{2}u_{\theta}}{\partial z^{2}} + \frac{2}{r^{2}}\frac{\partial u_{r}}{\partial \theta}- \frac{u_{\theta}}{r^{2}} \right]$
+u_{\theta}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{\theta}}{\partial \theta} + u_{z}\frac{\partial u_{\theta}}{\partial z} - \frac{u_{\theta}u_{r}}{r} \right) = -\frac{1}{r}\frac{\partial p}{\partial \theta} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{\theta}}{\partial\theta^{2}} + \frac{\partial^{2}u_{\theta}}{\partial z^{2}} + \frac{2}{r^{2}}\frac{\partial u_{r}}{\partial \theta}- \frac{u_{\theta}}{r^{2}} \right]$
 
 Since $\frac{\partial u_{r}}{\partial t} = 0$, $u_{r} = 0$, $u_{\theta} = 0$ the
 equation reduces to:
@@ -63,33 +63,42 @@ $\frac{\partial p}{\partial \theta} = 0$
 
 The equation for conservation of momentum in the $z$ direction in polar coordinates is:
 
-$\rho\left( \frac{\partial u_{x}}{\partial t} + u_{r}\frac{\partial
-u_{x}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{x}}{\partial \theta} + u_{x}\frac{\partial u_{x}}{\partial x}\right) = -\frac{\partial p}{\partial x} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{x}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{x}}{\partial\theta^{2}} + \frac{\partial^{2}u_{x}}{\partial z^{2}} \right]$
+$\rho\left( \frac{\partial u_{z}}{\partial t} + u_{r}\frac{\partial
+u_{z}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{z}}{\partial \theta} + u_{z}\frac{\partial u_{z}}{\partial x}\right) = -\frac{\partial p}{\partial x} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{z}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{z}}{\partial\theta^{2}} + \frac{\partial^{2}u_{z}}{\partial z^{2}} \right]$
 
-Since $u_{r} = 0$, $\frac{\partial u_{x}}{\partial t} = 0$,$\frac{\partial
-u_{x}}{\partial \theta} = 0$,$\frac{\partial u_{x}}{\partial x}
+Since $u_{r} = 0$, $\frac{\partial u_{z}}{\partial t} = 0$,$\frac{\partial
+u_{z}}{\partial \theta} = 0$,$\frac{\partial u_{z}}{\partial x}
 = 0$ the equation reduces to:
 
 $\frac{\partial p}{\partial x} = \mu \left[ \frac{1}{r}\frac{\partial}{\partial
-r}\left(r\frac{\partial u_{x}}{\partial r}\right) \right]$
+r}\left(r\frac{\partial u_{z}}{\partial r}\right) \right]$
 
 Since the system is at steady state, $\frac{\partial p}{\partial x} = 0$:
 
 $\frac{\partial}{\partial
-r}\left(r\frac{\partial u_{x}}{\partial r}\right) = 0$
+r}\left(r\frac{\partial u_{z}}{\partial r}\right) = 0$
 
-$r\frac{\partial u_{x}}{\partial r} = C_{1}$
+$r\frac{\partial u_{z}}{\partial r} = C_{1}$
 
-$\partial u_{x} = \frac{C_{1}}{r}\partial r$
+$\partial u_{z} = \frac{C_{1}}{r}\partial r$
 
-$u_{x} = C_{1}ln(r) + C_{2}$
+$u_{z} = C_{1}ln(r) + C_{2}$
 
-For boundary conditions, assume that $u_{x}(r = R) = U$, $u_{x}(r = \infty) =
+For boundary conditions, assume that $u_{z}(r = R) = U$, $u_{z}(r = \infty) =
 0$:
 
-$0 = C_{1}ln(\infty) + C_{2}$, $C_{2}$
+$0 = C_{1}ln(\infty) + C_{2}$
 
-$U = C_{1}ln(R) + C_{2}$
+This means that $C_{1} = 0$ and $C_{2} = 0$
+
+This does not seem to make sense.  Intuitively the flow is $U$ at the surface
+of the rod itself and slowly decaying to 0 at an infinite distance away.  This
+may be due to poorly defined boundary conditions.
+
+One paradox to consider is that, at steady state, the infinite fluid is not
+still.  After a very long time all fluid is moving infintesimally in the
+direction the rod is moving.  
+
 
 
 \section*{Problem 2}
@@ -111,9 +120,11 @@ $\rho\left( \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\f
 
 Reducing
 
+$f_{x} = 0$
+
 $\frac{\partial p}{\partial x} = \mu\left( \frac{\partial^{2}u_}{\partial y^2}\right )$
 
-$\frac{\partial p}{\partial x}z + C_{1} = \mu\left( \frac{\partial u}{\partial
+$\frac{\partial p}{\partial x}y + C_{1} = \mu\left( \frac{\partial u}{\partial
 y}\right )$
 
 $u(y) = \frac{1}{\mu}\left(\frac{\partial p}{\partial x}\frac{y^{2}}{2} + C_{1}y + C_{2}\right)$
@@ -123,36 +134,99 @@ At boundary conditions $u(y = \pm h) = 0$
 $0 = \frac{1}{\mu}\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2} + C_{1}h
 + C_{2}\right)$
 
-$-\frac{C_{2}}{\mu} = \frac{1}{\mu}\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2} + C_{1}h\right)$
+$C_{1} = \frac{-1}{h}\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2}
++ C_{2}\right)$
 
-$-C_{2} = \frac{\partial p}{\partial x}\frac{h^{2}}{2} + C_{1}h$
+$0 = \frac{1}{\mu}\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2} - C_{1}h +
+C_{2}\right)$
 
+$0 = \left(\frac{\partial p}{\partial x}\frac{h^{2}}{2} - h*\frac{-1}{h}\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2}
++ C_{2}\right) +
+C_{2}\right)$
 
+$0 = \left(\frac{\partial p}{\partial x}\frac{h^{2}}{2} +\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2}
++ C_{2}\right) +
+C_{2}\right)$
 
-$C_{1}h - \frac{\partial p}{\partial x}\frac{h^{2}}{2} = 
-C_{2}$
+$C_{2} = -\frac{\partial p}{\partial x}\frac{h^{2}}{2}$
 
-$0 = \frac{1}{\mu}\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2} - C_{1}h + C_{2}\right)$
+$0 = \frac{1}{\mu}\left(\frac{\partial p}{\partial x}\frac{h^{2}}{2} + C_{1}h
++ (-\frac{\partial p}{\partial x}\frac{h^{2}}{2})\right)$
 
+$C_{1} = 0$
 
-
-$\frac{C_{2}}{\mu} = \frac{1}{\mu}\left(\frac{\partial p}{\partial
-x}\frac{h^{2}}{2} - C_{1}h\right)$
-
+$\boxed{u(y) = \frac{1}{2\mu}\frac{\partial p}{\partial x}\left(y^{2}
+- h^{2}\right)}$
 
 \subsection*{(b)}
 
 \textit{What shear stress us felt on the lower wall?}
 
+$\tau = \mu\left( \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}  \right)$
+
+$\tau = \mu\left(\frac{\partial u}{\partial y}\right)$
+
+$\frac{\partial u}{\partial y} = \frac{\partial}{\partial y}\left( \frac{1}{2\mu}\frac{\partial p}{\partial x}\left(y^{2}
+- h^{2}\right) \right)$
+
+Since $\mu = \mu_{0}[1+\gamma(y/h)^{2}]$
+
+$\frac{\partial u}{\partial y} = \frac{\partial}{\partial y}\left( \frac{\left(y^{2}
+- h^{2}\right)}{2(\mu_{0}[1+\gamma(y/h)^{2}])}\frac{\partial p}{\partial x} \right)$
+
+$\frac{\partial u}{\partial y} = \frac{\partial}{\partial y}\left( \frac{\left(y^{2}
+- h^{2}\right)}{2(\mu_{0}[1+\gamma(y/h)^{2}])}\frac{\partial p}{\partial x} \right)$
+
+$\frac{\partial u}{\partial y} = \frac{\partial p}{\partial x} \frac{(\gamma +
+1)h^{2}y}{\mu_{0}(1+\gamma(y/h)^{2})^{2}}$
+
+$\tau = (\mu_{0}[1+\gamma(y/h)^{2}])\left(\frac{\partial p}{\partial x} \frac{(\gamma +
+1)h^{2}y}{\mu_{0}(1+\gamma(y/h)^{2})^{2}}\right)$
+
+$\tau = \left(\frac{\partial p}{\partial x} \frac{(\gamma +
+1)h^{2}y}{(1+\gamma(y/h)^{2})}\right)$
+
+At the lower wall where $y = - h$: 
+
+$\boxed{\tau = \left(\frac{\partial p}{\partial x} \frac{(\gamma +
+1)h^{2}(-h)}{(1+\gamma(-h/h)^{2})}\right) = -\left(\frac{\partial p}{\partial x} \frac{(\gamma +
+1)}{(1+\gamma)}\right) = -\frac{\partial p}{\partial x}}$
+
+This shows that $\tau$ is not dependent on $\mu$ or any characteristics of $\mu$
+for this non-newtonian fluid.
+
 \subsection*{(c)}
 
 \textit{What is the volume flow rate (per unit depth into the page), $q =
-\int_{-h}^{h}y(y)dy$, in the gap when $\gamma = 0$?} 
+\int_{-h}^{h}u(y)dy$, in the gap when $\gamma = 0$?} 
+
+$u(y) = \frac{1}{2\mu}\frac{\partial p}{\partial x}\left(y^{2}
+- h^{2}\right)$
+
+Since $\gamma = 0$, $\mu = \mu_{0}$ 
+
+$u(y) = \frac{1}{2\mu_{0}}\frac{\partial p}{\partial x}\left(y^{2}
+- h^{2}\right)$
+
+$q = \int_{-h}^{h}\left( \frac{1}{2\mu_{0}}\frac{\partial p}{\partial x}\left(y^{2}
+- h^{2}\right) \right)dy = \frac{1}{2\mu_{0}}\frac{\partial p}{\partial x}\left(y^{3}/3
+- h^{2}*y\right)\big|^{h}_{-h}$
+
+$q = \frac{1}{2\mu_{0}}\frac{\partial p}{\partial x}\left(((h)^{3}/3
+- h^{2}*h)-((-h)^{3}/3
+- h^{2}*(-h))\right)\big|^{h}_{-h} = \frac{1}{2\mu_{0}}\frac{\partial p}{\partial x}\left(2/3(h)^{3}\right)$
+
+$\boxed{q = \frac{h^{3}}{3\mu_{0}}\frac{\partial p}{\partial x}}$
 
 \subsection*{(d)}
 
 \textit{If $-1<\gamma <0$, will the volume flow rate be higher or lower than the
 case when $\gamma = 0$}  
+
+If $-1<\gamma <0$ then for the entire flow $\mu < \mu_{0}$.  The lower viscosity
+will cause a larger flow rate for the same pressure differential since a lower
+$\mu$ means less energy lost to advection.
+
 
 \section*{Problem 3}
 
@@ -172,14 +246,150 @@ $u_{z}(r) = \frac{1}{4\mu}\frac{dp}{dz}\left[ r^{2} - a^{2} - \frac{b^{2}-a^{2}}
 
 \textit{where $a$ is the radius of the inner tube and $b$ is the radius of the outer tube.}
 
+First use continuity in cylindrical coordinates:
+
+$\frac{1}{r}\frac{\partial}{\partial r}(r u_{r}) + \frac{1}{r}\frac{\partial}{\partial \theta}(v_{\theta}) + \frac{\partial u}{\partial z} = 0$
+
+Assuming all streamlines are in the direction of travel of the rod (no
+perpendicular flow) we find:
+
+$u_{r} = 0$, $u_{\theta} = 0$, therefore continuity reduces to:
+
+$\frac{\partial u}{\partial z} = 0$ so $u = u(r)$
+
+Next we use Navier-Stokes equations in polar coordinates:
+
+The equation for conservation of momentum in the $r$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{r}}{\partial t} + u_{r}\frac{\partial u_{r}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{r}}{\partial \theta} + u_{z}\frac{\partial u_{r}}{\partial z} - \frac{u_{\theta}^{2}}{r} \right) = \frac{\partial p}{\partial r} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} + \frac{\partial^{2}u_{r}}{\partial z^{2}} - \frac{u_{r}}{r^{2}} - \frac{2}{r^{2}}\frac{\partial u_{\theta}}{\partial \theta}\right]$
+
+Since $\frac{\partial u_{r}}{\partial t} = 0$, $u_{r} = 0$, $u_{\theta} = 0$ the
+equation reduces to:
+
+$\frac{\partial p}{\partial r} = 0$ 
+
+The equation for conservation of momentum in the $\theta$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{\theta}}{\partial t} + u_{r}\frac{\partial
+u_{\theta}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{\theta}}{\partial \theta} + u_{z}\frac{\partial u_{\theta}}{\partial z} - \frac{u_{\theta}u_{r}}{r} \right) = -\frac{1}{r}\frac{\partial p}{\partial \theta} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{\theta}}{\partial\theta^{2}} + \frac{\partial^{2}u_{\theta}}{\partial z^{2}} + \frac{2}{r^{2}}\frac{\partial u_{r}}{\partial \theta}- \frac{u_{\theta}}{r^{2}} \right]$
+
+Since $\frac{\partial u_{r}}{\partial t} = 0$, $u_{r} = 0$, $u_{\theta} = 0$ the
+equation reduces to:
+
+$\frac{\partial p}{\partial \theta} = 0$
+
+The equation for conservation of momentum in the $z$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{z}}{\partial t} + u_{r}\frac{\partial
+u_{z}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{z}}{\partial \theta} + u_{z}\frac{\partial u_{z}}{\partial z}\right) = -\frac{\partial p}{\partial z} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{z}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{z}}{\partial\theta^{2}} + \frac{\partial^{2}u_{z}}{\partial z^{2}} \right]$
+
+Since $u_{r} = 0$, $\frac{\partial u_{z}}{\partial t} = 0$,$\frac{\partial
+u_{z}}{\partial \theta} = 0$,$\frac{\partial u_{z}}{\partial z}
+= 0$ the equation reduces to:
+
+$\frac{\partial p}{\partial z} = \mu \left[ \frac{1}{r}\frac{\partial}{\partial
+r}\left(r\frac{\partial u_{z}}{\partial r}\right) \right]$
+
+Integrating we find:
+
+$\frac{r}{\mu}\frac{\partial p}{\partial z} \partial r = \partial\left(r\frac{\partial u_{z}}{\partial r}\right)$
+
+$\frac{r^{2}}{2\mu}\frac{\partial p}{\partial z} = r\frac{\partial u_{z}}{\partial r} + C_{1}$
+
+$\frac{r}{2\mu}\frac{\partial p}{\partial z} +\frac{C_{1}}{r}= \frac{\partial u_{z}}{\partial r}$
+
+$\partial u_{z} = \left(\frac{r}{2\mu}\frac{\partial p}{\partial z} +\frac{C_{1}}{r} \right )\partial r$
+
+$\partial u_{z} = \left(\frac{r}{2\mu}\frac{\partial p}{\partial z}
++\frac{C_{1}}{r} \right )\partial r$
+
+$u_{z} = \frac{r^{2}}{4\mu}\frac{\partial p}{\partial z}
++C_{1}ln(r) +C_{2}$
+
+For boundary conditions we have $u_{z}(r = a) = 0$, $u_{z}(r = b) = 0$
+
+$u_{z}(r = a) = 0 = \frac{a^{2}}{4\mu}\frac{\partial p}{\partial z}
++C_{1}ln(a) +C_{2}$
+
+$C_{2} = -\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z}
+-C_{1}ln(a)$
+
+$u_{z}(r = b) = 0 = \frac{b^{2}}{4\mu}\frac{\partial p}{\partial z}
++C_{1}ln(b) +C_{2} = \frac{b^{2}}{4\mu}\frac{\partial p}{\partial z}
++C_{1}ln(b) -\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z}
+-C_{1}ln(a)$
+
+$\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z} - \frac{b^{2}}{4\mu}\frac{\partial p}{\partial z}
+ = C_{1}ln(b/a)$
+ 
+$C_{1} = \frac{1}{ln(b/a)}\left(\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z} - \frac{b^{2}}{4\mu}\frac{\partial p}{\partial z}\right)$
+
+$C_{2} = -\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z}
+-C_{1}ln(a) = -\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z}
+-\left(\frac{1}{ln(b/a)}\left(\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z} - \frac{b^{2}}{4\mu}\frac{\partial p}{\partial z}\right)\right)ln(a)$
+
+$u_{z}(r) = \frac{a^{2}}{4\mu}\frac{\partial p}{\partial z}
++C_{1}ln(a) +C_{2}$
+
+$u_{z}(r) = \frac{r^{2}}{4\mu}\frac{\partial p}{\partial z}
++\left (\frac{1}{ln(b/a)}\left(\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z} - \frac{b^{2}}{4\mu}\frac{\partial p}{\partial z}\right) \right )ln(r) +\left ( -\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z}
+-\left(\frac{1}{ln(b/a)}\left(\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z} - \frac{b^{2}}{4\mu}\frac{\partial p}{\partial z}\right)\right)ln(a) \right )$
+
+$u_{z}(r) = \frac{r^{2}}{4\mu}\frac{\partial p}{\partial z}
+-\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z}
++\left (\frac{1}{ln(b/a)}\left(\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z} - \frac{b^{2}}{4\mu}\frac{\partial p}{\partial z}\right) \right )ln(r) -\left(\frac{1}{ln(b/a)}\left(\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z} - \frac{b^{2}}{4\mu}\frac{\partial p}{\partial z}\right)ln(a) \right )$
+
+$u_{z}(r) = \frac{r^{2}}{4\mu}\frac{\partial p}{\partial z}
+-\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z}
++\left (\frac{1}{ln(b/a)}\left(\frac{a^{2}}{4\mu}\frac{\partial p}{\partial z} - \frac{b^{2}}{4\mu}\frac{\partial p}{\partial z}\right) \right )ln(r/a)$
+
+$\boxed{u_{z}(r) = \frac{1}{4\mu}\frac{\partial p}{\partial z}\left (r^{2} - a^{2} + \left (\frac{a^{2}-b^{2}}{ln(b/a)} \right )ln(r/a) \right )}$
+
+
 \subsection*{(b)}
 \textit{ Find the radius at which the maximum velocity is reached}
 
+The maximum velocity will be found when $\frac{\partial u_{z}}{\partial r} = 0$:
+
+$\frac{\partial u_{z}}{\partial r} = \frac{\partial}{\partial r}\left ( \frac{1}{4\mu}\frac{\partial p}{\partial z}\left (r^{2} - a^{2} + \left (\frac{a^{2}-b^{2}}{ln(b/a)} \right )ln(r/a) \right ) \right)$
+
+$\frac{\partial u_{z}}{\partial r} =
+\frac{1}{4\mu}\frac{\partial p}{\partial z}\left (2r + \left (\frac{a^{2}-b^{2}}{ln(b/a)} \right )\frac{1}{r} \right )$
+
+$0 = \frac{1}{4\mu}\frac{\partial p}{\partial z}\left (2r + \left (\frac{a^{2}-b^{2}}{ln(b/a)} \right )\frac{1}{r} \right )$
+
+$\frac{1}{4\mu}\frac{\partial p}{\partial z}(-2r^{2}) = \frac{1}{4\mu}\frac{\partial p}{\partial z}\left (\frac{a^{2}-b^{2}}{ln(b/a)} \right ) $
+
+$\boxed{r = \frac{b^{2}-a^{2}}{2ln(b/a)}}$
+
 \subsection*{(c)}
+
 \textit{ Find the volume flow rate}
+
+The volume flow rate is defined as $q = \int^{b}_{a}2\pi r u_{z}(r)\partial r$
+
+$q = \int^{b}_{a}2\pi r \frac{1}{4\mu}\frac{\partial p}{\partial z}\left (r^{2} - a^{2} + \left (\frac{a^{2}-b^{2}}{ln(b/a)} \right )ln(r/a) \right )\right )\partial r$
+
+$q = \int^{b}_{a}2\pi r \frac{1}{4\mu}\frac{\partial p}{\partial z}(r^{2}) - \int^{b}_{a}2\pi r \frac{1}{4\mu}\frac{\partial p}{\partial z}(a^{2}) + \int^{b}_{a}2\pi r \frac{1}{4\mu}\frac{\partial p}{\partial z}\left (\frac{a^{2}-b^{2}}{ln(b/a)} \right )ln(r/a) \right )\partial r$
+
+$q = \frac{\pi r^{3}}{6\mu}\frac{\partial p}{\partial z}\Big|_{a}^{b} - \frac{\pi r^{2}a^{2}}{4\mu}\frac{\partial p}{\partial z}\Big|_{a}^{b} + \frac{\pi}{8\mu}\frac{\partial p}{\partial z}\left (\frac{a^{2}-b^{2}}{ln(b/a)} \right )r^{2}*(2ln(r/a)-1) \right )\Big|_{a}^{b}$
+
+$q = \frac{\pi (b^{3}-a^{3})}{6\mu}\frac{\partial p}{\partial z} - \frac{\pi (b^{2}-a^{2})a^{2}}{4\mu}\frac{\partial p}{\partial z} + \frac{\pi}{8\mu}\frac{\partial p}{\partial z}\left (\frac{a^{2}-b^{2}}{ln(b/a)} \right )(b^{2}*(ln(b^{2}/a^{2})-1) - a^{2}*(ln(a^{2}/a^{2})-1))$
+
+$q = \frac{\pi}{2\mu} \frac{\partial p}{\partial z}\left (\frac{(b^{3}-a^{3})}{3} - \frac{(b^{2}-a^{2})a^{2}}{2} + \frac{1}{4}\left (\frac{(a^{2}-b^{2})b^{2}}{ln(b/a)} \right )*ln(b^{2}/a^{2})-\frac{1}{4}\left (\frac{(a^{2}-b^{2})b^{2}}{ln(b/a)} \right ) \right )$
+
+$\boxed{q = \frac{\pi}{2\mu} \frac{\partial p}{\partial z}\left (\frac{(b^{3}-a^{3})}{3} + \frac{(a^{4}-b^{4})}{2} - \frac{1}{4}\frac{(a^{2}-b^{2})b^{2}}{ln(b/a)} \right )}$
 
 \subsection*{(d)}
 \textit{Find the stress distribution.}
+
+The equation for stress in cylindrical coordinates is: $\tau_{rz} = \mu\left (
+\frac{\partial u_{r}}{\partial z} + \frac{\partial u_{z}}{\partial r} \right)$. 
+Since $u_{r} = 0$ we find:
+
+$\tau_{rz} = \mu\left (\frac{\partial u_{z}}{\partial r} \right) =  \mu\frac{\partial}{\partial r}\left ( \frac{1}{4\mu}\frac{\partial p}{\partial z}\left (r^{2} - a^{2} + \left (\frac{a^{2}-b^{2}}{ln(b/a)} \right )ln(r/a) \right )\right)$
+
+$\boxed{\tau_{rz} = \mu\frac{1}{4\mu}\frac{\partial p}{\partial z}\left (2r + \left (\frac{a^{2}-b^{2}}{ln(b/a)} \right )\frac{1}{r} \right )}$
 
 \section*{Problem 4}
 
@@ -188,5 +398,41 @@ at an angle $\theta$ with respect to the horizontal. If h is the thickness of
 the layer in the fully developed stage, show that the velocity distribution is
 $u(y) = (g/2\nu)(h^{2}-y^{2})sin(\theta)$, where the x-axis points in the
 direction of the flow along the free surface, and the y-axis points toward the plane.}
+
+
+First we use the Navier-Stokes equation in the positive $x$ direction:
+
+$\rho\left( \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial w}{\partial z} \right) = -\frac{\partial p}{\partial x} + \mu\left( \frac{\partial^{2}u_{x}}{\partial x^2} + \frac{\partial^{2}u_{x}}{\partial y^2} + \frac{\partial^{2}u_{x}}{\partial z^2}\right ) + f_{x}$
+
+Reducing by $\frac{\partial u}{\partial t} = 0$,$v = 0$ $\frac{\partial u}{\partial x}
+= 0$, $\frac{\partial w}{\partial z} = 0$ we get:
+
+$\frac{\partial p}{\partial x} = \mu\left(\frac{\partial^{2}u_{x}}{\partial y^2}\right ) + f_{x}$
+
+Since the fluid not pressure driven, $\frac{\partial p}{\partial x} = 0$
+
+The body force is equal to $f_{x} = -g*sin(\theta)$
+
+$\mu\left(\frac{\partial^{2}u_{x}}{\partial y^2}\right ) = g*sin(\theta)$
+
+$\frac{\partial^{2}u_{x}}{\partial y^2} = \frac{g}{\mu}*sin(\theta)$
+
+$\frac{\partial u_{x}}{\partial y} = \frac{g}{\mu}*sin(\theta)*y + C_{1}$
+
+$u_{x} = \frac{g}{\mu}*sin(\theta)*\frac{y^{2}}{2} + C_{1}y + C_{2}$
+
+Assuming a no-slip condition at the lower boundary $u_{x}(y = 0) = 0$ 
+
+$0 = C_{2}$
+
+At the surface, assume the fluid is falling down at $u_{x}(y = h) = U_{max}$
+
+$U_{max} = \frac{g}{\mu}*sin(\theta)*\frac{h^{2}}{2} + C_{1}(h)$
+
+$C_{1} = \frac{U_{max}}{h} - \frac{g}{\mu}*sin(\theta)*\frac{h}{2}$
+
+$\boxed{u_{x} = \frac{g}{\mu}*sin(\theta)*\frac{y^{2}}{2} + (\frac{U_{max}}{h} - \frac{g}{\mu}*sin(\theta)*\frac{h}{2})y}$
+
+Not sure how to solve for $U_{max}$
 
 \end{document}
