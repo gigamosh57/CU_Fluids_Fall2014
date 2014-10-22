@@ -1,0 +1,152 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{float}
+\usepackage[bookmarks]{hyperref}
+\usepackage{Sweave}
+\usepackage{multicol} % Used for the two-column layout of the document
+\linespread{1.5}
+
+\begin{document}
+\title{MCEN 5041 - Advanced Fluid Mechanics - Homework 7}
+
+\author{Page Weil}
+\maketitle
+\title{}
+
+\hline
+
+\section*{Problem 1}
+
+\textit{Two-dimensional flow between flat non-parallel plates can be formulated
+in terms of a normalized angular coordinate $\nu = \theta/ \alpha$, where
+$\alpha$ is the half angle between the plates, and a normalized radial velocity
+$u_{r}(r, \theta) = u_{max}(r)f(\nu)$, where $\abs{\theta} \leq \alpha$. Here, $u_{0} = 0$ and the Reynolds number is $Re = u_{max}r\alpha/\nu$}
+
+\subsection*{(a)}
+
+\textit{Using the $r$ and $\theta$ continuity and Navier-Stokes equations in polar coordinates, show that
+$f''+ Re\alpha f^{2} + 4\alpha 2f = constant$ (Hint: you can use the continuity equation to
+obtain $u_{max}(r)$ and you can eliminate the pressure from the Navier-Stokes
+equations by "cross-differentiating" the equations with respect to $r$ and
+$\theta$)}
+
+The continuity equation in cylindrical coordinates is the following:
+$\frac{1}{\rho}\frac{\partial \rho}{\partial t} + \frac{1}{r}\frac{\partial (r u_{r})}{\partial r} + \frac{1}{r} \frac{\partial u_{\theta}}{\partial \theta} + \frac{\partial v_{z}}{\partial z} = 0$
+
+Since $\frac{\partial \rho}{\partial t} = 0$ and $\frac{\partialv_{z}}{\partial z} = 0$ and $u_{\theta} = 0$
+
+$\frac{\partial (r u_{r})}{\partial r} = 0$
+
+Integrating:
+
+$\frac{r^{2}}{2}u_{r} = C$
+
+$u_{r} = \frac{2*C}{r^{2}}$
+
+$\frac{\partial u_{r}}{\partial r} = \frac{-4*C}{r^{3}}$
+
+The equation for conservation of momentum in the $r$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{r}}{\partial t} + u_{r}\frac{\partial u_{r}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{r}}{\partial \theta} + u_{z}\frac{\partial u_{r}}{\partial z} - \frac{u_{\theta}^{2}}{r} \right) = \frac{\partial p}{\partial r} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} + \frac{\partial^{2}u_{r}}{\partial z^{2}} - \frac{u_{r}}{r^{2}} - \frac{2}{r^{2}}\frac{\partial u_{\theta}}{\partial \theta}\right]$
+
+Simplifying we find:
+
+$-\frac{\partial p}{\partial r} =  \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{u_{r}}{r^{2}}\right]$
+
+Plugging in from continuity:
+
+$-\frac{\partial p}{\partial r} =  \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(\frac{-4*C}{r^{2}}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{-4*C}{r^{5}}\right]$
+
+$-\frac{\partial p}{\partial r} =  \mu \left[ \frac{1}{r}\frac{8*C}{r^{3}} +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{-4*C}{r^{5}}\right]$
+
+$-\frac{\partial p}{\partial r} =  \mu \left[\frac{8*C}{r^{4}} +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{-4*C}{r^{5}}\right]$
+
+
+
+
+The equation for conservation of momentum in the $\theta$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{\theta}}{\partial t} + u_{r}\frac{\partial
+u_{\theta}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{\theta}}{\partial \theta} + u_{z}\frac{\partial u_{\theta}}{\partial z} - \frac{u_{\theta}u_{r}}{r} \right) = -\frac{1}{r}\frac{\partial p}{\partial \theta} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{\theta}}{\partial\theta^{2}} + \frac{\partial^{2}u_{\theta}}{\partial z^{2}} + \frac{2}{r^{2}}\frac{\partial u_{r}}{\partial \theta}- \frac{u_{\theta}}{r^{2}} \right]$
+
+
+The equation for conservation of momentum in 2-D
+$\frac{\partial u}{\partial t} = -\frac{1}{\rho}\frac{\partial P}{\partial x} + \frac{\mu}{\rho}\left(\frac{\partial^{2} u}{\partial y^{2}} + \frac{\partial^{2} u}{\partial z^{2}}  \right)$
+
+
+
+\subsection*{(b)}
+
+\textit{Find $f(\nu)$ for symmetric creeping flow, that is $Re = 0 = f(+1) =
+f(-1)$ and $f(0) = 1$}
+
+\subsection*{(c)}
+
+\textit{Above what value of $\alpha$ will a back-flow always occur?}
+
+\vspace{5mm}
+
+\section*{Problem 2}
+
+\textit{For plane polar coordinates with circular streamlines, show that the
+only non-zero vorticity component, $\omega = \omega_{z}(r)$, satisfies the
+equation:}
+
+\begin{center}
+
+$\frac{\partial\omega}{\partial t} = \nu\left(\frac{\partial^{2}\omega}{\partial r^{2}} + \frac{1}{r}\frac{\partial\omega}{\partial r}\right)$
+
+\end{center}
+
+\textit{Solve this equation for the decay of a line vortex initially
+concentrated at the origin with circulation $\Gamma_{0} = \int\omega dA$.  Solve for $\omega(r,t)$ and show that }
+
+\begin{center}
+
+$v_{\theta} = \frac{\Gamma_{0}}{2\pi r}\left[1 - exp\left( -\frac{r^{2}}{4\nu t} \right)  \right]$
+
+\end{center}
+
+\vspace{5mm}
+
+\section*{Problem 3	}
+
+\textit{A long, uniformly porous cyliner of radius $R$ exudes fluid at velocity
+$U_{0}$ (in the radial direction) into an unbounded fluid of constant $\rho$ and $\mu$. 
+the pressure at the cylinder surface is $p_{0}$.  Assuming purely radial outflow
+with negligible gravity, find the velocity and pressure distributions in the
+fluid.}
+
+\section*{Misc equations I might need}
+\subsection*{Navier Stokes in Cylindrical}
+
+The equation for conservation of momentum in the $r$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{r}}{\partial t} + u_{r}\frac{\partial u_{r}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{r}}{\partial \theta} + u_{z}\frac{\partial u_{r}}{\partial z} - \frac{u_{\theta}^{2}}{r} \right) = \frac{\partial p}{\partial r} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} + \frac{\partial^{2}u_{r}}{\partial z^{2}} - \frac{u_{r}}{r^{2}} - \frac{2}{r^{2}}\frac{\partial u_{\theta}}{\partial \theta}\right]$
+
+The equation for conservation of momentum in the $\theta$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{\theta}}{\partial t} + u_{r}\frac{\partial
+u_{\theta}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{\theta}}{\partial \theta} + u_{z}\frac{\partial u_{\theta}}{\partial z} - \frac{u_{\theta}u_{r}}{r} \right) = -\frac{1}{r}\frac{\partial p}{\partial \theta} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{\theta}}{\partial\theta^{2}} + \frac{\partial^{2}u_{\theta}}{\partial z^{2}} + \frac{2}{r^{2}}\frac{\partial u_{r}}{\partial \theta}- \frac{u_{\theta}}{r^{2}} \right]$
+
+The equation for conservation of momentum in the $z$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{z}}{\partial t} + u_{r}\frac{\partial
+u_{z}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{z}}{\partial \theta} + u_{z}\frac{\partial u_{z}}{\partial x}\right) = -\frac{\partial p}{\partial x} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{z}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{z}}{\partial\theta^{2}} + \frac{\partial^{2}u_{z}}{\partial z^{2}} \right]$
+
+\subsection*{Navier Stokes in 2-D}
+
+$\frac{\partial u}{\partial t} = -\frac{1}{\rho}\frac{\partial P}{\partial x} + \frac{\mu}{\rho}\left(\frac{\partial^{2} u}{\partial y^{2}} + \frac{\partial^{2} u}{\partial z^{2}}  \right)$
+
+\subsection*{Continuity in 2-D}
+
+\end{document}
+
