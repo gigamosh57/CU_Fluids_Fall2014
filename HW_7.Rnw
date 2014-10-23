@@ -39,19 +39,22 @@ equations by "cross-differentiating" the equations with respect to $r$ and
 $\theta$)}
 
 The continuity equation in cylindrical coordinates is the following:
-$\frac{1}{\rho}\frac{\partial \rho}{\partial t} + \frac{1}{r}\frac{\partial (r u_{r})}{\partial r} + \frac{1}{r} \frac{\partial u_{\theta}}{\partial \theta} + \frac{\partial v_{z}}{\partial z} = 0$
 
-Since $\frac{\partial \rho}{\partial t} = 0$ and $\frac{\partialv_{z}}{\partial z} = 0$ and $u_{\theta} = 0$
+$\frac{1}{\rho}\frac{\partial \rho}{\partial t} + \frac{1}{r}\frac{\partial }{\partial r}(r u_{r}) + \frac{1}{r} \frac{\partial u_{\theta}}{\partial \theta} + \frac{\partial u_{z}}{\partial z} = 0$
 
-$\frac{\partial (r u_{r})}{\partial r} = 0$
+Since $\frac{\partial \rho}{\partial t} = 0$ and $\frac{\partial u_{z}}{\partial z} = 0$ and $u_{\theta} = 0$
+
+$\frac{\partial }{\partial r}(r u_{r}) = 0$
 
 Integrating:
 
-$\frac{r^{2}}{2}u_{r} = C$
+$r*u_{r} = C$
 
-$u_{r} = \frac{2*C}{r^{2}}$
+$u_{r} = \frac{C}{r}$
 
-$\frac{\partial u_{r}}{\partial r} = \frac{-4*C}{r^{3}}$
+And
+
+$\frac{\partial u_{r}}{\partial r} = C*ln(r)$
 
 The equation for conservation of momentum in the $r$ direction in polar coordinates is:
 
@@ -59,17 +62,15 @@ $\rho\left( \frac{\partial u_{r}}{\partial t} + u_{r}\frac{\partial u_{r}}{\part
 
 Simplifying we find:
 
-$-\frac{\partial p}{\partial r} =  \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{u_{r}}{r^{2}}\right]$
+$\rho\left(u_{r}\frac{\partial u_{r}}{\partial r} \right) = \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{u_{r}}{r^{2}}\right]$
+
+$\rho\left(r^{2}u_{r}\frac{\partial u_{r}}{\partial r} \right) = \mu \left[r\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{\partial^{2}u_{r}}{\partial\theta^{2}} -u_{r}\right]$
 
 Plugging in from continuity:
 
-$-\frac{\partial p}{\partial r} =  \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(\frac{-4*C}{r^{2}}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{-4*C}{r^{5}}\right]$
+$-\frac{\partial p}{\partial r} =  \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r C ln(r)) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{C}{r^{3}}\right]$
 
-$-\frac{\partial p}{\partial r} =  \mu \left[ \frac{1}{r}\frac{8*C}{r^{3}} +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{-4*C}{r^{5}}\right]$
-
-$-\frac{\partial p}{\partial r} =  \mu \left[\frac{8*C}{r^{4}} +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{-4*C}{r^{5}}\right]$
-
-
+$\rho\left(r^{2}(\frac{C}{r})( C*ln(r))\right) = \mu \left[r\frac{\partial}{\partial r}(r C*ln(r)) +\frac{\partial^{2}u_{r}}{\partial\theta^{2}} -\frac{C}{r}\right]$
 
 
 The equation for conservation of momentum in the $\theta$ direction in polar coordinates is:
@@ -77,11 +78,9 @@ The equation for conservation of momentum in the $\theta$ direction in polar coo
 $\rho\left( \frac{\partial u_{\theta}}{\partial t} + u_{r}\frac{\partial
 u_{\theta}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{\theta}}{\partial \theta} + u_{z}\frac{\partial u_{\theta}}{\partial z} - \frac{u_{\theta}u_{r}}{r} \right) = -\frac{1}{r}\frac{\partial p}{\partial \theta} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{\theta}}{\partial\theta^{2}} + \frac{\partial^{2}u_{\theta}}{\partial z^{2}} + \frac{2}{r^{2}}\frac{\partial u_{r}}{\partial \theta}- \frac{u_{\theta}}{r^{2}} \right]$
 
+Simplifying we find:
 
-The equation for conservation of momentum in 2-D
-$\frac{\partial u}{\partial t} = -\frac{1}{\rho}\frac{\partial P}{\partial x} + \frac{\mu}{\rho}\left(\frac{\partial^{2} u}{\partial y^{2}} + \frac{\partial^{2} u}{\partial z^{2}}  \right)$
-
-
+$0 = \mu \left[ \frac{2}{r^{2}}\frac{\partial u_{r}}{\partial \theta}\right]$
 
 \subsection*{(b)}
 
@@ -106,12 +105,77 @@ $\frac{\partial\omega}{\partial t} = \nu\left(\frac{\partial^{2}\omega}{\partial
 
 \end{center}
 
+\subsection*{(a)}
+
+Since these streamlines are circular, that means they are perpendicular to
+both the $r$ and $z$ axes so $u_{r} = u_{z} = 0$.  
+
+The vorticity component in the $r$ direction is:
+
+$\omega_{r} = \frac{1}{r}\frac{\partial u_{z}}{\partial \theta} - \frac{\partial u_{\theta}}{\partial z}$
+
+$\omega_{r} = \frac{1}{r}(0) - (0) = 0$
+
+The vorticity component in the $\theta$ direction is:
+
+$\omega_{\theta} = \frac{\partial u_{r}}{\partial z} - \frac{\partial u_{z}}{\partial r}$
+
+$\omega_{\theta} = (0) - (0) = 0$
+
+The vorticity component in the $z$ direction is:
+
+$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(ru_{\theta}) - \frac{1}{r} \frac{\partial u_{z}}{\partial \theta}$
+
+$\omega_{z} = \frac{1}{r}\frac{\partial}{\partial r}(ru_{\theta})$
+
+$\omega_{z} = \frac{1}{r}(u_{\theta}+r\frac{\partial u_{\theta}}{\partial r})$
+
+$\omega_{z} = \frac{u_{\theta}}{r}+\frac{\partial u_{\theta}}{\partial r}$
+
+Taking the derivative with respect to time:
+
+$\frac{\partial}{\partial t}\omega_{z} = \frac{\partial}{\partial t}\frac{u_{\theta}}{r}+\frac{\partial}{\partial t}\frac{\partial u_{\theta}}{\partial r}$
+
+$\frac{\partial \omega_{z} }{\partial t}= \frac{1}{r}\frac{\partial u_{\theta}}{\partial t}+\frac{\partial}{\partial t}\frac{\partial u_{\theta}}{\partial r}$
+
+Taking the derivative with respect to r:
+
+$\frac{\partial \omega_{z}}{\partial r} = \frac{\partial}{\partial
+r}\frac{u_{\theta}}{r}+\frac{\partial^{2} u_{\theta}}{\partial r^{2}}$
+
+$\frac{\partial \omega_{z}}{\partial r} = \frac{\partial u_{\theta}}{\partial
+r} - \frac{u_{\theta}}{r^{2}} +\frac{\partial^{2} u_{\theta}}{\partial r^{2}}$
+
+And again:
+
+$\frac{\partial}{\partial r}\frac{\partial \omega_{z}}{\partial r} = \frac{\partial}{\partial r}\frac{\partial u_{\theta}}{\partial
+r} - \frac{\partial}{\partial r}\frac{u_{\theta}}{r^{2}} + \frac{\partial}{\partial r}\frac{\partial^{2} u_{\theta}}{\partial r^{2}}$
+
+
+The equation for conservation of momentum in the $\theta$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{\theta}}{\partial t} + u_{r}\frac{\partial
+u_{\theta}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{\theta}}{\partial \theta} + u_{z}\frac{\partial u_{\theta}}{\partial z} - \frac{u_{\theta}u_{r}}{r} \right) = -\frac{1}{r}\frac{\partial p}{\partial \theta} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) +\frac{1}{r^{2}}\frac{\partial^{2}u_{\theta}}{\partial\theta^{2}} + \frac{\partial^{2}u_{\theta}}{\partial z^{2}} + \frac{2}{r^{2}}\frac{\partial u_{r}}{\partial \theta}- \frac{u_{\theta}}{r^{2}} \right]$
+
+Simplifying:
+
+$ \frac{\partial u_{\theta}}{\partial t} = \nu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) - \frac{u_{\theta}}{r^{2}} \right]$
+
+$ \frac{\partial u_{\theta}}{\partial t} = \nu \left[
+\frac{1}{r}\left(r\frac{\partial^{2} u_{\theta}}{\partial r^{2}}+\frac{\partial u_{\theta}}{\partial r}\right) - \frac{u_{\theta}}{r^{2}} \right]$
+
+$\frac{\partial u_{\theta}}{\partial t} = \nu \left[\frac{\partial^{2} u_{\theta}}{\partial r^{2}}+\frac{1}{r}\frac{\partial u_{\theta}}{\partial r} - \frac{u_{\theta}}{r^{2}} \right]$
+
+
+\subsection*{(b)}
+
+
 \textit{Solve this equation for the decay of a line vortex initially
 concentrated at the origin with circulation $\Gamma_{0} = \int\omega dA$.  Solve for $\omega(r,t)$ and show that }
 
 \begin{center}
 
-$v_{\theta} = \frac{\Gamma_{0}}{2\pi r}\left[1 - exp\left( -\frac{r^{2}}{4\nu t} \right)  \right]$
+$u_{\theta} = \frac{\Gamma_{0}}{2\pi r}\left[1 - exp\left( -\frac{r^{2}}{4\nu t} \right)  \right]$
 
 \end{center}
 
@@ -124,6 +188,68 @@ $U_{0}$ (in the radial direction) into an unbounded fluid of constant $\rho$ and
 the pressure at the cylinder surface is $p_{0}$.  Assuming purely radial outflow
 with negligible gravity, find the velocity and pressure distributions in the
 fluid.}
+
+The equation for conservation of momentum in the $r$ direction in polar coordinates is:
+
+$\rho\left( \frac{\partial u_{r}}{\partial t} + u_{r}\frac{\partial u_{r}}{\partial r} + \frac{u_{\theta}}{r}\frac{\partial u_{r}}{\partial \theta} + u_{z}\frac{\partial u_{r}}{\partial z} - \frac{u_{\theta}^{2}}{r} \right) = \frac{\partial p}{\partial r} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} + \frac{\partial^{2}u_{r}}{\partial z^{2}} - \frac{u_{r}}{r^{2}} - \frac{2}{r^{2}}\frac{\partial u_{\theta}}{\partial \theta}\right]$
+
+Simplifying:
+
+$\rho\left( u_{r}\frac{\partial u_{r}}{\partial r} \right) = \frac{\partial p}{\partial r} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial u_{r}}{\partial r}) - \frac{u_{r}}{r^{2}} \right]$
+
+The continuity equation in cylindrical coordinates:
+
+$\frac{1}{\rho}\frac{\partial \rho}{\partial t} + \frac{1}{r}\frac{\partial
+}{\partial r}(r u_{r}) + \frac{1}{r} \frac{\partial u_{\theta}}{\partial \theta} + \frac{\partial u_{z}}{\partial z} = 0$
+
+Simplifying:
+
+$\frac{1}{r}\frac{\partial }{\partial r}(r u_{r}) = 0$
+
+$\frac{1}{r}(r \frac{\partial u_{r}}{\partial r} + u_{r}) = 0$
+
+$\frac{1}{r}(r \frac{\partial u_{r}}{\partial r} + u_{r}) = 0$
+
+$\frac{\partial u_{r}}{\partial r}= -\frac{u_{r}}{r}$
+
+$\frac{\partial u_{r}}{u_{r}}= -\frac{\partial r}{r}$
+
+$ln(u_{r}) = -ln(r) + C$
+
+$u_{r} = Ce^{-ln(r)} = \frac{C}{r}$
+
+Plugging in the boundary conditions of $u(r = R) = U_{0}$
+
+$U_{0} = \frac{C}{R}$; $C = U_{0}R$
+
+$\boxed{u_{r} = \frac{U_{0}R}{r}}$
+
+Substituting the simplified continuity equation into the simplified momentum
+equation above:
+
+$-\rho\left( u_{r}\frac{u_{r}}{r}\right) = \frac{\partial p}{\partial r} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r(-\frac{u_{r}}{r}) - \frac{u_{r}}{r^{2}} \right]$
+
+$-\frac{\partial p}{\partial r} = \rho\left(\frac{u_{r}^{2}}{r}\right) - \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(u_{r}) + \frac{u_{r}}{r^{2}} \right]$
+
+$-\frac{\partial p}{\partial r} = \rho\left(\frac{u_{r}^{2}}{r}\right) + \mu \left[ \frac{u_{r}}{r^{2}} - \frac{u_{r}}{r^{2}} \right]$
+
+$-\frac{\partial p}{\partial r} = \rho\left(\frac{u_{r}^{2}}{r}\right)$
+
+$-\frac{\partial p}{\partial r} = \rho\left(\frac{1}{r}\frac{U_{0}^{2}R^{2}}{r^{2}}\right)$
+
+$\frac{\partial p}{\partial r} = -\rho\frac{U_{0}^{2}R^{2}}{r^{3}}$
+
+$\partial p = -\rho\frac{U_{0}^{2}R^{2}}{r^{3}}\partial r$
+
+$p(r) = \rho\frac{U_{0}^{2}R^{2}}{2r^{2}} + C$
+
+Plugging in boundary conditions, $p(r = R) = p_{0}$
+
+$p_{0} = \rho\frac{U_{0}^{2}R^{2}}{2R^{2}} + C$; $p_{0} = \rho\frac{U_{0}^{2}}{2} + C$; $C = p_{0} - \rho\frac{U_{0}^{2}}{2}$
+
+$p(r) = \rho\frac{U_{0}^{2}R^{2}}{2r^{2}} + p_{0} - \rho\frac{U_{0}^{2}}{2}$
+
+$\boxed{p(r) = \rho\frac{U_{0}^{2}}{2}\left(\frac{R^{2}}{r^{2}} -1\right ) + p_{0}}$
 
 \section*{Misc equations I might need}
 \subsection*{Navier Stokes in Cylindrical}
