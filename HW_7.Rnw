@@ -50,11 +50,13 @@ Integrating:
 
 $r*u_{r} = C$
 
-$u_{r} = \frac{C}{r}$
+$u_{max} = \frac{C}{r}$
 
 And
 
-$\frac{\partial u_{r}}{\partial r} = C*ln(r)$
+$\frac{\partial u_{max}}{\partial r} = C*ln(r)$
+
+So $u = u_{max}f(\nu) = \frac{C}{r}f(\nu)$ and $\frac{\partial u_{r}}{\partial r} = u_{max}Cf(\nu)*ln(r)$
 
 The equation for conservation of momentum in the $r$ direction in polar coordinates is:
 
@@ -68,10 +70,13 @@ $\rho\left(r^{2}u_{r}\frac{\partial u_{r}}{\partial r} \right) = \mu \left[r\fra
 
 Plugging in from continuity:
 
-$-\frac{\partial p}{\partial r} =  \mu \left[ \frac{1}{r}\frac{\partial}{\partial r}(r C ln(r)) +\frac{1}{r^{2}}\frac{\partial^{2}u_{r}}{\partial\theta^{2}} - \frac{C}{r^{3}}\right]$
+$\rho\left(r^{2}(\frac{C}{r}f(\nu))(u_{max}C*ln(r))\right) = \mu \left[r\frac{\partial}{\partial r}(r(u_{max}Cf(\nu)*ln(r))) +\frac{\partial^{2}u_{r}}{\partial\theta^{2}} -\frac{C}{r}f(\nu)\right]$
 
-$\rho\left(r^{2}(\frac{C}{r})( C*ln(r))\right) = \mu \left[r\frac{\partial}{\partial r}(r C*ln(r)) +\frac{\partial^{2}u_{r}}{\partial\theta^{2}} -\frac{C}{r}\right]$
+$rf(\nu)u_{max}C^{2}*ln(r) = \frac{\mu}{\rho}\left[ru_{max}Cf(\nu)(1 + ln(r)) +\frac{\partial^{2}u_{r}}{\partial\theta^{2}} -\frac{C}{r}f(\nu)\right]$
 
+$rf(\nu)u_{max}C^{2}*ln(r) = \frac{\mu}{\rho}\left[ru_{max}Cf(\nu)(1 + ln(r)) + \frac{C}{r}\alpha\frac{\partial f(\nu)}{\partial \theta} -\frac{C}{r}f(\nu)\right]$
+
+$rf(\nu)u_{max}C^{2}*ln(r) = \frac{\mu}{\rho}\left[ru_{max}Cf(\nu)(1 + ln(r)) + \frac{C}{r}\alpha^{2}\frac{\partial^{2} f(\nu)}{\partial \theta^{2}} -\frac{C}{r}f(\nu)\right]$
 
 The equation for conservation of momentum in the $\theta$ direction in polar coordinates is:
 
