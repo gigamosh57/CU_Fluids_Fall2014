@@ -141,21 +141,20 @@ Taking the derivative with respect to time:
 
 $\frac{\partial}{\partial t}\omega_{z} = \frac{\partial}{\partial t}\frac{u_{\theta}}{r}+\frac{\partial}{\partial t}\frac{\partial u_{\theta}}{\partial r}$
 
-$\frac{\partial \omega_{z} }{\partial t}= \frac{1}{r}\frac{\partial u_{\theta}}{\partial t}+\frac{\partial}{\partial t}\frac{\partial u_{\theta}}{\partial r}$
+$\frac{\partial \omega_{z}}{\partial t}= \frac{1}{r}\frac{\partial u_{\theta}}{\partial t}+\frac{\partial}{\partial t}\frac{\partial u_{\theta}}{\partial r}$
 
 Taking the derivative with respect to r:
 
 $\frac{\partial \omega_{z}}{\partial r} = \frac{\partial}{\partial
 r}\frac{u_{\theta}}{r}+\frac{\partial^{2} u_{\theta}}{\partial r^{2}}$
 
-$\frac{\partial \omega_{z}}{\partial r} = \frac{\partial u_{\theta}}{\partial
+$\frac{\partial \omega_{z}}{\partial r} = \frac{1}{r}\frac{\partial u_{\theta}}{\partial
 r} - \frac{u_{\theta}}{r^{2}} +\frac{\partial^{2} u_{\theta}}{\partial r^{2}}$
 
 And again:
 
 $\frac{\partial}{\partial r}\frac{\partial \omega_{z}}{\partial r} = \frac{\partial}{\partial r}\frac{\partial u_{\theta}}{\partial
 r} - \frac{\partial}{\partial r}\frac{u_{\theta}}{r^{2}} + \frac{\partial}{\partial r}\frac{\partial^{2} u_{\theta}}{\partial r^{2}}$
-
 
 The equation for conservation of momentum in the $\theta$ direction in polar coordinates is:
 
@@ -171,9 +170,24 @@ $ \frac{\partial u_{\theta}}{\partial t} = \nu \left[
 
 $\frac{\partial u_{\theta}}{\partial t} = \nu \left[\frac{\partial^{2} u_{\theta}}{\partial r^{2}}+\frac{1}{r}\frac{\partial u_{\theta}}{\partial r} - \frac{u_{\theta}}{r^{2}} \right]$
 
+Substituting $\frac{\partial u_{\theta}}{\partial t}$ into the equation $\frac{\partial \omega_{z}}{\partial t}= \frac{1}{r}\frac{\partial u_{\theta}}{\partial t}+\frac{\partial}{\partial t}\frac{\partial u_{\theta}}{\partial r}$:
+
+$\frac{\partial \omega_{z}}{\partial t}= \frac{1}{r}(\nu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) - \frac{u_{\theta}}{r^{2}} \right])+\frac{\partial}{\partial r}\frac{\partial u_{\theta}}{\partial t}$
+
+$\frac{\partial \omega_{z}}{\partial t}= \frac{1}{r}(\nu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) - \frac{u_{\theta}}{r^{2}} \right])+\frac{\partial}{\partial r}(\nu \left[ \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u_{\theta}}{\partial r}\right) - \frac{u_{\theta}}{r^{2}} \right])$
+
+$\frac{\partial \omega_{z}}{\partial t}= \frac{1}{r}\left(\nu \left[ \frac{1}{r}\left(\frac{\partial u_{\theta}}{\partial r}+r\frac{\partial^{2} u_{\theta}}{\partial r^{2}}\right) - \frac{u_{\theta}}{r^{2}} \right]\right)+\frac{\partial}{\partial r}\left(\nu \left[ \frac{1}{r}\left(\frac{\partial u_{\theta}}{\partial r}+r\frac{\partial^{2} u_{\theta}}{\partial r^{2}}\right) - \frac{u_{\theta}}{r^{2}} \right]\right)$
+
+$\frac{\partial \omega_{z}}{\partial t}= \frac{1}{r}\left(\nu \left[ \frac{1}{r}\frac{\partial u_{\theta}}{\partial r}+\frac{\partial^{2} u_{\theta}}{\partial r^{2}} - \frac{u_{\theta}}{r^{2}} \right]\right)+\frac{\partial}{\partial r}\left(\nu \left[ \frac{1}{r}\frac{\partial u_{\theta}}{\partial r}+\frac{\partial^{2} u_{\theta}}{\partial r^{2}} - \frac{u_{\theta}}{r^{2}} \right]\right)$
+
+Plugging in $\frac{\partial \omega_{z}}{\partial r} = \frac{1}{r}\frac{\partial u_{\theta}}{\partial
+r} - \frac{u_{\theta}}{r^{2}} +\frac{\partial^{2} u_{\theta}}{\partial r^{2}}$:
+
+$\frac{\partial \omega_{z}}{\partial t}= \frac{1}{r}\left(\nu \frac{\partial \omega_{z}}{\partial r} \right)+\frac{\partial}{\partial r}\left(\nu \frac{\partial \omega_{z}}{\partial r} \right)$
+
+$\boxed{\frac{\partial\omega}{\partial t} = \nu\left(\frac{\partial^{2}\omega}{\partial r^{2}} + \frac{1}{r}\frac{\partial\omega}{\partial r}\right)}$
 
 \subsection*{(b)}
-
 
 \textit{Solve this equation for the decay of a line vortex initially
 concentrated at the origin with circulation $\Gamma_{0} = \int\omega dA$.  Solve for $\omega(r,t)$ and show that }
@@ -183,6 +197,18 @@ concentrated at the origin with circulation $\Gamma_{0} = \int\omega dA$.  Solve
 $u_{\theta} = \frac{\Gamma_{0}}{2\pi r}\left[1 - exp\left( -\frac{r^{2}}{4\nu t} \right)  \right]$
 
 \end{center}
+
+First solve for $\Gamma_{0} = \int\omega dA$
+
+$\int \omega_{z}dA = \int \frac{u_{\theta}}{r}dA+\int \frac{\partial u_{\theta}}{\partial r}dA$
+
+$\int_{0}^{2\pi}\int_{0}^{r} \omega_{z}drd\theta = \int_{0}^{2\pi}\int_{0}^{r} \frac{u_{\theta}}{r}drd\theta+\int_{0}^{2\pi}\int_{0}^{r} \frac{\partial u_{\theta}}{\partial r}drd\theta$
+
+$\int \omega_{z}dA = 2\pi\left( \int_{0}^{r} \frac{u_{\theta}}{r}dr+2\pi\int_{0}^{r} \frac{\partial u_{\theta}}{\partial r}dr\right)$
+
+NOT FINISHED
+$\int \omega_{z}dA = 2\pi\left( \int_{0}^{r} \frac{u_{\theta}}{r}dr+2\pi u_{\theta}r\right)$
+
 
 \vspace{5mm}
 
