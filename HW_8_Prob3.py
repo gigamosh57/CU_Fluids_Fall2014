@@ -123,7 +123,7 @@ feval = [lambda x,t: x[1,0],
          lambda x,t: -1/2*(x[0,0]*x[2,0])]
 x0 =  [0,0,1] 
 tstart = 0
-tfinal = 50
+tfinal = 100
 dt = (tfinal-tstart)/10000.
 order = 4
 tol=10**-4
@@ -151,10 +151,10 @@ eta = tvecf
 feta = xsolf[0,:]
 fpeta = xsolf[1,:]
 
-dx = 0.5
-xmax = 10
-dy = 0.5
-ymax = 10
+dx = 1
+xmax = 12
+dy = 1
+ymax = 12
 U=1
 nu=0.01
 
@@ -173,8 +173,8 @@ eta_plot = Y*np.sqrt(U/(2*nu*X))
 f_plot = eta_plot*0
 fp_plot = f_plot*0
 # calculate f and f' on grid based on closest value of eta
-for a in range(1,np.shape(eta_plot)[0]):
-  for b in range(1,np.shape(eta_plot)[1]):
+for a in range(0,np.shape(eta_plot)[0]):
+  for b in range(0,np.shape(eta_plot)[1]):
     B = eta_plot[a,b]
     idx = find_nearest(eta,B)
     f_plot[a,b]=feta[idx]
@@ -184,13 +184,14 @@ u = U*fp_plot
 v = np.sqrt(nu*U/2*X)*(eta_plot*fp_plot-f_plot)
 
 figure()
-Q = quiver( u, v)
-#qk = quiverkey(Q, 0.5, 0.92, 2, r'$2 \frac{m}{s}$', labelpos='W',fontproperties={'weight': 'bold'})
+Q = quiver( X,Y,u, v)
 l,r,b,t = axis()
 dx, dy = r-l, t-b
 axis([l-0.05*dx, r+0.05*dx, b-0.05*dy, t+0.05*dy])
 
-title('Weathervanes showing U and V velocities at each point')
+title('Weathervanes showing U and V velocities at each X-Y point')
+axes.set_xlabel('x')
+axes.set_ylabel('y')
 
 plt.show() 
 
