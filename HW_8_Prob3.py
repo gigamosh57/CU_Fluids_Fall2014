@@ -123,8 +123,8 @@ feval = [lambda x,t: x[1,0],
          lambda x,t: -1/2*(x[0,0]*x[2,0])]
 x0 =  [0,0,1] 
 tstart = 0
-tfinal = 25
-dt = (tfinal-tstart)/1000.
+tfinal = 50
+dt = (tfinal-tstart)/10000.
 order = 4
 tol=10**-4
 errtol = 10**-10
@@ -137,13 +137,8 @@ errtol = 10**-10
 
 def find_nearest(array,value):
     idx = (np.abs(array-value)).argmin()
-    return idx#,array[idx]
-
-### Test Code
-#array = np.random.random(10)
-#print(array)
-#value = 0.5
-#print(find_nearest(array, value))
+    return idx
+    
 ######## End find function
 ################################################
 
@@ -156,35 +151,46 @@ eta = tvecf
 feta = xsolf[0,:]
 fpeta = xsolf[1,:]
 
-dx = 0.1
-dy = 0.1
+dx = 0.5
+xmax = 10
+dy = 0.5
+ymax = 10
 U=1
-nu=1
+nu=0.01
 
-###### FIX THIS LOOP
-
-
-X,Y = meshgrid( arange(dx,10,dx),arange(dy,10,dy) )
-# calculate eta
-eta_plot = Y*np.sqrt(U/(2*nu*X))
-f_plot = eta_plot
-fp_plot = f_plot
-# calculate f and f' on grid based on closest value of eta
-for a in range(1,np.shape(eta_plot)[0]):
-  for b in range(1,np.shape(eta_plot)[1]):
-    b = eta_plot[a,b]
-    idx = find_nearest(eta,b)
-    f_plot[a,b]=feta[idx]
-    
-    print(b)
-U = U
-
+### Shows the plot of Eta vs F(feta)
 fig = plt.figure()
 axes = fig.add_axes([0.1, 0.1, 0.8, 0.8])
 axes.set_xlabel('eta')
 axes.set_ylabel('f(eta)')
-axes.plot(eta,feta,label = "f(eta)"))
+axes.plot(eta,feta,label = "f(eta)")
 axes.legend()
+plt.show()
+
+X,Y = meshgrid( arange(dx,xmax,dx),arange(dy,ymax,dy) )
+# calculate eta
+eta_plot = Y*np.sqrt(U/(2*nu*X))
+f_plot = eta_plot*0
+fp_plot = f_plot*0
+# calculate f and f' on grid based on closest value of eta
+for a in range(1,np.shape(eta_plot)[0]):
+  for b in range(1,np.shape(eta_plot)[1]):
+    B = eta_plot[a,b]
+    idx = find_nearest(eta,B)
+    f_plot[a,b]=feta[idx]
+    fp_plot[a,b]=fpeta[idx]
+
+u = U*fp_plot
+v = np.sqrt(nu*U/2*X)*(eta_plot*fp_plot-f_plot)
+
+figure()
+Q = quiver( u, v)
+#qk = quiverkey(Q, 0.5, 0.92, 2, r'$2 \frac{m}{s}$', labelpos='W',fontproperties={'weight': 'bold'})
+l,r,b,t = axis()
+dx, dy = r-l, t-b
+axis([l-0.05*dx, r+0.05*dx, b-0.05*dy, t+0.05*dy])
+
+title('Weathervanes showing U and V velocities at each point')
 
 plt.show() 
 
