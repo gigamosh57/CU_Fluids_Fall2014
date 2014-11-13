@@ -121,10 +121,11 @@ def pagerkck4(feval,x0,tstart,tfinal,dt,order = 4,tol=10**-2,errtol = 10**-20):
 
 feval = [lambda x,t: x[1,0],
          lambda x,t: x[2,0],
-         lambda x,t: x[1,0]**2-1.]
+         lambda x,t: x[1,0]**2-1]
 
 # Initial conditions
-x0 =  [0,1.5,0] 
+# this causes F'(eta) = 1 at eta = infinity
+x0 =  [0,0,1.155] 
 tstart = 0
 tfinal = 5
 dt = (tfinal-tstart)/1000.
