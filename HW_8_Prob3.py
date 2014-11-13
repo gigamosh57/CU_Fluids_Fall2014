@@ -163,7 +163,7 @@ fig = plt.figure()
 axes = fig.add_axes([0.1, 0.1, 0.8, 0.8])
 axes.set_xlabel('eta')
 axes.set_ylabel('f(eta)')
-axes.plot(eta,feta,label = "f(eta)")
+axes.plot(eta[0:1500],feta[0:1500],label = "f(eta)")
 axes.legend()
 plt.show()
 
